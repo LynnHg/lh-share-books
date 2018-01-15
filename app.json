@@ -5,8 +5,29 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "LH共享图书",
-    "navigationBarTextStyle":"black"
+    "navigationBarBackgroundColor": "#f76b8a",
+    "navigationBarTitleText": "L H 共 享 图 书",
+    "navigationBarTextStyle":"#fff",
+    "backgroundColor":"#fff"
+  },
+  "tabBar": {
+    "color": "#bfbfbf",
+    "selectedColor": "#f76b8a",
+    "backgroundColor": "#fcfefe",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "书籍",
+        "iconPath": "assets/images/icon_tab_bar_books.png",
+        "selectedIconPath": "assets/images/icon_tab_bar_books_active.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的",
+        "iconPath": "assets/images/icon_tab_bar_mine.png",
+        "selectedIconPath": "assets/images/icon_tab_bar_mine_active.png"
+      }
+    ]
   }
 }
