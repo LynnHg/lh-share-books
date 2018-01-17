@@ -1,0 +1,125 @@
+/* orderlist.wxss */
+text{
+  padding: 0;
+  margin: 0;
+}
+.o-list{
+  width: 100%;
+}
+
+.list-item{
+  width: 100%;
+  display: block;
+  color: #444;
+  height: 200rpx;
+  box-sizing: border-box;
+  position:relative;
+}
+
+.list-item image{
+  position: absolute;
+  top: 20rpx;
+  left:20rpx;
+  height: 160rpx;
+  width: 160rpx;
+}
+
+.list-title{
+  height: 70rApx;
+  line-height: 35rpx;
+  position: absolute;
+  top: 30rpx;
+  left: 200rpx;
+  font-size: 35rpx;
+  font-weight: bold;
+  color: #333;
+  width: 350rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.list-state{
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+  font-size: 30rpx;
+}
+
+.list-money{
+  position: absolute;
+  bottom: 10rpx;
+  right: 20rpx;
+  font-size: 25rpx;
+  font-weight: bold;
+}
+
+.list-time{
+  position: absolute;
+  bottom: 10rpx;
+  font-size: 25rpx;
+  left: 200rpx;
+  color: grey;
+}
+page{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.navbar{
+  flex: none;
+  display: flex;
+  background: #fff;
+}
+.navbar text{
+  font-size: 30rpx;
+}
+.navbar .item{
+  position: relative;
+  flex: auto;
+  text-align: center;
+  line-height: 80rpx;
+  color: gray;
+  
+  border-bottom: 1rpx solid #eee;
+}
+.navbar .item.active{
+ color: #1296db;
+ 
+}
+.navbar .item.active:after{
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: #1296db;
+}
+
+.pay-bg{
+  position: relative;
+  width: 100%;
+  height: 60rpx;
+}
+.pay{
+  position: absolute;
+  font-size: 30rpx;
+  color: #1296db;
+  text-align: center;
+  right: 10rpx;
+  bottom: 10rpx;
+  height: 50rpx;
+  width: 150rpx;
+  border: 1px solid #1296db;
+  border-radius: 5%;
+}
+
+.ol-line {
+    margin-left:10rpx;
+    margin-bottom:0;
+    margin-right:10rpx;
+    height:1px; 
+    background-color: gainsboro;
+    -webkit-transform:scaleY(0.5);
+    transform:scaleY(0.5);
+}

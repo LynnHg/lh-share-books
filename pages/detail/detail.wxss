@@ -1,0 +1,5 @@
+/* pages/detail/detail.wxss */
+.borrow{
+  
+  padding-bottom: 10rpx;
+}

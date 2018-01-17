@@ -1,0 +1,36 @@
+<view class="container">
+  <scroll-view class="wrapper-scroll" scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-top="0">
+    <form catchsubmit="formSubmit">
+      <view class="detail-box">
+        <view class="detail-box-bg" style=" background-image: url({{bookinfo.images.large}})"></view>
+        <image class="detail-img" src="{{bookinfo.images.large}}"></image>
+      </view>
+
+      <view class="detail-info">
+        <view class="detail-fl">
+          <view class="detail-title">{{bookinfo.title}}</view>
+          <view class="detail-text detail-author">作者：{{bookinfo.author}}</view>
+          <view class="detail-text  detail-publisher">出版社：{{bookinfo.publisher}}</view>
+          <view class="detail-text  detail-pubdate">出版时间：{{bookinfo.pubdate}}</view>
+          <view class="detail-text  detail-pubdate">
+            <input class="weui-input" name="scene" placeholder="scene" />
+          </view>
+         
+        </view>
+        <view class="detail-fr">
+          <view class="detail-star-box">
+            <view class="detail-star">{{bookinfo.rating.average}}</view>
+            <image class="detail-star-img" src="{{block}}"></image>
+          </view>
+        </view>
+
+      </view>
+
+
+      <view class="btn-area">
+        <button type="primary" formType="submit">提交</button>\n
+      </view>
+    </form>
+  </scroll-view>
+</view>
+

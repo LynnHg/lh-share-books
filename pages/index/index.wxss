@@ -1,4 +1,18 @@
 /**index.wxss**/
+text{
+    overflow:hidden; 
+    text-overflow:ellipsis;
+    white-space:nowrap;  
+}
+.top-text{
+  width: 150px;
+  line-height: 25px;
+  max-height: 25px;
+  color: white;
+  font-family: "微软雅黑";
+  font-size: 16px;
+  font-weight: bold;
+}
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -6,8 +20,8 @@
 }
 
 .userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
+  width: 80rpx;
+  height: 80rpx;
   margin: 20rpx;
   border-radius: 50%;
 }
@@ -17,5 +31,180 @@
 }
 
 .usermotto {
-  margin-top: 200px;
+  margin-top: 100px;
+}
+
+.topbar{
+  position: fixed;
+  top:0;
+  display: flex;
+  margin-bottom: 50rpx;
+  z-index: 100;
+}
+.top-lc{
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  margin:20rpx 30rpx;
+  left: 50rpx;
+  float: left;
+  padding-bottom: 0;
+  width: 350rpx;
+  top: 20 px;
+  
+}
+
+.top-lc image{
+  height: 20px;
+  width: 20px;
+}
+
+.top-lc input{
+  width: 150px;
+  background: #1296db ;
+  color: white;
+  font-family:"微软雅黑";
+  font-weight: bold;
+}
+
+.top-sc{
+  
+  top:0;
+  float: right;
+  width: 300rpx;
+  
+}
+
+.top-sc button{
+  margin-top: 5px;
+  margin-left: 15px;
+   margin-right: 15px;
+   background: #62b900 ;
+   color: white;
+   font-size: 14px;
+   font-family:"微软雅黑";
+}
+
+.scan-bg{
+    display: flex; 
+    align-items:center;
+    position: fixed;
+    height: 100rpx;
+    width: 278rpx;
+    left:236rpx;
+    bottom: 20rpx;
+    z-index: 99;
+    background: #f76b8a;
+    border-radius: 50rpx;
+}
+.scan-bg text{
+  margin-left: 10rpx;
+  line-height: 35rpx;
+  font-size: 35rpx;
+  color: white;
+  padding: 0;
+}
+
+.scan-bg image{
+  margin-left: 40rpx;
+  height: 50rpx;
+  width: 50rpx;
+}
+/* orderlist.wxss */
+text{
+  padding: 0;
+  margin: 0;
+}
+.o-list{
+  width: 100%;
+}
+
+.list-item{
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  display: block;
+  color: #444;
+  height: 200rpx;
+  box-sizing: border-box;
+  position:relative;
+}
+
+.list-item image{
+  position: absolute;
+  top: 20rpx;
+  left:20rpx;
+  height: 160rpx;
+  width: 160rpx;
+}
+
+.list-title{
+  height: 70rpx;
+  line-height: 35rpx;
+  position: absolute;
+  top: 20rpx;
+  left: 200rpx;
+  font-size: 35rpx;
+  font-weight: bold;
+  color: #333;
+  width: 350rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.list-state{
+  position: absolute;
+  right: 20rpx;
+  top: 150rpx;
+  font-size: 30rpx;
+}
+
+.list-money{
+  position: absolute;
+  bottom: 10rpx;
+  left: 200rpx;
+  font-size: 25rpx;
+  color: grey;
+}
+
+.list-time{
+  position: absolute;
+  top: 110rpx;
+  font-size: 20rpx;
+  left: 200rpx;
+  color: grey;
+}
+page{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.navbar{
+  flex: none;
+  display: flex;
+  background: #fff;
+}
+.navbar text{
+  font-size: 30rpx;
+}
+.navbar .item{
+  position: relative;
+  flex: 1;
+  text-align: center;
+  line-height: 80rpx;
+  color: gray;
+  border-bottom: 1rpx solid #eee;
+}
+.navbar .item.active{
+ color: #1296db;
+}
+.navbar .item.active:after{
+  content: "";
+  display: flex;
+  position: absolute;
+  
+  bottom: 0;
+  left: 115rpx;
+  height: 4rpx;
+  width: 150rpx;
+  background: #1296db;
 }

@@ -1,4 +1,6 @@
 /**app.wxss**/
+@import "wa-ui.wxss";
+@import "douban.wxss";
 .container {
   height: 100%;
   display: flex;
@@ -8,3 +10,9 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+page {
+  background-color: #fff;
+  height: 100%;
+  font-size: 32rpx;
+  line-height: 1.6;
+}

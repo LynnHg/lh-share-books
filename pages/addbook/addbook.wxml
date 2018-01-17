@@ -1,0 +1,48 @@
+<!--addbook.wxml-->
+<view class="title"><text>添加书籍</text></view>
+<view class="page-body">
+<form catchsubmit="formSubmit" catchreset="formReset">
+<view class="page-section">
+  <view class="page-section-title"></view>
+  <view class="weui-cells weui-cells_after-title">
+     <view class="weui-cell weui-cell_input">
+        
+           <input class="weui-input" name="imgurl" placeholder="图片URL" />\n
+
+     </view>
+  </view>
+  </view>
+  <view class="page-section">
+  <view class="page-section-title"></view>
+  <view class="weui-cells weui-cells_after-title">
+     <view class="weui-cell weui-cell_input">
+        
+           <input class="weui-input" name="bookname" placeholder="书名" />\n
+
+     </view>
+  </view>
+  </view>
+  <view class="page-section">
+  <view class="page-section-title"></view>
+  <view class="weui-cells weui-cells_after-title">
+     <view class="weui-cell weui-cell_input">
+        
+  
+           <input class="weui-input" name="bookclass" placeholder="书籍种类" />\n
+        
+     </view>
+  </view>
+  </view>
+  <view class="page-section">
+  <view class="page-section-title"></view>
+  <view class="textarea-wrp">
+        <textarea name="bookintro" auto-focus="true" style="height: 4em" placeholder="书籍介绍"/>
+  </view>
+  </view>
+
+<view class="btn-area">
+        <button type="primary" formType="submit">提交</button>\n
+        <button formType="reset">清空</button>
+</view>
+</form>
+</view>

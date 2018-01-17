@@ -1,0 +1,25 @@
+<view class="order-state">
+<text>订单状态：{{details.state}}</text>
+</view>
+
+ <view class="space"></view>
+ <navigator url="../detail/detail?bookid={{details.bookid}}">
+        <view class="img-box">
+            <image class="o-detail-img"  src="{{details.bookimgurl}}"></image>
+            <view class="o-detail-title">{{details.bookname}}</view>
+             <view class="o-detail-money">￥{{details.orderMoney}}.00</view>
+        </view>
+         </navigator>
+<view class="space"></view>
+
+<view class="o-detail-intro">
+  <view class="o-detail-text">借书时间：{{details.startTime}}</view> 
+  <view class="o-detail-text">还书时间：{{details.endTime}}</view>
+  <view class="o-detail-text">开始地址：{{details.bookStartPlace}}</view>
+  <view class="o-detail-text">结束地址：{{details.bookEndPlace}}</view>
+  <view class="o-detail-text">付款时间：无</view>
+</view>
+
+<view wx:if="{{details.orderState == 2}}" class="operate-bg">
+<button type="primary" bindtap="bindpay" >立即付款</button>
+</view>

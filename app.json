@@ -1,14 +1,42 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/addbook/addbook",
+    "pages/orderlist/orderlist",
+    "pages/success/success",
+    "pages/scancode/scancode",
+    "pages/person/person",
+    "pages/detail/detail",
+    "pages/search/search",
+    "pages/bussiness/bussiness",
+    "pages/lendbook/lendbook",
+    "pages/location/location",
+    "pages/orderdetail/orderdetail",
+    "pages/about/about",
+    "pages/wallet/wallet",
+    "pages/storebook/storebook",
+    "pages/wallet/balance/balance",
+    "pages/merchant/merchant",
+    "pages/merchant/addbook/addbook",
+    "pages/merchant/addbookauto/addbookauto",
+    "pages/suggestion/suggestion",
+    "pages/guide/guide",
+    "pages/club/club",
+    "pages/clubs/clubs",
+    "pages/comment/comment",
+    "pages/sharebook/sharebook",
+    "pages/sharebook/sharecode/sharecode",
+    "pages/sharebook/mycode/mycode",
+    "pages/merchant/checkcode/checkcode",
+    "pages/sharebook/history/history"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#f76b8a",
     "navigationBarTitleText": "L H 共 享 图 书",
-    "navigationBarTextStyle":"#fff",
-    "backgroundColor":"#fff"
+    "navigationBarTextStyle": "#fff",
+    "backgroundColor": "#fff"
   },
   "tabBar": {
     "color": "#bfbfbf",
@@ -23,8 +51,14 @@
         "selectedIconPath": "assets/images/icon_tab_bar_books_active.png"
       },
       {
-        "pagePath": "pages/index/index",
-        "text": "我的",
+        "pagePath": "pages/orderlist/orderlist",
+        "text": "订单",
+        "iconPath": "images/icon_tab_bar_found.png",
+        "selectedIconPath": "images/icon_tab_bar_bill_pre.png"
+      },
+      {
+        "pagePath": "pages/person/person",
+        "text": "个人",
         "iconPath": "assets/images/icon_tab_bar_mine.png",
         "selectedIconPath": "assets/images/icon_tab_bar_mine_active.png"
       }

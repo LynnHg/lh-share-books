@@ -1,0 +1,6 @@
+<!--mycode.wxml-->
+
+<view  >
+ <text>共享码：{{shareCode}}</text>
+<text >请将共享码给商家以将您的书籍入库</text>
+</view>

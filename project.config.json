@@ -10,7 +10,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.9.1",
 	"appid": "wxa02093a6e84e5b21",
-	"projectname": "lh-share-books",
+	"projectname": "books",
 	"isGameTourist": false,
 	"condition": {
 		"search": {

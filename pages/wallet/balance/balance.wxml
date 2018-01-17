@@ -1,0 +1,8 @@
+<view class="bl-top">
+<text>余额:{{balance}}</text>
+</view>
+
+<view class="space"></view>
+
+<text>充值金额：</text><input placeholder="0-1000" bindinput="changeValue"/>
+<button bindtap="recharge">充值</button>

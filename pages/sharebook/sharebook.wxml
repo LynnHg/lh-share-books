@@ -1,0 +1,13 @@
+
+<view class="container">
+  <view  class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">\n\n{{userInfo.nickName}}</text>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+    <button bindtap="sharebook" type="primary">共享图书</button>
+    <button bindtap="shareHistory" type="primary">共享历史</button>
+
+  </view>
+</view>

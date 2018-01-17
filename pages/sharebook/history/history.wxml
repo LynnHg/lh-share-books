@@ -1,0 +1,24 @@
+<!--history.wxml-->
+
+<view class="space"></view>
+<view class="container">
+  <scroll-view class="wrapper-scroll" scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-top="0">
+
+<view class="wa-list">
+
+<view wx:for="{{history}}" class="wa-item wa-item-thumbnail-left" >
+
+
+<view class="list-item">
+            <image class="img" src="{{item.bookimgurl}}" url=""></image>
+            <text class="list-title ">{{item.bookname}}</text>
+            <text class="list-time ">时间,状态</text>
+            <text class="list-text">共享码:{{item.shareCode}}</text>
+            
+          </view>
+</view>
+
+</view>
+
+  </scroll-view>
+</view>

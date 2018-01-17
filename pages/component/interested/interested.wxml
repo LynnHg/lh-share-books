@@ -1,0 +1,30 @@
+<!--
+你可能感兴趣
+-->
+<template name="Interested">
+    <view class="list-container">
+     <view class="list-ui">
+             <block wx:for="{{bookList}}">
+                 <navigator class="list-nav"  hover-class="nav-hover" url="../detail/detail?bookid={{item.bookid}}">
+                     <view class="book-item">
+                         <image class="book-item-img" src="{{item.bookimgurl}}"></image>
+                         <view class="book-item-infos">
+                             <view class="book-title">{{item.bookname}}</view>
+
+                             <view class="book-star-box">
+                                 <image  class="star-img " src="{{item.block}}"></image>
+                                 <text class="average-rating">{{item.average}}</text>
+                             </view>
+
+
+                         </view>
+                     </view>
+                 </navigator>
+             </block>
+
+
+        </view>
+    
+        
+  </view>
+</template>

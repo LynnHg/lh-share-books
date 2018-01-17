@@ -1,13 +1,59 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+
+<scroll-view class="wrapper-scroll" scroll-y="true"  bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-top="0">
+      
+<view class="index-bg" >
+        <view class="top-lc" bindtap="navigateToSearch">
+        <image src="../../images/location.png" />
+        <text class="top-text">{{address}}</text>
+        </view>
+        <view class="top-sc"></view>
+            <navigator url="../search/search" class="search-box" style="top:100rpx" >
+                <view class="search-icon">
+                    <image src="../../images/search.png"></image>
+                </view>
+                <text class="search-input">搜书名/作者/ISBN</text>
+            
+            </navigator>
+
+        </view>    
+          <view class="navbar">
+    <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">hello {{userInfo.nickName}}</text>
+  <!--   书店   -->
+  <view hidden="{{currentTab!==1}}">
+
+  
+    <view class="o-list">
+
+      <view wx:for="{{storelist}}">
+
+        <navigator url="../storebook/storebook?storeid={{item.storeid}}">
+          <view class="list-item">
+            <image class="img" src="../../images/banner.png" url=""></image>
+            <text class="list-title ">{{item.storeName}}</text>
+            <text class="list-money ">地址：{{item.storePlace}}</text>
+            <text class="list-state ">{{item.distance}} km</text>
+          </view>
+        </navigator>
+
+      </view>
+
   </view>
+
+  </view>
+  <!--书籍-->
+  <view hidden="{{currentTab!==0}}">
+<import src="../component/interested/interested.wxml"/>
+<template is="Interested" data="{{bookList: bookList}}"/>
+<view class="scan">
+<view class="scan-bg" bindtap="scanCode">
+<image src="../../images/scan.png"></image>
+<text>扫码借书</text>
 </view>
+</view>
+</view>
+</scroll-view>
+</view>
+

@@ -1,0 +1,91 @@
+.wl-item{
+  display: flex;
+  width: 100%;
+  height: 200rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.wl-item-left{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  border-right: 1rpx solid #eee;
+  text-align: center;
+  padding-top: 20rpx;
+}
+
+.wl-item-left button{
+  margin-top: 20rpx;
+}
+
+.wl-item-left text{
+  margin-top: 20rpx;
+}
+
+.wl-font{
+  font-size: 16rpx;
+  color: #eee;
+}
+
+
+.wl-item-right{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  border-right: 1rpx solid #eee;
+  text-align: center;
+  padding-top: 20rpx;
+}
+
+.wl-item-right text{
+  margin-top: 20rpx;
+}
+
+.wl-text{
+  position: absolute;
+  height: 100rpx;
+  top:100rpx;
+  left: 90rpx;
+  font-size: 30rpx;
+  color: gray;
+}
+
+.wl-list{
+  position: relative;
+  width: 100%;
+  height: 100rpx;
+}
+.wl-list-text{
+  position: absolute;
+  line-height: 36rpx;
+  height: 36rpx;
+  font-size: 36rpx;
+  top: 30rpx;
+  left: 30rpx;
+}
+
+.wl-list-img{
+  position: absolute;
+  height: 36rpx;
+  width: 36rpx;
+  right: 20rpx;
+  top: 32rpx;
+}
+
+.wl-recharge {
+  color: #1296db;
+  
+}
+
+.wl-line {
+    content:" ";
+    position:absolute;
+    left:30rpx;
+    bottom:0;
+    right:30rpx;
+    height:1px; 
+    background-color: gainsboro;
+    -webkit-transform:scaleY(0.5);
+    transform:scaleY(0.5);
+}

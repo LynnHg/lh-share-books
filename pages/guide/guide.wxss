@@ -1,0 +1,7 @@
+/* guide.wxss */
+.guide image{
+  width: 300rpx;
+  height: 400rpx;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+}

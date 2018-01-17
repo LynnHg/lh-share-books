@@ -1,0 +1,12 @@
+
+<view class="space"></view>
+
+ <view wx:for="{{history}}">
+ <image src="../../images/banner.png"></image>>
+  <view class="o-detail-text">活动名称：{{item.activeName}}</view> 
+  <view class="o-detail-text">活动时间：{{item.avtiveTime}}</view>
+  <view class="o-detail-text">活动内容：{{item.activeText}}</view>
+  <view class="o-detail-text">活动地点：{{item.activePlace}}</view>
+
+
+</view>

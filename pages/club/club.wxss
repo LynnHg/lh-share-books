@@ -1,0 +1,28 @@
+/* club.wxss */
+@import "../../common/lib/weui.wxss";
+
+
+.page-section{
+  margin-bottom: 20rpx;
+}
+
+
+
+button{
+  width: 400rpx;
+  margin-top: 30rpx;
+  margin-bottom: 10rpx;
+}
+
+.title{
+   text-align: center;
+}
+
+textarea {
+    width: 700rpx;
+    padding: 25rpx 0;
+}
+.textarea-wrp {
+    padding: 0 25rpx;
+    background-color: #fff;
+}

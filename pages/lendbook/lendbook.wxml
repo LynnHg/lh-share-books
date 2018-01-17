@@ -1,0 +1,22 @@
+<!--pages/detail/detail.wxml-->
+<view class="container">
+    <scroll-view class="wrapper-scroll" scroll-y="true"  bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-top="0">
+        <view class="detail-box">
+            <view class="detail-box-bg" style=" background-image: url({{bookInfo.bookimgurl}})"></view>
+            <image class="detail-img"  src="{{bookInfo.bookimgurl}}"></image>
+        </view>
+
+        <view class="detail-info">
+            <view class="detail-fl">
+                <view class="detail-title">{{bookInfo.bookname}}</view>
+                <view class="detail-text detail-author">作者：{{bookInfo.author}}</view>
+                
+            </view>
+
+        </view>
+       <button type="primary" bindtap="lendBook"> 确认借书</button>
+       
+
+
+    </scroll-view>
+</view>

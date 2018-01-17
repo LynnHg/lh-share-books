@@ -1,0 +1,38 @@
+<view class="wl-item">
+<view class="wl-item-left">
+<text>{{money}}</text>
+<text class="wl-text">余额(元)</text>
+</view>
+<view class="wl-item-right">
+<text>{{deposit}}</text>
+<text class="wl-text">押金(元)</text> 
+</view>
+<view class="wl-item-right">
+<text>{{point}}</text>
+<text class="wl-text">积分</text> 
+</view>
+</view>
+
+<view class="space"></view>
+
+<navigator url="./balance/balance?money={{money}}">
+<view class="wl-list">
+<text class="wl-list-text">余额充值</text>
+<image class="wl-list-img" src="../../images/right02.png"></image>
+<view class="wl-line"></view>
+</view>
+</navigator>
+
+<view class="wl-list" bindtap="depositpay">
+<text class="wl-list-text">押金充值</text>
+<image class="wl-list-img" src="../../images/right02.png"></image>
+<view class="wl-line"></view>
+</view>
+
+
+
+<view class="wl-list" bindtap="returndeposit">
+<text class="wl-list-text">退押金</text>
+<image class="wl-list-img" src="../../images/right02.png"></image>
+<view class="wl-line"></view>
+</view>

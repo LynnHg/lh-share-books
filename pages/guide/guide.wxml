@@ -1,0 +1,11 @@
+<!--guide.wxml-->
+<view class="guide">
+<image src="../../images/1.png"></image>
+<text>1.扫码借书</text>
+<image src="../../images/2.png"></image>
+<text>2.确认借书</text>
+<image src="../../images/3.png"></image>
+<text>3.订单状态</text>
+<image src="../../images/4.png"></image>
+<text>4.钱包信息</text>
+</view>

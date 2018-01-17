@@ -1,0 +1,45 @@
+
+<view class="container">
+  <scroll-view class="wrapper-scroll" scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-top="0">
+
+<view class="wa-list">
+
+<view wx:for="{{comment}}" class="wa-item wa-item-thumbnail-left" >
+
+
+<view class="list-item">
+            <image class="img" src="{{item.avatarUrl}}" url=""></image>
+            <text class="list-title ">{{item.nickName}}</text>
+            <text class="list-time ">{{item.commentTime}}</text>
+            <text class="list-text">{{item.commentText}}</text>
+            
+          </view>
+</view>
+
+</view>
+
+<form catchsubmit="formSubmit" catchreset="formReset">
+
+<view class="page-section">
+  <view class="page-section-title"></view>
+  <view class="weui-cells weui-cells_after-title">
+     <view class="weui-cell weui-cell_input">
+        
+           <textarea name="commentText"  placeholder="开始你的评论"/>
+
+     </view>
+  </view>
+  </view>
+  
+<view class="space"></view>
+<view class="btn-area">
+        <button type="primary" formType="submit">提交</button>\n
+        <button formType="reset">清空</button>
+</view>
+</form>
+
+
+
+
+  </scroll-view>
+</view>

@@ -1,0 +1,4 @@
+<!--scancode.wxml-->
+<view class="container">
+<button bindtap="scan">扫一扫</button>
+</view>
