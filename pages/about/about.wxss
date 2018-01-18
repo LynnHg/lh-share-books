@@ -1,44 +1,53 @@
-page{
-  background-color: #eee;
-  }
-.top{
+page {
+  background-color: #efeff4;
+}
+
+.top {
   padding: 50rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.top image{
+
+.top image {
   margin-top: 100rpx;
   height: 100rpx;
   width: 100rpx;
   margin-bottom: 20rpx;
 }
 
-.top.title{
+.top.title {
   margin-top: 10rpx;
 }
 
-.version{
+.title text {
+  color: #7F7F7F;
+}
+
+.version {
   margin-top: 10rpx;
   margin-bottom: 30rpx;
 }
-.version text{
+
+.version text {
   font-size: 28rpx;
 }
 
-.intro{
+.intro {
   padding: 30rpx;
   float: left;
   width: 100%;
   margin-top: 30rpx;
 }
-.intro text{
+
+.intro text {
   font-size: 28rpx;
 }
-.copyright{
+
+.copyright {
   margin-top: 100rpx;
 }
 
-.copyright text{
+.copyright text {
   font-size: 28rpx;
 }

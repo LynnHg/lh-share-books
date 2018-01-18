@@ -16,3 +16,9 @@ page {
   font-size: 32rpx;
   line-height: 1.6;
 }
+
+.right-arrow {
+  height:36rpx;
+width:36rpx;
+
+}

@@ -1,12 +1,16 @@
 <!--about.wxml-->
 <view class="top">
-<image src="../../images/icon.png"></image>
-<view class="title"><text>易通共享图书</text></view>
-<view class="version"><text>v0.0.1</text></view>
-<view class="intro"><text>易通共享图书是一个集分享个人图书和借阅他人图书于一体的新型移动互联网系统，旨在打造一款短期图书共享平台，用户既可以在指定网点借到喜欢的书籍，还可以分享自己闲置的图书到附近网点，获取收益。</text></view>
-<view bindtap="call">
- <image  src="../../images/contact.png"></image>
- <view >13637333096(微信同号)</view>
-</view>
-<view class="copyright"><text>深圳市中科易通科技有限公司</text></view>
+  <image src="../../assets/images/logo-icon.png"></image>
+  <view class="title">
+    <text>LH共享图书</text>
+  </view>
+  <view class="version">
+    <text>v1.0.0</text>
+  </view>
+  <view class="intro">
+    <text>LH共享图书是一个集分享个人图书和借阅他人图书于一体的新型移动互联网系统，旨在打造一款短期图书共享平台，用户既可以在指定网点借到喜欢的书籍，还可以分享自己闲置的图书到附近网点，获取收益。</text>
+  </view>
+  <view class="copyright">
+    <text>重庆邮电大学软件工程学院</text>
+  </view>
 </view>

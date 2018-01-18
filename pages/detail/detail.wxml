@@ -28,26 +28,18 @@
 
         <navigator url="../comment/comment?bookid={{bookid}}">
           <view class="detail-star-box">
-          <image class="detail-comment-img" src="../../images/suggest.png"></image>
+            <image class="detail-comment-img" src="../../images/suggest.png"></image>
             <view class="detail-comment">查看评价</view>
-
           </view>
         </navigator>
-
       </view>
-
-
     </view>
 
     <view class="wrapper-content">
       <text class="ibox-title-small">图书摘要</text>
-
       <view class="ibox-content">
         <view>{{bookInfo.bookIntroduce}}</view>
-
       </view>
     </view>
-
-
   </scroll-view>
 </view>

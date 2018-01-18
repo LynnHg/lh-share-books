@@ -1,6 +1,6 @@
 /*搜索框*/
 .searcher {
-	background:#1296db;
+	background:#f76b8a;
 	padding: 20px;
 }
 
