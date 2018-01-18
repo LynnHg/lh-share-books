@@ -1,37 +1,72 @@
+
+//获取应用实例
+var app = getApp()
 Page({
   data: {
 
   },
+  //事件处理函数
+  onLoad: function () {
 
-  bindFormSubmit: function (e) {
-    console.log(e.detail.value.textarea)
-    if (e.detail.value.textarea==""){
+  },
+  onReady: function () {
+
+  },
+
+  //设置反馈内容
+  setContent: function (e) {
+    var that = this;
+    that.setData({
+      opinion: e.detail.value
+    })
+  },
+
+  submitOpinion: function () {
+    var that = this
+    if (!that.data.opinion) {
       wx.showToast({
-        title: '请输入内容',
-        icon: 'success',
+        title: '未填写意见',
+        image: '../../assets/images/warn.png',
         duration: 2000
       })
-    }else{
-      wx.showModal({
-        title: '提示',
-        content: '是否提交',
-        success: function (res) {
-          if (res.confirm) {
-            
-            console.log('用户点击确定')
-            wx.navigateBack({
-            })
-            wx.showToast({
-              title: '成功',
-              icon: 'success',
-              duration: 1000
-            })
-          } else if (res.cancel) {
-            console.log('用户点击取消')
-          }
-        }
-      })
-     
+      return;
     }
+    wx.request({
+      url: ('https://' + app.globalData.apiUrl + '?m=home&c=Api&a=submitOpinion&opinion=' + that.data.opinion + "&userId=" + app.globalData.userId).replace(/\s+/g, ""),
+      method: "GET",
+      header: {
+        'content-type': 'application/json',
+      },
+      success: function (res) {
+        if (res.data == "success") {
+
+          wx.showModal({
+            title: '通知',
+            content: '我们收到您的反馈会及时联系您，感谢您的参与！',
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                wx.navigateBack({
+                  delta: 1
+                })
+              }
+            }
+          })
+        } else {
+          wx.showToast({
+            title: '反馈失败',
+            image: '../../assets/images/failed.png',
+            duration: 2000
+          })
+        }
+      },
+      fail: function () {
+        wx.showToast({
+          title: '反馈失败',
+          image: '../../assets/images/failed.png',
+          duration: 2000
+        })
+      }
+    })
   }
 })

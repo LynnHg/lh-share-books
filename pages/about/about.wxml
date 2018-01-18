@@ -10,7 +10,7 @@
   </view>
   <view class="h1"></view>
   <view class="item" style='padding:5px 15px 0px 15px;'>
-    <text style='margin-left:10px;margin-top:5px;font-size: 14px'>团队地址:</text>
+    <text class="group-adress">团队地址:</text>
     <span class="value-right" bindtap="openLocation">重庆邮电大学软件工程学院</span>
   </view>
   <view class="h1"></view>
