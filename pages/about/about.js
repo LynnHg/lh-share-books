@@ -9,7 +9,7 @@ Page({
   },
 call:function(){
   wx.makePhoneCall({
-    phoneNumber: '13637333096' 
+    phoneNumber: 'lynnhung' 
   })
 },
   /**

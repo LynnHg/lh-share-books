@@ -1,53 +1,73 @@
-page {
-  background-color: #efeff4;
+.item {
+    height: 50px;
+    line-height: 40px;
+    padding-left: 15px;
+    background-color: #fff;
+    font-size: 14px;
+    color: #333;
 }
 
-.top {
-  padding: 50rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.item_ico {
+    float: left;
+    width: 27px;
+    height: 20px;
+    padding: 13px 15px 10px 0;
 }
 
-.top image {
-  margin-top: 100rpx;
-  height: 100rpx;
-  width: 100rpx;
-  margin-bottom: 20rpx;
+.value-right {
+    float: right;
+    margin-right: 30px;
 }
 
-.top.title {
-  margin-top: 10rpx;
+.item_arrow {
+    float: right;
+    height: 26px;
+    width: auto;
+    margin: 11px 20px;
 }
 
-.title text {
-  color: #7F7F7F;
+.presshover {
+    background-color: #fafafa;
 }
 
-.version {
-  margin-top: 10rpx;
-  margin-bottom: 30rpx;
+.font_size {
+    font-size: 16px;
+    color: #333;
 }
 
-.version text {
-  font-size: 28rpx;
+.h10 {
+    height: 10px;
+    background: #f0f0f0;
 }
 
-.intro {
-  padding: 30rpx;
-  float: left;
-  width: 100%;
-  margin-top: 30rpx;
+.h1 {
+    height: 3px;
+    margin: 0 15px;
+    background: #f0f0f0;
 }
 
-.intro text {
-  font-size: 28rpx;
+/* 头像 */
+
+.personal_logo {
+    width: 70px;
+    height: 70px;
 }
 
-.copyright {
-  margin-top: 100rpx;
+.feedbackText {
+    width: 90%;
+    margin: 5px 5px 10px 5px;
+    padding: 5px;
+    background-color: #fff;
+    font-size: 13px;
+    word-wrap: break-word;
 }
 
-.copyright text {
-  font-size: 28rpx;
+.feedbackText text {
+  font-size: 12px
+}
+
+.submit {
+    background-color: #f76b8a;
+    width: 100%;
+    color: #f9f9f9;
 }

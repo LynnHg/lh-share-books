@@ -1,16 +1,22 @@
 <!--about.wxml-->
-<view class="top">
-  <image src="../../assets/images/logo-icon.png"></image>
-  <view class="title">
-    <text>LH共享图书</text>
+<view style="margin:10px 15px 10px 15px">
+  <view class="photo item" style="height:300px;line-height: 24px;">
+    <view class="photo-box" style="width:100px;margin:0 auto;padding-top:10px;">
+      <image src="../../assets/images/logo-icon.png" style="border-radius: 100px" class="personal_logo" id="personal_logo"></image>
+    </view>
+    <view class="feedbackText">
+      <text>LH共享图书是一个集分享个人图书和借阅他人图书于一体的新型移动互联网系统。以盘活闲置图书资源为己任，提倡循环阅读、环保阅读，通过图书循环经济制度创新继续实现闲散图书资源的价值，降低有阅读需求的孩子的读书成本。同时，我们希望通过共享软件的聚合功能，搭建一个学习交流平台，让有相同兴趣的孩子组成书友会，引导儿童多读书、读好书。</text>
+    </view>
   </view>
-  <view class="version">
-    <text>v1.0.0</text>
+  <view class="h1"></view>
+  <view class="item" style='padding:5px 15px 0px 15px;'>
+    <text style='margin-left:10px;margin-top:5px;font-size: 14px'>团队地址:</text>
+    <span class="value-right" bindtap="openLocation">重庆邮电大学软件工程学院</span>
   </view>
-  <view class="intro">
-    <text>LH共享图书是一个集分享个人图书和借阅他人图书于一体的新型移动互联网系统，旨在打造一款短期图书共享平台，用户既可以在指定网点借到喜欢的书籍，还可以分享自己闲置的图书到附近网点，获取收益。</text>
-  </view>
-  <view class="copyright">
-    <text>重庆邮电大学软件工程学院</text>
+  <view class="h1"></view>
+  <view class="item" style='padding:5px 5%;'>
+    <button class='submit' bindtap="call" type="submit">
+      联系我们
+    </button>
   </view>
 </view>
