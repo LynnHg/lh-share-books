@@ -23,7 +23,7 @@
         <view wx:for="{{storelist}}">
           <navigator url="../storebook/storebook?storeid={{item.storeid}}">
             <view class="list-item">
-              <image class="img" src="../../images/banner.png" url=""></image>
+              <image class="img" src="../../assets/images/banner.jpg" url=""></image>
               <text class="list-title ">{{item.storeName}}</text>
               <text class="list-money ">地址：{{item.storePlace}}</text>
               <text class="list-state ">{{item.distance}} km</text>

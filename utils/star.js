@@ -51,7 +51,7 @@ const starDate =  {
 function get_star(timer) {
     console.log("开始计算星星");
     var block = starDate.star[ Math.floor(timer)].src;
-    /*var block; 
+    var block; 
     if(timer < 1){
         block = starDate.star[0].src;
         //console.log('零星');
@@ -85,7 +85,7 @@ function get_star(timer) {
     }else if (timer >= 10){
         block = starDate.star[10].src;
         //console.log('五星');
-    }*/
+    }
     return block;
 
 }

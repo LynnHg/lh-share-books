@@ -58,8 +58,8 @@ Page({
         complete: function (res) { },
       })
       wx.request({
-        url: 'https://www.eton100.com/book/storelist',
-        method: 'POST',
+        url: 'http://l1669f6515.iok.la/book/store/allstore',
+        method: 'GET',
         data: {//经纬度city
           city: "株洲",
           latitude: that.data.location.lat,
@@ -136,8 +136,8 @@ Page({
           location: res.result.location
         });
         wx.request({
-          url: 'https://www.eton100.com/book/storelist',
-          method: 'POST',
+          url: 'http://l1669f6515.iok.la/book/store/allstore',
+          method: 'GET',
           data: {//经纬度city
             city: "株洲",
             latitude: that.data.location.lat,
@@ -165,6 +165,8 @@ Page({
     //获取图书列表
     request.getBookList({ str: "" }, function (res) {
       var types = res.data;
+      console.log('books list:')
+      console.log(types)
       for (var i = 0; i < types.length; ++i) {
         var book = types[i];
         book.block = star.get_star(book.average);
@@ -232,16 +234,18 @@ Page({
 
   lower: function (e) {
     var that = this;
-    request.getBookList({ str: "" }, function (res) {
+    request.getBookList(function (res) {
       var types = res.data;
-      for (var i = 0; i < types.length; ++i) {
-        var book = types[i];
-        book.block = star.get_star(book.average);
-      }
-      if (types.length == 0) {
-        return;
-      }
-      that.setData({ bookList: types, count: that.data.count + types.length });
+      console.log('books list:')
+      console.log(types)
+      // for (var i = 0; i < types.length; ++i) {
+      //   var book = types[i];
+      //   book.block = star.get_star(book.average);
+      // }
+      // if (types.length == 0) {
+      //   return;
+      // }
+      // that.setData({ bookList: types, count: that.data.count + types.length });
     });
   }
 

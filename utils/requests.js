@@ -3,7 +3,7 @@ var api = require('./config.js');
 function request(url, data, successCb, errorCb, completeCb) {
     wx.request({
         url: url,
-        method: 'POST',
+        method: 'get',
         data: data,
         header: {
           "Content-Type": "json"
@@ -25,7 +25,7 @@ function getBookById(data, successCb, errorCb, completeCb) {
 }
 //获取丛书列表
 function getBookList(data, successCb, errorCb, completeCb) {
-  request('https://www.eton100.com/book/SearchBook', data, successCb, errorCb, completeCb);
+  request('http://l1669f6515.iok.la/book/book/allbook', data, successCb, errorCb, completeCb);
 }
 
 //
