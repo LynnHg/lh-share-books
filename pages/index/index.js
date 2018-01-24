@@ -58,7 +58,7 @@ Page({
         complete: function (res) { },
       })
       wx.request({
-        url: 'http://l1669f6515.iok.la/book/store/allstore',
+        url: 'http://l1669f6515.iok.la/book/store/allstorelist',
         method: 'GET',
         data: {//经纬度city
           city: "株洲",
@@ -136,7 +136,7 @@ Page({
           location: res.result.location
         });
         wx.request({
-          url: 'http://l1669f6515.iok.la/book/store/allstore',
+          url: 'http://l1669f6515.iok.la/book/store/allstorelist',
           method: 'GET',
           data: {//经纬度city
             city: "株洲",
