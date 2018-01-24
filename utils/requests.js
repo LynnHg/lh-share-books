@@ -17,11 +17,11 @@ function request(url, data, successCb, errorCb, completeCb) {
 
 //搜索图书 
 function searchBook(data, successCb, errorCb, completeCb) {
-  request('https://www.eton100.com/book/SearchBook', data, successCb, errorCb, completeCb);
+  request('http://l1669f6515.iok.la/book/search', data, successCb, errorCb, completeCb);
 }
 //获取图书详细信息
 function getBookById(data, successCb, errorCb, completeCb) {
-  request('https://www.eton100.com/book/SearchBookByBookid', data, successCb, errorCb, completeCb);
+  request('http://l1669f6515.iok.la/book/searchbyid', data, successCb, errorCb, completeCb);
 }
 //获取丛书列表
 function getBookList(data, successCb, errorCb, completeCb) {

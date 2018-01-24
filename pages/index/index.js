@@ -61,7 +61,6 @@ Page({
         url: 'http://l1669f6515.iok.la/book/store/allstorelist',
         method: 'GET',
         data: {//经纬度city
-          city: "株洲",
           latitude: that.data.location.lat,
           longitude: that.data.location.lng
         },
@@ -139,7 +138,6 @@ Page({
           url: 'http://l1669f6515.iok.la/book/store/allstorelist',
           method: 'GET',
           data: {//经纬度city
-            city: "株洲",
             latitude: that.data.location.lat,
             longitude: that.data.location.lng
           },

@@ -16,9 +16,9 @@ Page({
           duration: 10000
       })
       request.getBookById({bookid:that.data.bookid},function(res){
-
-        res.data.block = star.get_star(res.data.average);
-          that.setData({bookInfo:res.data});
+        // var types = res.data;
+        // res.data.block = star.get_star(res.data.average);
+          that.setData({bookInfo:res.data[0]});
       });
   },
   onReady:function(){
@@ -27,7 +27,6 @@ Page({
   },
   onShow:function(){
     // 页面显示
-    console.log("显示");
   },
   onHide:function(){
     // 页面隐藏

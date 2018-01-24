@@ -15,8 +15,12 @@ Page({
   searchHandel: function () {
     var that = this;
     if (that.data.value.replace(/\s/g, "")) {
-      request.searchBook({ str: that.data.value }, function (res) {
+      console.log('搜书：');
+      console.log(that.data.value)
+      request.searchBook({ bookname: that.data.value }, function (res) {
         var types = res.data;
+        console.log('搜索结果：');
+        console.log(types);
         for (var i = 0; i < types.length; ++i) {
           var book = types[i];
           book.block = star.get_star(book.average);

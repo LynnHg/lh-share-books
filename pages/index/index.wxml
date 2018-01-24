@@ -26,7 +26,7 @@
               <image class="img" src="../../assets/images/banner.jpg" url=""></image>
               <text class="list-title ">{{item.storeName}}</text>
               <text class="list-money ">地址：{{item.storePlace}}</text>
-              <text class="list-state ">{{item.distance}} km</text>
+              <text class="list-state ">距离：{{item.distance}} km</text>
             </view>
           </navigator>
         </view>

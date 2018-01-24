@@ -152,10 +152,11 @@ text{
   text-overflow: ellipsis;
 }
 .list-state{
+  width: 170rpx;
   position: absolute;
   right: 20rpx;
   top: 150rpx;
-  font-size: 30rpx;
+  font-size: 25rpx;
 }
 
 .list-money{
