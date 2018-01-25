@@ -15,6 +15,7 @@
             <text>{{item.tags1}}</text>
             <text>{{item.tags2}}</text>
           </view>
+          <view class="ibox-list-state">书籍状态：{{item.state}}</view>
         </view>
       </view>
       <view class="widget-line"></view>

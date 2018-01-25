@@ -20,8 +20,8 @@ Page({
     console.log(options.storeid)
     that.setData({ storeid: options.storeid });
     wx.request({
-      url: 'https://www.eton100.com/book/SearchBookByStoreid',
-      method: 'POST',
+      url: 'http://l1669f6515.iok.la/book/SearchBookByStoreid',
+      method: 'GET',
       data: {
         storeid: that.data.storeid
       },
@@ -32,12 +32,16 @@ Page({
         var types = res.data;
         for (var i = 0; i < types.length; ++i) {
           var book = types[i];
+          if (book.bookState === 0) {
+            book.state = '未入库';
+          } else if (book.bookState === 1) {
+            book.state = '在馆';
+          } else if (book.bookState === 2) {
+            book.state = '借出';
+          }
           book.block = star.get_star(book.average);
         }
         if (types.length == 0) {
-          that.setData({
-            bookList: null
-          })
           return;
         }
         that.setData({ bookList: types, count: that.data.count + types.length });

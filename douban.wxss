@@ -242,6 +242,15 @@
     line-height: 38rpx;
     margin-bottom: 6rpx;
 }
+.ibox-list-state{
+    font-size: 28rpx;
+    color: #3498DB;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 38rpx;
+    margin-bottom: 6rpx;
+}
 .ibox-list-title{
     font-size: 34rpx;
     color: #2d2d2d;
