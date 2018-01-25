@@ -121,18 +121,18 @@ Page({
   onLoad: function (options) {
     var that = this
     wx.request({
-      url: 'https://www.eton100.com/book/user/user',
+      url: 'http://l1669f6515.iok.la/book/user/searchByOpenid',
       data: {
         openid:app.globalData.openid
       },
-      method: 'POST',
+      method: 'GET',
       header: {'content-type': 'application/json'},
       success: function(res) {
-        console.log(res)
+        var info = res.data[0];
         that.setData({
-          deposit:res.data.deposit,
-          money:res.data.money,
-          point: res.data.point
+          deposit:info.deposit,
+          money:info.money,
+          point: info.point
         })
       },
       fail: function(res) {},

@@ -179,30 +179,17 @@ Page({
     wx.request({
       url: 'http://l1669f6515.iok.la/book/order/allorder',
       method: 'GET',
-      // data: {
-      //   orderid: that.data.orderid
-      // },
+      data: {
+        orderid: that.data.orderid
+      },
       header: {
         'content-type': 'application/json'
       },
       success: function (res) {
-        console.log(res.data)
-        var types = res.data;
-        var book = types;
-        if (book.orderState == 2) {
-          book.state = '待付款';
-        }
-        else if (book.orderState == 1) {
-          book.state = '进行中';
-        }
-        else if (book.orderState == 0) {
-          book.state = '已完成';
-        }
+        var types = res.data[0];
         that.setData({
           details: types
         })
-        console.log(that.data.orderid)
-        console.log(that.data.details)
       }
     })
   },

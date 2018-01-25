@@ -62,7 +62,7 @@
     </view>
   </view>
   <!--待评价-->
-  <view hidden="{{currentTab!==3}}">
+  <!-- <view hidden="{{currentTab!==3}}">
     <view class="o-list">
       <view wx:for="{{orders}}">
         <navigator url="../orderdetail/orderdetail?orderid={{item.orderid}}">
@@ -77,5 +77,5 @@
         <view class="ol-line"></view>
       </view>
     </view>
-  </view>
+  </view> -->
 </scroll-view>

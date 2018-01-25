@@ -3,7 +3,7 @@ var app = getApp()
 Page({
   data: {
     orders: [],
-    navbar: ['全部', '已付款', '待付款', '进行中'],
+    navbar: ['已完成', '已付款', '待付款'],
     currentTab: 0,
     flag: 0
   },
@@ -184,20 +184,15 @@ Page({
         success: function (res) {
           console.log(res.data)
           var types = res.data;
-          for (var i = 0; i < types.length; ++i) {
-            var book = types[i];
-            if (book.orderState === 2) {
-              book.state = '已付款';
+          var completed = [];
+          types = types.length ? types.forEach(function (item) {
+            if (item.orderState === 0) {
+              item.state = '已完成';
+              completed.push(item);
             }
-            else if (book.orderState === 1) {
-              book.state = '待付款';
-            }
-            else if (book.orderState === 0) {
-              book.state = '已完成';
-            }
-          }
+          }) : null;
           that.setData({
-            orders: types
+            orders: completed
           })
         }
       })
@@ -288,23 +283,15 @@ Page({
         },
         success: function (res) {
           var types = res.data;
-          for (var i = 0; i < types.length; ++i) {
-            var book = types[i];
-            if (book.orderState == 2) {
-              book.state = '已付款';
+          var completed = [];
+          types = types.length ? types.forEach(function (item) {
+            if (item.orderState === 0) {
+              item.state = '已完成';
+              completed.push(item);
             }
-            else if (book.orderState == 1) {
-              book.state = '待付款';
-            }
-            else if (book.orderState == 0) {
-              book.state = '已完成';
-            }
-          }
-          if (types.length == 0) {
-            return;
-          }
+          }) : null;
           that.setData({
-            orders: types
+            orders: completed
           })
         }
       })
