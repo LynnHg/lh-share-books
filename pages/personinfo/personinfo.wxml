@@ -1,0 +1,20 @@
+<view>
+  <view class="wa-item wa-item-ava">
+    <text class="icon-left ">{{userInfo.nickName}}</text>
+    <image class="item-img" src="{{userInfo.avatarUrl}}"></image>
+  </view>
+</view>
+<view class="space"></view>
+<view>
+  <form method="post">
+    <view class="section">
+      <label class="label">我的名字:</label>
+      <input maxlength='11' bindinput="setName" class="input" placeholder='我的名字' value="{{personInfo.name}}"></input>
+    </view>
+    <view class="section">
+      <label class="label">我的电话:</label>
+      <input maxlength='11' bindinput='setPhone' class="input" placeholder='我的电话' value="{{personInfo.phone}}"></input>
+    </view>
+    <button class="submit" bindtap="savePersonInfo">保存</button>
+  </form>
+</view>

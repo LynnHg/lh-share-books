@@ -2,7 +2,7 @@
 var app = getApp()
 Page({
   data: {
-    motto: '易 通 科 技\n共 享 图 书',
+    motto: 'L H\n共 享 图 书',
     userInfo: {}
   },
 
@@ -49,7 +49,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('onLoad')
     var that = this
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function (userInfo) {

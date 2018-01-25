@@ -29,7 +29,8 @@
     "pages/sharebook/sharecode/sharecode",
     "pages/sharebook/mycode/mycode",
     "pages/merchant/checkcode/checkcode",
-    "pages/sharebook/history/history"
+    "pages/sharebook/history/history",
+    "pages/personinfo/personinfo"
   ],
   "window": {
     "backgroundTextStyle": "light",

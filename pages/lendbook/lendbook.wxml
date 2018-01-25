@@ -11,7 +11,7 @@
         <view class="detail-text detail-author">作者：{{bookInfo.author}}</view>
       </view>
     </view>
-    <button type="primary" bindtap="lendBook"> 确认借书</button>
+    <button class="lend-book" bindtap="lendBook"> 确认借书</button>
 
 
 

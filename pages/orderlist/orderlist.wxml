@@ -5,9 +5,7 @@
   <!--全部-->
   <view hidden="{{currentTab!==0}}">
     <view class="o-list">
-
       <view wx:for="{{orders}}">
-
         <navigator url="../orderdetail/orderdetail?orderid={{item.orderid}}">
           <view class="list-item">
             <image class="img" src="{{item.bookimgurl}}" url=""></image>
@@ -15,7 +13,6 @@
             <text class="list-money ">￥{{item.orderMoney}}</text>
             <text class="list-state ">{{item.state}}</text>
             <text class="list-time">下单时间：{{item.startTime}}</text>
-            
           </view>
         </navigator>
        <view wx:if="{{item.orderState==2}}" class="pay-bg">
@@ -23,16 +20,13 @@
        </view>
        <view class="ol-line"></view>
       </view>
-
     </view>
   </view>
 
   <!--已付款-->
   <view hidden="{{currentTab!==1}}">
-    <view class="o-list">
-
+    <view hidden="{{!orders}}" class="o-list">
       <view wx:for="{{orders}}">
-
         <navigator url="../orderdetail/orderdetail?orderid={{item.orderid}}">
           <view class="list-item">
             <image class="img" src="{{item.bookimgurl}}" url=""></image>
@@ -44,16 +38,13 @@
         </navigator>
         <view class="ol-line"></view>
       </view>
-
     </view>
   </view>
 
   <!--待付款-->
   <view hidden="{{currentTab!==2}}">
-    <view class="o-list">
-
+    <view hidden="{{!orders}}" class="o-list">
       <view wx:for="{{orders}}">
-
         <navigator url="../orderdetail/orderdetail?orderid={{item.orderid}}">
           <view class="list-item">
             <image class="img" src="{{item.bookimgurl}}" url=""></image>
@@ -68,15 +59,12 @@
        </view>
         <view class="ol-line"></view>
       </view>
-
     </view>
   </view>
   <!--待评价-->
   <view hidden="{{currentTab!==3}}">
     <view class="o-list">
-
       <view wx:for="{{orders}}">
-
         <navigator url="../orderdetail/orderdetail?orderid={{item.orderid}}">
           <view class="list-item">
             <image class="img" src="{{item.bookimgurl}}" url=""></image>
@@ -88,9 +76,6 @@
         </navigator>
         <view class="ol-line"></view>
       </view>
-
     </view>
   </view>
-
-
 </scroll-view>

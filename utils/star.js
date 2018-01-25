@@ -49,7 +49,6 @@ const starDate =  {
 };
 //计算分数，插入对应的图片
 function get_star(timer) {
-    console.log("开始计算星星");
     var block = starDate.star[ Math.floor(timer)].src;
     var block; 
     if(timer < 1){

@@ -1,1 +1,5 @@
 /* lendbook.wxss */
+.lend-book {
+  background-color: #f76b8a;
+  color: #fff;
+}

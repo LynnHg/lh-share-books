@@ -9,7 +9,10 @@ Page({
   },
   scan:function(){
     wx.scanCode({
+      onlyFromCamera:false,
+      scanType: 'qrCode',
       success: function (res) {
+        console.log()
        console.log(res)
       }
     })

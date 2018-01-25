@@ -10,14 +10,7 @@ Page({
       // 页面初始化 options为页面跳转所带来的参数
       var that=this;
       that.setData({ bookid:options.bookid});
-      wx.showToast({
-          title: '加载中',
-          icon: 'loading',
-          duration: 10000
-      })
       request.getBookById({bookid:that.data.bookid},function(res){
-        // var types = res.data;
-        // res.data.block = star.get_star(res.data.average);
           that.setData({bookInfo:res.data[0]});
       });
   },

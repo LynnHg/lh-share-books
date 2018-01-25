@@ -23,7 +23,9 @@ Page({
     currentTab: 0,
     navbar: ['图书列表', '附近网点'],
     storelist: [],
-    location: []
+    location: [],
+    hideLoading: true,
+    maxRange: 30
   },
   comment: function () {
     wx.showToast({
@@ -35,10 +37,6 @@ Page({
     this.setData({
       currentTab: e.currentTarget.dataset.idx
     })
-    if (that.data.currentTab == 1) {
-      //storellist
-
-    }
   },
   onHide: function () {
     var that = this
@@ -47,16 +45,6 @@ Page({
   onShow: function () {
     var that = this
     if (that.data.hideaddress && that.data.hideaddress != that.data.address) {
-      wx.showToast({
-        title: '加载中',
-        icon: 'loading',
-        image: '',
-        duration: 1000,
-        mask: true,
-        success: function (res) { },
-        fail: function (res) { },
-        complete: function (res) { },
-      })
       wx.request({
         url: 'http://l1669f6515.iok.la/book/store/allstorelist',
         method: 'GET',
@@ -88,17 +76,19 @@ Page({
   scanCode: function () {
     var that = this
     wx.scanCode({
+      scanType: 'qrCode',
       success: (res) => {
-        that.data.scene = res.path.substring(24)
+        that.setData({
+          scene: res.result
+        })
         wx.navigateTo({
-          url: '../lendbook/lendbook?scene=' + that.data.scene
+          url: '../lendbook/lendbook?scene=' + res.result
         })
       }
     })
   },
   onLoad: function (options) {
     var that = this
-
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function (userInfo) {
       //更新数据
@@ -111,7 +101,6 @@ Page({
         url: '../lendbook/lendbook?scene=' + that.data.scene
       })
     }
-
     that.setData({
       toRe: star.toRefresh()
     });
@@ -161,10 +150,13 @@ Page({
     // 注册通知
     WxNotificationCenter.addNotification("locationSelectedNotification", that.getLocation, that)
     //获取图书列表
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 1000
+    })
     request.getBookList({ str: "" }, function (res) {
       var types = res.data;
-      console.log('books list:')
-      console.log(types)
       for (var i = 0; i < types.length; ++i) {
         var book = types[i];
         book.block = star.get_star(book.average);
@@ -174,8 +166,6 @@ Page({
       }
       that.setData({ bookList: types, count: that.data.count + types.length });
     });
-
-
   },
   navigateToSearch: function () {
     wx.navigateTo({
@@ -194,16 +184,9 @@ Page({
       location: location
     });
   },
-
-
   toHandel: function () {
     var that = this;
-    wx.showToast({
-      title: '加载中',
-      icon: 'loading',
-      duration: 1000
-    })
-    request.getBookList({ str: "" }, function (res) {
+    request.getBookList({}, function (res) {
       var types = res.data;
       for (var i = 0; i < types.length; ++i) {
         var book = types[i];
@@ -215,8 +198,6 @@ Page({
       that.setData({ bookList: types, count: that.data.count + types.length });
     });
   },
-
-
   toRefresh: function (e) {
     var that = this;
     this.setData({
@@ -224,26 +205,21 @@ Page({
     });
     that.toHandel();
   },
-
   upper: function (e) {
 
   },
-
-
   lower: function (e) {
     var that = this;
-    request.getBookList(function (res) {
+    request.getBookList({}, function (res) {
       var types = res.data;
-      console.log('books list:')
-      console.log(types)
-      // for (var i = 0; i < types.length; ++i) {
-      //   var book = types[i];
-      //   book.block = star.get_star(book.average);
-      // }
-      // if (types.length == 0) {
-      //   return;
-      // }
-      // that.setData({ bookList: types, count: that.data.count + types.length });
+      for (var i = 0; i < types.length; ++i) {
+        var book = types[i];
+        book.block = star.get_star(book.average);
+      }
+      if (types.length == 0) {
+        return;
+      }
+      that.setData({ bookList: types, count: that.data.count + types.length });
     });
   }
 

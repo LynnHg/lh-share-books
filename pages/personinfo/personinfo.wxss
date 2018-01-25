@@ -1,0 +1,16 @@
+.section {
+  width: 100%;
+  border-bottom: 1rpx solid #eee;
+  display: flex;
+  padding: 30rpx;
+}
+
+.section .label {
+  flex: 0 1 135rpx;
+}
+
+.section .input {
+  flex: 1;
+  padding-left: 25rpx;
+  padding-right: 25px;
+}

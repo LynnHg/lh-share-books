@@ -1,15 +1,11 @@
 // orderlist.js
 var app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    orders:[],
-    navbar: ['全部', '已付款', '待付款','进行中'],
-    currentTab: 0 ,
-    flag:0 
+    orders: [],
+    navbar: ['全部', '已付款', '待付款', '进行中'],
+    currentTab: 0,
+    flag: 0
   },
   bindpay: function (res) {
     console.log('请求支付')
@@ -53,7 +49,7 @@ Page({
                     })
                     that.data.paydata = '<xml>'
                     that.data.paydata += '<appid>wxae68680b7a6ce738</appid>'
-                    that.data.paydata += '<body>易通共享图书余额测试</body>'
+                    that.data.paydata += '<body>LH共享图书余额测试</body>'
                     that.data.paydata += '<mch_id>1480146792</mch_id>'
                     that.data.paydata += '<nonce_str>' + res.data.noncestr + '</nonce_str>'
                     that.data.paydata += '<notify_url>https://www.eton100.com/book/notify</notify_url>'
@@ -174,12 +170,11 @@ Page({
     this.setData({
       currentTab: e.currentTarget.dataset.idx
     })
-    console.log(that.data.currentTab)
-    if (that.data.currentTab==0){
+    if (that.data.currentTab == 0) {
       console.log(app.globalData.openid)
       wx.request({
-        url: 'https://www.eton100.com/book/orderlist',
-        method: 'POST',
+        url: 'http://l1669f6515.iok.la/book/order/getorderbyopenid',
+        method: 'GET',
         data: {
           openid: app.globalData.openid
         },
@@ -191,28 +186,25 @@ Page({
           var types = res.data;
           for (var i = 0; i < types.length; ++i) {
             var book = types[i];
-            if (book.orderState == 2) {
+            if (book.orderState === 2) {
+              book.state = '已付款';
+            }
+            else if (book.orderState === 1) {
               book.state = '待付款';
             }
-            else if (book.orderState == 1) {
-              book.state = '进行中';
-            }
-            else if (book.orderState == 0) {
+            else if (book.orderState === 0) {
               book.state = '已完成';
             }
           }
-
           that.setData({
             orders: types
           })
-
-          console.log(that.data.orders)
         }
       })
-    } else if (that.data.currentTab == 1){
+    } else if (that.data.currentTab == 1) {
       wx.request({
-        url: 'https://www.eton100.com/book/payorderlist',
-        method: 'POST',
+        url: 'http://l1669f6515.iok.la/book/order/getorderbyopenid',
+        method: 'GET',
         data: {
           openid: app.globalData.openid
         },
@@ -220,32 +212,23 @@ Page({
           'content-type': 'application/json'
         },
         success: function (res) {
-          console.log(res.data)
           var types = res.data;
-          for (var i = 0; i < types.length; ++i) {
-            var book = types[i];
-            if (book.orderState == 2) {
-              book.state = '待付款';
+          var paid = [];
+          types = types.length ? types.forEach(function (item) {
+            if (item.orderState === 2) {
+              item.state = '已付款';
+              paid.push(item);
             }
-            else if (book.orderState == 1) {
-              book.state = '进行中';
-            }
-            else if (book.orderState == 0) {
-              book.state = '已完成';
-            }
-          }
-
+          }) : null;
           that.setData({
-            orders: types
+            orders: paid
           })
-
-          console.log(that.data.orders)
         }
       })
-    } else if (that.data.currentTab == 2){
+    } else if (that.data.currentTab == 2) {
       wx.request({
-        url: 'https://www.eton100.com/book/nopayorderlist',
-        method: 'POST',
+        url: 'http://l1669f6515.iok.la/book/order/getorderbyopenid',
+        method: 'GET',
         data: {
           openid: app.globalData.openid
         },
@@ -253,32 +236,23 @@ Page({
           'content-type': 'application/json'
         },
         success: function (res) {
-          console.log(res.data)
           var types = res.data;
-          for (var i = 0; i < types.length; ++i) {
-            var book = types[i];
-            if (book.orderState == 2) {
-              book.state = '待付款';
+          var pending = [];
+          types = types.length ? types.forEach(function (item) {
+            if (item.orderState === 1) {
+              item.state = '待付款';
+              pending.push(item);
             }
-            else if (book.orderState == 1) {
-              book.state = '进行中';
-            }
-            else if (book.orderState == 0) {
-              book.state = '已完成';
-            }
-          }
-
+          }) : null;
           that.setData({
-            orders: types
+            orders: pending
           })
-
-          console.log(that.data.orders)
         }
       })
-    } else if (that.data.currentTab == 3){
+    } else if (that.data.currentTab == 3) {
       wx.request({
-        url: 'https://www.eton100.com/book/workingorderlist',
-        method: 'POST',
+        url: 'http://l1669f6515.iok.la/book/order/getorderbyopenid',
+        method: 'GET',
         data: {
           openid: app.globalData.openid
         },
@@ -286,46 +260,26 @@ Page({
           'content-type': 'application/json'
         },
         success: function (res) {
-          console.log(res.data)
-          var types = res.data;
-          for (var i = 0; i < types.length; ++i) {
-            var book = types[i];
-            if (book.orderState == 2) {
-              book.state = '待付款';
-            }
-            else if (book.orderState == 1) {
-              book.state = '进行中';
-            }
-            else if (book.orderState == 0) {
-              book.state = '已完成';
-            }
-          }
-          that.setData({
-            orders: types
-          })
-
-          console.log(that.data.orders)
+          
         }
       })
     }
-  } ,
+  },
   hadpPay: function (e) {
     var that = this
-    console.log("已付款")
   },
   noPay: function (e) {
     var that = this
-    console.log("待付款")
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this
-    if (that.data.currentTab == 0){
+    if (that.data.currentTab == 0) {
       wx.request({
-        url: 'https://www.eton100.com/book/orderlist',
-        method: 'POST',
+        url: 'http://l1669f6515.iok.la/book/order/getorderbyopenid',
+        method: 'GET',
         data: {
           openid: app.globalData.openid
         },
@@ -333,15 +287,14 @@ Page({
           'content-type': 'application/json'
         },
         success: function (res) {
-          console.log(res.data)
           var types = res.data;
           for (var i = 0; i < types.length; ++i) {
             var book = types[i];
             if (book.orderState == 2) {
-              book.state = '待付款';
+              book.state = '已付款';
             }
             else if (book.orderState == 1) {
-              book.state = '进行中';
+              book.state = '待付款';
             }
             else if (book.orderState == 0) {
               book.state = '已完成';
@@ -353,20 +306,15 @@ Page({
           that.setData({
             orders: types
           })
-
-          console.log(that.data.orders)
         }
       })
     }
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
   },
-
   /**
    * 生命周期函数--监听页面显示
    */
@@ -374,51 +322,38 @@ Page({
     var that = this
     console.log("已到顶部");
     that.onLoad()
-
   },
   lower: function (e) {
-    console.log("已到低部");
- 
-  
+    console.log("已到底部");
   },
   onShow: function () {
     var that = this
     that.onLoad()
   },
-
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
     var that = this
-  
   },
-
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
   },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
   },
-
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
- 
   },
-
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
   }
 })

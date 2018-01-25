@@ -8,15 +8,16 @@ App({
         if (res.code) {
           //发起网络请求
           wx.request({
-            url: 'https://www.eton100.com/book/openid',
-            method: 'POST',
+            url: 'https://api.weixin.qq.com/sns/jscode2session',
+            method: 'GET',
             data: {
-              code: res.code
+              appid: 'wxa02093a6e84e5b21',
+              secret: 'c0bc9755520f25c7977929c0fcb69eab',
+              js_code: res.code,
+              grant_type: 'authorization_code'
             },
             success: function(res) {
-              console.log('openid:'+res.data.openid)
               that.globalData.openid = res.data.openid
-
             }
           })
         } else {
@@ -38,9 +39,7 @@ App({
       wx.getUserInfo({
         withCredentials: true,
         success: function(res) {
-          console.log(res)
           that.globalData.userInfo = res.userInfo
-          console.log(that.globalData.userInfo)
           typeof cb == "function" && cb(that.globalData.userInfo)
         }
       })

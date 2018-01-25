@@ -1,9 +1,11 @@
 <view>
   <view class="space"></view>
-  <view class="wa-item wa-item-ava">
+   <navigator url="../personinfo/personinfo">
+  <view class="wa-item wa-item-ava" bindtap='myinfo'>
     <text class="icon-left ">{{userInfo.nickName}}</text>
     <image class="item-img" src="{{userInfo.avatarUrl}}"></image>
   </view>
+  </navigator>
   <view class="space"></view>
 
   <navigator url="../wallet/wallet">

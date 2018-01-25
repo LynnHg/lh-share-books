@@ -82,24 +82,23 @@ Page({
   onLoad: function (options) {
        var that = this;
        that.setData({ scene: options.scene });
-       console.log(that.data.scene)
+       console.log(options)
        wx.showToast({
          title: '加载中',
          icon: 'loading',
          duration: 1001
        })
        wx.request({
-         url: 'https://www.eton100.com/book/SearchBookByScene',
+         url: 'http://l1669f6515.iok.la/book/searchbyid',
          data: {
-           scene:that.data.scene
+           bookid: that.data.scene
          },
          header: {},
-         method: 'POST',
+         method: 'GET',
          dataType: '',
          success: function(res) {
-           console.log(res)
           that.setData({
-            bookInfo:res.data
+            bookInfo: res.data[0]
           })
          },
          fail: function(res) {},

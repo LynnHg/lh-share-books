@@ -22,7 +22,7 @@
       <view class="o-list">
         <view wx:for="{{storelist}}">
           <navigator url="../storebook/storebook?storeid={{item.storeid}}">
-            <view class="list-item">
+            <view class="list-item" hidden="{{item.distance >= maxRange}}">
               <image class="img" src="../../assets/images/banner.jpg" url=""></image>
               <text class="list-title ">{{item.storeName}}</text>
               <text class="list-money ">地址：{{item.storePlace}}</text>
@@ -32,7 +32,7 @@
         </view>
       </view>
     </view>
-    <!--书籍-->
+    <!--   书籍   -->
     <view hidden="{{currentTab!==0}}">
       <import src="../component/interested/interested.wxml" />
       <template is="Interested" data="{{bookList: bookList}}" />
