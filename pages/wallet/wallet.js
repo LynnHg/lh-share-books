@@ -130,9 +130,9 @@ Page({
       success: function(res) {
         var info = res.data[0];
         that.setData({
-          deposit:info.deposit,
-          money:info.money,
-          point: info.point
+          'app.globalData.wallet.deposit':info.deposit,
+          'app.globalData.wallet.money':info.money,
+          'app.globalData.wallet.point': info.point
         })
       },
       fail: function(res) {},

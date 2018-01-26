@@ -204,8 +204,26 @@ page{
   position: absolute;
   
   bottom: 0;
-  left: 115rpx;
+  left: 50rpx;
   height: 4rpx;
   width: 150rpx;
   background: #1296db;
+}
+
+.stores {
+  padding-top: 20rpx;
+}
+
+.stores-len {
+  font-size: 30rpx;
+  padding-left: 24rpx;
+  color: #1296db;
+}
+.container {
+  position: relative;
+}
+.show-store-position {
+  position: fixed;
+  top: 0;
+  left: 0;
 }

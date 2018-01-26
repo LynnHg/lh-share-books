@@ -1,13 +1,43 @@
 /* balance.wxss */
-
-.bl-top{
-  width: 100%;
-  height: 80rpx;
-  position:relative;
+.container {
+  background-color: #F8F8F8;
 }
-.bl-top text{
-  position: absolute;
-  font-size: 36rpx;
-  left: 20rpx;
-  top:20rpx;
+.wrap {
+  box-sizing: border-box;
+  width: 90%;
+  background-color: #fff;
+  margin: 30rpx auto;
+  padding: 30rpx 60rpx 60rpx;
+
+}
+
+.wrap .bl-top {
+  margin-bottom: 40rpx;
+}
+
+.wrap text{
+   font-size: 30rpx;
+}
+
+.recharge-amount {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 40rpx;
+}
+
+.recharge-amount .rmb {
+  font-size: 60rpx;
+}
+
+.recharge-amount input {
+  display: inline-block;
+}
+
+.bl-top .right {
+  padding-left: 150rpx;
+  color: #787086;
+}
+
+.wrap .recharge {
+  background-color: #f76b8a;
+  color: #fff;
 }

@@ -21,8 +21,9 @@ Page({
     address: '',
     hideaddress: '',
     currentTab: 0,
-    navbar: ['图书列表', '附近网点'],
+    navbar: ['图书列表', '附近网点','所有网点'],
     storelist: [],
+    allstorelist: [],
     location: [],
     hideLoading: true,
     maxRange: 30
@@ -134,8 +135,16 @@ Page({
             'content-type': 'application/json'
           },
           success: function (res) {
+            var storelist = [];
+            var allstorelist = res.data;
+            allstorelist.forEach(function(item){
+              if (item.distance <= that.data.maxRange) {
+                storelist.push(item);
+              }
+            })
             that.setData({
-              storelist: res.data
+              storelist: storelist,
+              allstorelist: allstorelist
             })
           }
         })

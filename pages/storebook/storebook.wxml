@@ -1,6 +1,8 @@
 <!--pages/search/search.wxml-->
 <view class="container">
+<view class="show-store-position"><button bindtap='showPosition'>在地图中查看网点位置<image style="width:20px;height:20px;vertical-align:middle;padding-left:20rpx;" src="../../images/geo.png" /></button></view>
 <scroll-view class="wrapper-scroll" scroll-y="true"  bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-top="0" style="margin-top: 0rpx;">
+
     <!--list-->
     <import src="../component/item/item.wxml"/>
     <template is="item" data="{{bookList: bookList}}"/>

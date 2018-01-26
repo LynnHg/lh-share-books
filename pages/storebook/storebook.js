@@ -10,15 +10,38 @@ Page({
     storeid:"",
     value: "",
     bookList: [],
-    count: 0
+    count: 0,
+    storePosition: {
+      latitude: null,
+      longitude: null,
+      name: "",
+      store: ""
+    }
+  },
+  showPosition: function() {
+    var that = this;
+    var latitude = parseFloat(that.data.storePosition.latitude);
+    var longitude = parseFloat(that.data.storePosition.longitude);
+    var name = that.data.storePosition.name;
+    var store = that.data.storePosition.store
+        wx.openLocation({
+          latitude: latitude,
+          longitude: longitude,
+          name: store + "(" + name + ")",
+        })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
-    console.log(options.storeid)
-    that.setData({ storeid: options.storeid });
+    that.setData({ 
+      storeid: options.storeid,
+      'storePosition.latitude': options.latitude,
+      'storePosition.longitude': options.longitude,
+      'storePosition.name': options.name,
+      'storePosition.store': options.store
+      });
     wx.request({
       url: 'http://l1669f6515.iok.la/book/SearchBookByStoreid',
       method: 'GET',
@@ -45,7 +68,6 @@ Page({
           return;
         }
         that.setData({ bookList: types, count: that.data.count + types.length });
-        console.log(that.data.bookList);
       }
     })
   },

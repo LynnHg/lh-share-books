@@ -3,7 +3,7 @@ var app = getApp()
 Page({
   data: {
     orders: [],
-    navbar: ['已完成', '已付款', '待付款'],
+    navbar: ['已完成', '进行中', '待付款'],
     currentTab: 0,
     flag: 0
   },
@@ -211,7 +211,7 @@ Page({
           var paid = [];
           types = types.length ? types.forEach(function (item) {
             if (item.orderState === 2) {
-              item.state = '已付款';
+              item.state = '进行中';
               paid.push(item);
             }
           }) : null;

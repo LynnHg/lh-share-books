@@ -12,8 +12,5 @@
       </view>
     </view>
     <button class="lend-book" bindtap="lendBook"> 确认借书</button>
-
-
-
   </scroll-view>
 </view>
