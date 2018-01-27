@@ -48,7 +48,6 @@ App({
 
   globalData: {
     userInfo: null,
-    openid : null,
-    wallet: null
+    openid : null
   }
 })

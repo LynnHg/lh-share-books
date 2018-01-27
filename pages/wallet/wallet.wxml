@@ -1,14 +1,14 @@
 <view class="wl-item">
   <view class="wl-item-left">
-    <text>{{app.globalData.wallet.money}}</text>
+    <text>{{wallet.money}}</text>
     <text class="wl-text">余额</text>
   </view>
   <view class="wl-item-right">
-    <text>{{app.globalData.wallet.deposit}}</text>
+    <text>{{wallet.deposit}}</text>
     <text class="wl-text">押金</text>
   </view>
   <view class="wl-item-right">
-    <text>{{app.globalData.wallet.point}}</text>
+    <text>{{wallet.point}}</text>
     <text class="wl-text">积分</text>
   </view>
 </view>

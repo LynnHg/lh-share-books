@@ -55,7 +55,7 @@
           </view>
         </navigator>
         <view class="pay-bg">
-       <view class="pay" bindtap="bindpay"  data-orderMoney="{{item.orderMoney}}">支付</view>
+       <view class="pay" bindtap="bindpay"  data-orderMoney="{{item.orderMoney}}" data-orderId="{{item.orderid}}">支付</view>
        </view>
         <view class="ol-line"></view>
       </view>

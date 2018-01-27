@@ -1,5 +1,6 @@
 // lendbook.js
-var app =getApp()
+var app =getApp();
+const getTime = require("../../utils/getTime");
 Page({
 
   /**
@@ -51,7 +52,7 @@ Page({
                 content: '立即充值押金?',
                 success: function (res) {
                   if (res.confirm) {
-                    wx.redirectTo({
+                    wx.navigateTo({
                       url: '../wallet/wallet'
                     })
                   } else if (res.cancel) {
@@ -62,6 +63,9 @@ Page({
                 }
               })
             } else if (info.userState === 0 && pending.length === 0) {//可借
+            var startTime = getTime.getTime();
+            var openid = app.globalData.openid;
+            var orderState = 1;
               wx.showModal({
                 title: '借书成功',
                 content: '立即查看订单？',
@@ -99,67 +103,6 @@ Page({
         
       }
     })
-    // wx.request({
-    //   url: 'https://www.eton100.com/book/scanCode',
-    //   method: 'POST',
-    //   data: {
-    //     openid: app.globalData.openid,
-    //     scene: that.data.scene
-    //   },
-    //   header: {
-    //     'content-type': 'json'
-    //   },
-    //   success: function (res) {
-    //     console.log(res)
-    //     if (res.data == 2) {
-    //       wx.showModal({
-    //         title: '借书成功',
-    //         content: '立即查看订单？',
-    //         success: function (res) {
-    //           if (res.confirm) {
-    //             console.log('用户点击确定')
-    //             wx.switchTab({
-    //               url: '../orderlist/orderlist',
-    //             })
-    //           } else if (res.cancel) {
-    //             console.log('用户点击取消')
-    //             wx.switchTab({
-    //               url: '../index/index',
-    //             })
-    //           }
-    //         }
-    //       })
-    //     }else if(res.data == 3){
-    //       wx.showModal({
-    //         title: '提示',
-    //         content: '此书不可借',
-    //         showCancel:false,
-    //         success: function (res) {
-    //           if (res.confirm) {
-    //             console.log('用户点击确定')
-    //             wx.switchTab({
-    //               url: '../index/index',
-    //             })
-    //           }
-    //         }
-    //       })
-    //     }else if(res.data == 4){
-    //       wx.showModal({
-    //         title: '提示',
-    //         content: '请支付押金或未付款订单，方可借书',
-    //         showCancel: false,
-    //         success: function (res) {
-    //           if (res.confirm) {
-    //             console.log('用户点击确定')
-    //             wx.switchTab({
-    //               url: '../index/index',
-    //             })
-    //           }
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
   },
 
   /**
