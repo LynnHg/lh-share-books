@@ -117,7 +117,7 @@ Page({
     var that = this;
     that.setData({ orderid: options.orderid });
     wx.request({
-      url: 'http://l1669f6515.iok.la/book/order/allorder',
+      url: 'http://l1669f6515.iok.la/book/order/getorderbyorderid',
       method: 'GET',
       data: {
         orderid: that.data.orderid

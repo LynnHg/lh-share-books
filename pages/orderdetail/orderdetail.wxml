@@ -17,9 +17,8 @@
   <view class="o-detail-text">还书时间：{{details.endTime}}</view>
   <view class="o-detail-text">开始地址：{{details.bookStartPlace}}</view>
   <view class="o-detail-text">结束地址：{{details.bookEndPlace}}</view>
-  <view class="o-detail-text">付款时间：{{details.payTime}}</view>
+  <view class="o-detail-text">付款时间：{{details.payTime?details.payTime:''}}</view>
 </view>
-
-<view wx:if="{{details.orderState == 1}}" class="operate-bg">
+<view hidden="{{details.orderState !== 1}}" class="operate-bg">
   <button type="primary" bindtap="bindpay">立即付款</button>
 </view>
