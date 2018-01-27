@@ -1,5 +1,6 @@
 // orderlist.js
-var app = getApp()
+var app = getApp();
+const getTime = require("../../utils/getTime");
 Page({
   data: {
     orders: [],
@@ -42,12 +43,14 @@ Page({
                   },
                   success: function (res) {
                     if (res.statusCode === 200) {
+                      var payTime = getTime.getTime();
                       wx.request({
                         url: 'http://l1669f6515.iok.la/book/order/updateorder',
                         data: {
                           orderid: orderid,
                           orderState: 2,// 待付款->已付款
-                          orderMoney: orderMoney
+                          orderMoney: orderMoney,
+                          payTime: payTime
                         },
                         method: 'GET',
                         header: {
