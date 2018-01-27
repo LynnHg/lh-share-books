@@ -15,6 +15,7 @@
       <label class="label">我的电话:</label>
       <input maxlength='11' bindinput='setPhone' class="input" placeholder='我的电话' value="{{personInfo.phone}}"></input>
     </view>
-    <button class="submit" bindtap="savePersonInfo">保存</button>
+    <view hidden="{{!isReged}}"><button  class="submit" bindtap="savePersonInfo">保存</button></view>
+    <view hidden="{{isReged}}"><button  class="submit" bindtap="reg">注册</button></view>
   </form>
 </view>
