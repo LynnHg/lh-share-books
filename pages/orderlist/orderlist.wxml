@@ -15,10 +15,11 @@
             <text class="list-time">下单时间：{{item.startTime}}</text>
           </view>
         </navigator>
-       <view wx:if="{{item.orderState==2}}" class="pay-bg">
-       <view class="pay" bindtap="bindpay"  data-orderMoney="{{item.orderMoney}}" data-orderid="{{item.orderid}}">支付</view>
-       </view>
-       <view class="ol-line"></view>
+        <!-- <view wx:if="{{item.orderState==2}}" class="pay-bg">
+          <view class="pay" bindtap="bindpay" data-orderMoney="{{item.orderMoney}}" data-orderid="{{item.orderid}}">支付</view>
+          <view class="pay" bindtap="cancelOrder" data-orderid="{{item.orderid}}">取消订单</view>
+        </view> -->
+        <view class="ol-line"></view>
       </view>
     </view>
   </view>
@@ -55,8 +56,9 @@
           </view>
         </navigator>
         <view class="pay-bg">
-       <view class="pay" bindtap="bindpay"  data-orderMoney="{{item.orderMoney}}" data-orderId="{{item.orderid}}">支付</view>
-       </view>
+          <view class="pay" bindtap="bindpay" data-orderMoney="{{item.orderMoney}}" data-orderId="{{item.orderid}}">支付</view>
+          <view class="cancel" bindtap="cancelOrder" data-orderId="{{item.orderid}}">取消订单</view>
+        </view>
         <view class="ol-line"></view>
       </view>
     </view>

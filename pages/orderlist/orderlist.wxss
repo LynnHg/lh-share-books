@@ -106,6 +106,19 @@ page{
   font-size: 30rpx;
   color: #1296db;
   text-align: center;
+  right: 180rpx;
+  bottom: 10rpx;
+  height: 50rpx;
+  width: 150rpx;
+  border: 1px solid #1296db;
+  border-radius: 5%;
+}
+
+.cancel {
+  position: absolute;
+  font-size: 30rpx;
+  color: #1296db;
+  text-align: center;
   right: 10rpx;
   bottom: 10rpx;
   height: 50rpx;

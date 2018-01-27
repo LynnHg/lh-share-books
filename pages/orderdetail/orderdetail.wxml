@@ -19,6 +19,11 @@
   <view class="o-detail-text">结束地址：{{details.bookEndPlace}}</view>
   <view class="o-detail-text">付款时间：{{details.payTime?details.payTime:''}}</view>
 </view>
-<view hidden="{{details.orderState !== 1}}" class="operate-bg">
-  <button type="primary" bindtap="bindpay">立即付款</button>
+<view class="operate-btn" hidden="{{details.orderState !== 1}}">
+  <view class="btn-wrap">
+    <button type="primary" bindtap="bindpay">立即付款</button>
+  </view>
+  <view class="btn-wrap">
+    <button type="primary" bindtap="cancelOrder">取消订单</button>
+  </view>
 </view>

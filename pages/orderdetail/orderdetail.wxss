@@ -59,20 +59,23 @@
   border-bottom: 1px solid #eee;
 }
 
-.operate-bg{
+.operate-btn{
   box-sizing:border-box;
-  position: fixed;
+  position: absolute;
   bottom: 0;
-  height: 120rpx;
   width: 100%;
-  background: gainsboro;
   align-items: center;
-  padding-top: 15rpx;
 }
 
-.operate-bg button{
-  width: 300rpx;
-  background: #1296db;
+.btn-wrap {
+  width: 50%;
+  display: inline-block;
+  padding-top: 40rpx;
+}
+
+.btn-wrap button{
+  width: 70%;
+  background: #f76b8a;
 }
 
 .operate{

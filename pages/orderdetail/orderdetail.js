@@ -127,6 +127,17 @@ Page({
       },
       success: function (res) {
         var types = res.data[0];
+        switch (types.orderState) {
+          case 0:
+            types.state = '已完成';
+            break;
+          case 1:
+            types.state = '待付款';
+            break;
+          case 2:
+            types.state = '进行中';
+            break;
+        }
         that.setData({
           details: types
         })
