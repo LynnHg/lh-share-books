@@ -8,9 +8,8 @@ Page({
   data: {
     wallet: null
   },
-  depositpay: function (res) {
-    var that = this
-    //生成随机字符串、订单号、签名接口
+  depositpay: function (res) {// 押金充值
+    var that = this;
     wx.request({
       url: 'http://l1669f6515.iok.la/book/user/changeDeposit',
       method: 'GET',
@@ -72,9 +71,9 @@ Page({
 
   },
 
-  returndeposit: function () {
+  returndeposit: function () { // 退押金
     var that = this;
-    if (that.data.deposit == 0) {
+    if (that.data.wallet.deposit == 0) {
       wx.showModal({
         title: '提示',
         content: '无押金可退',
@@ -90,38 +89,75 @@ Page({
         showCancel: true,
         success: function (res) {
           if (res.confirm) {
-            console.log('用户点击确定')
             wx.request({
-              url: 'https://www.eton100.com/book/refund',
-              data: { openid: app.globalData.openid },
-              method: 'POST',
-              header: { 'content-type': 'application/json' },
-
+              url: 'http://l1669f6515.iok.la/book/order/getorderbyopenid',
+              method: 'GET',
+              data: {
+                openid: app.globalData.openid
+              },
+              header: {
+                'content-type': 'application/json'
+              },
               success: function (res) {
-                console.log(res)
-                if (res.data == 1) {
-                  wx.showToast({
-                    title: '申请退款成功',
-                    icon: 'SUCCESS',
-                    duration: 1000,
-                    mask: true,
-                    success: function (res) { },
-                    fail: function (res) { },
-                    complete: function (res) { },
+                var types = res.data;
+                var pending = [];
+                types = types.length ? types.forEach(function (item) {
+                  if (item.orderState === 1) {
+                    item.state = '待付款';
+                    pending.push(item);
+                  }
+                }) : null;
+                if (pending.length !== 0) {
+                  wx.showModal({
+                    title: '有未付款订单',
+                    content: '押金不可退！',
+                    showCancel: false,
+                    success: function (res) {
+                      if (res.confirm) {
+                        wx.navigateBack({
+                          delta: 1
+                        })
+                      }
+                    }
                   })
                 } else {
-                  wx.showModal({
-                    title: '提示',
-                    content: '当前还有未付款订单',
-                    showCancel: false,
+                  wx.request({
+                    url: 'http://l1669f6515.iok.la/book/user/changeDeposit',
+                    method: 'GET',
+                    data: {
+                      openid: app.globalData.openid,
+                      deposit: 0
+                    },
+                    header: {
+                      'content-type': 'application/json'
+                    },
+                    success: function (res) {
+                      if (res.statusCode === 200) {
+                        wx.showModal({
+                          title: '通知',
+                          content: '押金退款成功！',
+                          showCancel: false,
+                          success: function (res) {
+                            if (res.confirm) {
+                              wx.navigateBack({
+                                delta: 1
+                              })
+                            }
+                          }
+                        })
+                      } else {
+                        wx.showToast({
+                          title: '押金退款失败',
+                          image: '../../assets/images/failed.png',
+                          duration: 2000
+                        })
+                      }
+                    }
                   })
                 }
-              },
-              fail: function (res) { },
-              complete: function (res) {
-                that.onLoad();
-              },
-            })
+              }
+            });
+
           } else if (res.cancel) {
             console.log('用户点击取消')
           }
