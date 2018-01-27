@@ -27,7 +27,7 @@ Page({
        if (res.statusCode === 200) {
          wx.showModal({
            title: '通知',
-           content: '充值成功！',
+           content: '余额充值成功！',
            showCancel: false,
            success: function (res) {
              if (res.confirm) {
@@ -39,7 +39,7 @@ Page({
          })
        } else {
          wx.showToast({
-           title: '充值失败',
+           title: '余额充值失败',
            image: '../../assets/images/failed.png',
            duration: 2000
          })

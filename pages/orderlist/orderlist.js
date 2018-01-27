@@ -29,69 +29,67 @@ Page({
               that.setData({
                 money: money,
               })
-              if (money > 0) {
-                if (money >= orderMoney) {
-                  wx.request({
-                    url: 'http://l1669f6515.iok.la/book/user/changeMoney',
-                    data: {
-                      openid: app.globalData.openid,
-                      money: -orderMoney
-                    },
-                    method: 'GET',
-                    header: {
-                      'content-type': 'application/json'
-                    },
-                    success: function (res) {
-                      if (res.statusCode === 200) {
-                        wx.request({
-                          url: 'http://l1669f6515.iok.la/book/order/updateorder',
-                          data: {
-                            orderid: orderid,
-                            orderState: 2,// 待付款->已付款
-                            orderMoney: orderMoney
-                          },
-                          method: 'GET',
-                          header: {
-                            'content-type': 'application/json'
-                          },
-                          success: function (res) {
-                            if (res.statusCode === 200) {
-                              wx.showModal({
-                                title: '通知',
-                                content: '支付成功！',
-                                showCancel: false,
-                                success: function (res) {
-                                  if (res.confirm) {
-                                    wx.reLaunch({
-                                      url: '../orderlist/orderlist'
-                                    })
-                                  }
+              if (money >= orderMoney) {
+                wx.request({
+                  url: 'http://l1669f6515.iok.la/book/user/changeMoney',
+                  data: {
+                    openid: app.globalData.openid,
+                    money: -orderMoney
+                  },
+                  method: 'GET',
+                  header: {
+                    'content-type': 'application/json'
+                  },
+                  success: function (res) {
+                    if (res.statusCode === 200) {
+                      wx.request({
+                        url: 'http://l1669f6515.iok.la/book/order/updateorder',
+                        data: {
+                          orderid: orderid,
+                          orderState: 2,// 待付款->已付款
+                          orderMoney: orderMoney
+                        },
+                        method: 'GET',
+                        header: {
+                          'content-type': 'application/json'
+                        },
+                        success: function (res) {
+                          if (res.statusCode === 200) {
+                            wx.showModal({
+                              title: '通知',
+                              content: '支付成功！',
+                              showCancel: false,
+                              success: function (res) {
+                                if (res.confirm) {
+                                  wx.reLaunch({
+                                    url: '../orderlist/orderlist'
+                                  })
                                 }
-                              })
-                            }
+                              }
+                            })
                           }
-                        });
-                      }
+                        }
+                      });
                     }
-                  })
-                } else {
-                  wx.showModal({
-                    title: '余额不足',
-                    content: '立即充值?',
-                    showCancel: true,
-                    success: function (res) {
-                      if (res.confirm) {
-                        wx.navigateTo({
-                          url: '../wallet/balance/balance'
-                        })
-                      } else if (res.cancel) {
-                        wx.navigateBack({
-                          delta: 1
-                        })
-                      }
+                  }
+                })
+              } else {
+                wx.showModal({
+                  title: '余额不足',
+                  content: '立即充值?',
+                  showCancel: true,
+                  success: function (res) {
+                    if (res.confirm) {
+                      wx.navigateTo({
+                        url: '../wallet/balance/balance'
+                      })
+                    } else if (res.cancel) {
+                      wx.navigateBack({
+                        delta: 1
+                      })
                     }
-                  })
-                }
+                  }
+                })
               }
             }
           })

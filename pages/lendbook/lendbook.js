@@ -104,22 +104,12 @@ Page({
                       },
                       success: function (res) {
                         var storeInfo = res.data[0]; // 书籍所在网点信息
-                        var orderState = 1;
                         var startTime = getTime.getTime();
-                        var endTime = '';
-                        var bookName = that.data.bookInfo.bookname;
-                        var bookStartPlace = storeInfo.storePlace;
-                        var bookEndPlace = '';
-                        var orderMoney = 2;
-                        var openid = app.globalData.openid;
-                        var bookid = that.data.bookInfo.bookid;
-                        var payTime = '';
-                        var bookimgurl = that.data.bookInfo.bookimgurl;
                         var addOrder = {
                           orderState: 1,
                           startTime: startTime,
                           endTime: '',
-                          bookName: that.data.bookInfo.bookName,
+                          bookName: that.data.bookInfo.bookname,
                           bookStartPlace: storeInfo.storePlace,
                           bookEndPlace: '',
                           orderMoney: 2,
