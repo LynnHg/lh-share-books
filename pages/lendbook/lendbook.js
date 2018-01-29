@@ -136,7 +136,7 @@ Page({
                       content: '立即查看订单？',
                       success: function (res) {
                         if (res.confirm) {
-                          wx.switchTab({
+                          wx.reLaunch({
                             url: '../orderlist/orderlist',
                           })
                         } else if (res.cancel) {

@@ -153,6 +153,7 @@ Page({
   returnBook: function (res) { // 还书
     var that = this;
     var orderid = res.currentTarget.dataset.orderid;
+    var bookid = res.currentTarget.dataset.bookid;
     var storeLen = app.globalData.storeLen;
     var storeid = Math.ceil(Math.random() * storeLen); // 随机网点id
     wx.showModal({
@@ -195,20 +196,34 @@ Page({
                       'content-type': 'application/json'
                     },
                     success: function (res) {
-                      if (res.statusCode === 200) {
-                        wx.showModal({
-                          title: '通知',
-                          content: '归还成功！',
-                          showCancel: false,
-                          success: function (res) {
-                            if (res.confirm) {
-                              wx.reLaunch({
-                                url: '../orderlist/orderlist'
-                              })
-                            }
+                      wx.request({
+                        url: 'http://l1669f6515.iok.la/book/store/changeBookStore',
+                        data: {
+                          bookid: bookid,
+                          storeid: storeid
+                        },
+                        method: 'GET',
+                        header: {
+                          'content-type': 'application/json'
+                        },
+                        success: function (res) {
+                          if (res.statusCode === 200) {
+                            wx.showModal({
+                              title: '通知',
+                              content: '归还成功！',
+                              showCancel: false,
+                              success: function (res) {
+                                if (res.confirm) {
+                                  wx.reLaunch({
+                                    url: '../orderlist/orderlist'
+                                  })
+                                }
+                              }
+                            })
                           }
-                        })
-                      }
+                        }
+                      })
+
                     }
                   })
                 }
