@@ -224,11 +224,19 @@ page {
 }
 
 .show-store-position button {
-  font-size: 30rpx;
+  font-size: 32rpx;
   height: 80rpx;
   background-color: #fff;
-  color: #66BFBF;
+  color: #66bfbf;
   line-height: 80rpx;
+}
+
+.show-store-position .navigation {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  padding-left: 10rpx;
+  padding-bottom: 12rpx;
 }
 
 .wrapper-scroll {

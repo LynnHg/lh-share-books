@@ -4,7 +4,7 @@
 <view class="header">当前位置</view>
 <view class="current">
   <text bindtap="geoTapped">{{address}}</text>
-  <image bindtap="reloadCurrent" src="../../images/geo.png" />
+  <image bindtap="reloadCurrent" src="../../assets/images/location.png" />
 </view>
 <view class="header">附近位置</view>
 <view class="list">

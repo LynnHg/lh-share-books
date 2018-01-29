@@ -1,6 +1,6 @@
 // orderlist.js
 var app = getApp();
-const getTime = require("../../utils/getTime");
+const util = require("../../utils/util");
 Page({
   data: {
     orders: [],
@@ -9,7 +9,7 @@ Page({
     currentTab: 0,
     flag: 0
   },
-  bindpay: function (res) {
+  bindpay: function (res) { // 支付
     var that = this;
     var orderMoney = res.currentTarget.dataset.ordermoney;
     var orderid = res.currentTarget.dataset.orderid;
@@ -43,7 +43,7 @@ Page({
                   },
                   success: function (res) {
                     if (res.statusCode === 200) {
-                      var payTime = getTime.getTime();
+                      var payTime = util.getTime();
                       wx.request({
                         url: 'http://l1669f6515.iok.la/book/order/updateorder',
                         data: {
@@ -103,7 +103,53 @@ Page({
     })
 
   },
-
+  cancelOrder: function (res) { // 取消订单
+  var that = this;
+    var orderid = res.currentTarget.dataset.orderid;
+    wx.showModal({
+      title: '通知',
+      content: '确定要取消本次订单吗?',
+      success: function (res) {
+        if (res.confirm) {
+          wx.request({
+            url: 'http://l1669f6515.iok.la/book//order/deleteorder',
+            method: 'GET',
+            data: {
+              orderid: orderid
+            },
+            header: {
+              'content-type': 'application/json'
+            },
+            success: function(res) {
+              if (res.statusCode === 200) {
+                wx.showToast({
+                  title: '取消成功',
+                  icon: 'success',
+                  duration: 1000,
+                  mask: true,
+                  success: function() {
+                    setTimeout(function(){
+                      wx.reLaunch({
+                        url: '../orderlist/orderlist'
+                      })
+                    },1000)
+                  }
+                })
+              } else {
+                wx.showToast({
+                  title: '取消失败',
+                  image: '../../assets/images/failed.png',
+                  duration: 2000
+                })
+              }
+            } 
+          })
+        } else {
+          return;
+        }
+      }
+    })
+  },
   navbarTap: function (e) {
     var that = this
     this.setData({

@@ -10,13 +10,12 @@ Page({
   },
   depositpay: function (res) {// 押金充值
     var that = this;
-    if (!that.data.wallet.deposit) {
+    if (!that.data.wallet.deposit) { // 未交押金
       wx.showModal({
         title: '通知',
         content: '确定充值押金吗？',
         success: function (res) {
           if (res.confirm) {
-
             wx.request({
               url: 'http://l1669f6515.iok.la/book/user/changeDeposit',
               method: 'GET',
@@ -50,17 +49,12 @@ Page({
                 }
               }
             })
-
-
           } else {
-            // wx.navigateBack({
-            //   delta: 1
-            // })
             return;
           }
         }
       })
-    } else {
+    } else { // 已交押金
       wx.showModal({
         title: '通知',
         content: '已交押金，无需再次充值',

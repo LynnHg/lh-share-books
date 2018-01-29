@@ -24,6 +24,6 @@
     <button type="primary" bindtap="bindpay">立即付款</button>
   </view>
   <view class="btn-wrap">
-    <button type="primary" bindtap="cancelOrder">取消订单</button>
+    <button type="primary"  bindtap="cancelOrder">取消订单</button>
   </view>
 </view>

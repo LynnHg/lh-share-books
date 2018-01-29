@@ -1,6 +1,6 @@
 // lendbook.js
 var app = getApp();
-const getTime = require("../../utils/getTime");
+const util = require("../../utils/util");
 Page({
 
   /**
@@ -91,7 +91,7 @@ Page({
                       }
                     })
                   } else if (info.userState === 0 && pending.length === 0) {//可借
-                    var startTime = getTime.getTime();
+                    var startTime = util.getTime();
                     var openid = app.globalData.openid;
                     wx.request({
                       url: 'http://l1669f6515.iok.la/book/store/searchById',
@@ -104,7 +104,7 @@ Page({
                       },
                       success: function (res) {
                         var storeInfo = res.data[0]; // 书籍所在网点信息
-                        var startTime = getTime.getTime();
+                        var startTime = util.getTime();
                         var addOrder = {
                           orderState: 1,
                           startTime: startTime,

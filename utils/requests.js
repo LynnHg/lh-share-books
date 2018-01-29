@@ -12,7 +12,6 @@ function request(url, data, successCb, errorCb, completeCb) {
         error: errorCb,
         complete: completeCb
     });
-    console.log(url,data)
 }
 
 //搜索图书 
