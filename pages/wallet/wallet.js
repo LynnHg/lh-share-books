@@ -10,39 +10,68 @@ Page({
   },
   depositpay: function (res) {// 押金充值
     var that = this;
-    wx.request({
-      url: 'http://l1669f6515.iok.la/book/user/changeDeposit',
-      method: 'GET',
-      data: {
-        openid: app.globalData.openid,
-        deposit: 99
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        if (res.statusCode === 200) {
-          wx.showModal({
-            title: '通知',
-            content: '押金充值成功！',
-            showCancel: false,
-            success: function (res) {
-              if (res.confirm) {
-                wx.navigateBack({
-                  delta: 1
-                })
+    if (!that.data.wallet.deposit) {
+      wx.showModal({
+        title: '通知',
+        content: '确定充值押金吗？',
+        success: function (res) {
+          if (res.confirm) {
+
+            wx.request({
+              url: 'http://l1669f6515.iok.la/book/user/changeDeposit',
+              method: 'GET',
+              data: {
+                openid: app.globalData.openid,
+                deposit: 99
+              },
+              header: {
+                'content-type': 'application/json'
+              },
+              success: function (res) {
+                if (res.statusCode === 200) {
+                  wx.showModal({
+                    title: '通知',
+                    content: '押金充值成功！',
+                    showCancel: false,
+                    success: function (res) {
+                      if (res.confirm) {
+                        wx.navigateBack({
+                          delta: 1
+                        })
+                      }
+                    }
+                  })
+                } else {
+                  wx.showToast({
+                    title: '押金充值失败',
+                    image: '../../assets/images/failed.png',
+                    duration: 2000
+                  })
+                }
               }
-            }
-          })
-        } else {
-          wx.showToast({
-            title: '押金充值失败',
-            image: '../../assets/images/failed.png',
-            duration: 2000
-          })
+            })
+
+
+          } else {
+            // wx.navigateBack({
+            //   delta: 1
+            // })
+            return;
+          }
         }
-      }
-    })
+      })
+    } else {
+      wx.showModal({
+        title: '通知',
+        content: '已交押金，无需再次充值',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            return;
+          }
+        }
+      })
+    }
   },
 
   /**
