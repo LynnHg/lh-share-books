@@ -73,6 +73,10 @@
   padding-top: 40rpx;
 }
 
+.return {
+  width: 100%;
+}
+
 .btn-wrap button{
   width: 70%;
   background: #f76b8a;

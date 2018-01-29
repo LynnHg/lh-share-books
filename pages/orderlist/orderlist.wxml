@@ -20,7 +20,7 @@
     </view>
   </view>
 
-  <!--已付款-->
+  <!--进行中-->
   <view hidden="{{currentTab!==1}}">
     <view hidden="{{!orders}}" class="o-list">
       <view wx:for="{{orders}}">
@@ -33,6 +33,10 @@
             <text class="list-time">下单时间：{{item.startTime}}</text>
           </view>
         </navigator>
+        <view class="return-bg">
+          <view class="returnBook" bindtap="returnBook" data-orderId="{{item.orderid}}">还书</view>
+        </view>
+
         <view class="ol-line"></view>
       </view>
     </view>
