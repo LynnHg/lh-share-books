@@ -19,7 +19,7 @@ Page({
     wx.navigateBack({
     })
   },
-  bindpay: function (res) {
+  bindpay: function (res) { // 付款
     var that = this;
     var orderMoney = that.data.details.orderMoney;
     var orderid = that.data.details.orderid;
@@ -156,6 +156,77 @@ Page({
           })
         } else {
           return;
+        }
+      }
+    })
+  },
+  returnBook: function (res) { // 还书
+    var that = this;
+    var orderid = that.data.details.orderid;
+    var storeLen = app.globalData.storeLen;
+    var storeid = Math.ceil(Math.random() * storeLen); // 随机网点id
+    wx.showModal({
+      title: '通知',
+      content: '确定要归还吗?',
+      success: function (res) {
+        if (res.confirm) {
+          wx.request({
+            url: 'http://l1669f6515.iok.la/book/store/searchById',
+            method: 'GET',
+            data: {
+              storeid: storeid
+            },
+            header: {
+              'content-type': 'application/json'
+            },
+            success: function (res) {
+              var endTime = util.getTime();
+              var bookEndPlace = res.data[0].storePlace;
+              wx.request({
+                url: 'http://l1669f6515.iok.la/book/order/getorderbyopenid',
+                method: 'GET',
+                data: {
+                  openid: app.globalData.openid
+                },
+                header: {
+                  'content-type': 'application/json'
+                },
+                success: function (res) {
+                  wx.request({
+                    url: 'http://l1669f6515.iok.la/book/order/returnAndUpdate',
+                    data: {
+                      orderid: orderid,
+                      orderState: 0, // 进行中->已完成
+                      endTime: endTime,
+                      bookEndPlace: bookEndPlace
+                    },
+                    method: 'GET',
+                    header: {
+                      'content-type': 'application/json'
+                    },
+                    success: function (res) {
+                      if (res.statusCode === 200) {
+                        wx.showModal({
+                          title: '通知',
+                          content: '归还成功！',
+                          showCancel: false,
+                          success: function (res) {
+                            if (res.confirm) {
+                              wx.reLaunch({
+                                url: '../orderlist/orderlist'
+                              })
+                            }
+                          }
+                        })
+                      }
+                    }
+                  })
+                }
+              })
+            }
+          })
+        } else {
+          return
         }
       }
     })

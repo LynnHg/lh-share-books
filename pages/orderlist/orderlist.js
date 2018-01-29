@@ -104,7 +104,7 @@ Page({
 
   },
   cancelOrder: function (res) { // 取消订单
-  var that = this;
+    var that = this;
     var orderid = res.currentTarget.dataset.orderid;
     wx.showModal({
       title: '通知',
@@ -120,19 +120,19 @@ Page({
             header: {
               'content-type': 'application/json'
             },
-            success: function(res) {
+            success: function (res) {
               if (res.statusCode === 200) {
                 wx.showToast({
                   title: '取消成功',
                   icon: 'success',
                   duration: 1000,
                   mask: true,
-                  success: function() {
-                    setTimeout(function(){
+                  success: function () {
+                    setTimeout(function () {
                       wx.reLaunch({
                         url: '../orderlist/orderlist'
                       })
-                    },1000)
+                    }, 1000)
                   }
                 })
               } else {
@@ -142,10 +142,81 @@ Page({
                   duration: 2000
                 })
               }
-            } 
+            }
           })
         } else {
           return;
+        }
+      }
+    })
+  },
+  returnBook: function (res) { // 还书
+    var that = this;
+    var orderid = res.currentTarget.dataset.orderid;
+    var storeLen = app.globalData.storeLen;
+    var storeid = Math.ceil(Math.random() * storeLen); // 随机网点id
+    wx.showModal({
+      title: '通知',
+      content: '确定要归还吗?',
+      success: function (res) {
+        if (res.confirm) {
+          wx.request({
+            url: 'http://l1669f6515.iok.la/book/store/searchById',
+            method: 'GET',
+            data: {
+              storeid: storeid
+            },
+            header: {
+              'content-type': 'application/json'
+            },
+            success: function (res) {
+              var endTime = util.getTime();
+              var bookEndPlace = res.data[0].storePlace;
+              wx.request({
+                url: 'http://l1669f6515.iok.la/book/order/getorderbyopenid',
+                method: 'GET',
+                data: {
+                  openid: app.globalData.openid
+                },
+                header: {
+                  'content-type': 'application/json'
+                },
+                success: function (res) {
+                  wx.request({
+                    url: 'http://l1669f6515.iok.la/book/order/returnAndUpdate',
+                    data: {
+                      orderid: orderid,
+                      orderState: 0, // 进行中->已完成
+                      endTime: endTime,
+                      bookEndPlace: bookEndPlace
+                    },
+                    method: 'GET',
+                    header: {
+                      'content-type': 'application/json'
+                    },
+                    success: function (res) {
+                      if (res.statusCode === 200) {
+                        wx.showModal({
+                          title: '通知',
+                          content: '归还成功！',
+                          showCancel: false,
+                          success: function (res) {
+                            if (res.confirm) {
+                              wx.reLaunch({
+                                url: '../orderlist/orderlist'
+                              })
+                            }
+                          }
+                        })
+                      }
+                    }
+                  })
+                }
+              })
+            }
+          })
+        } else {
+          return
         }
       }
     })

@@ -36,7 +36,6 @@
         <view class="return-bg">
           <view class="returnBook" bindtap="returnBook" data-orderId="{{item.orderid}}">还书</view>
         </view>
-
         <view class="ol-line"></view>
       </view>
     </view>

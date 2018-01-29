@@ -66,7 +66,8 @@ Page({
           }
           var storelist = res.data.sort(compare('distance'));
           that.setData({
-            storelist: storelist
+            storelist: storelist,
+            'app.globalData.storeLen': storelist.length
           })
         }
       })
@@ -162,8 +163,9 @@ Page({
             allstorelist = allstorelist.sort(compare('distance'));
             that.setData({
               storelist: storelist,
-              allstorelist: allstorelist
+              allstorelist: allstorelist,
             })
+            app.globalData.storeLen=storelist.length; // 保存附近网点个数
           }
         })
       },
