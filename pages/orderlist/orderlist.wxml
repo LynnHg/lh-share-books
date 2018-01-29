@@ -55,7 +55,7 @@
           </view>
         </navigator>
         <view class="pay-bg">
-          <view class="pay" bindtap="bindpay" data-orderMoney="{{item.orderMoney}}" data-orderId="{{item.orderid}}">支付</view>
+          <view class="pay" bindtap="bindpay" data-bookId="{{item.bookid}}" data-orderMoney="{{item.orderMoney}}" data-orderId="{{item.orderid}}">支付</view>
           <view class="cancel" bindtap="cancelOrder" data-orderId="{{item.orderid}}">取消订单</view>
         </view>
         <view class="ol-line"></view>

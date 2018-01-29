@@ -13,6 +13,7 @@ Page({
     var that = this;
     var orderMoney = res.currentTarget.dataset.ordermoney;
     var orderid = res.currentTarget.dataset.orderid;
+    var bookid = res.currentTarget.dataset.bookid;
     wx.showModal({
       title: '提示',
       content: '优先从余额扣款，确定支付吗？',
@@ -58,18 +59,34 @@ Page({
                         },
                         success: function (res) {
                           if (res.statusCode === 200) {
-                            wx.showModal({
-                              title: '通知',
-                              content: '支付成功！',
-                              showCancel: false,
+                            wx.request({
+                              url: 'http://l1669f6515.iok.la/book/book/changeBookCount',
+                              data: {
+                                bookid: bookid,
+                              },
+                              method: 'GET',
+                              header: {
+                                'content-type': 'application/json'
+                              },
                               success: function (res) {
-                                if (res.confirm) {
-                                  wx.reLaunch({
-                                    url: '../orderlist/orderlist'
+                                if (res.statusCode === 200) {
+                                  wx.showModal({
+                                    title: '通知',
+                                    content: '支付成功！',
+                                    showCancel: false,
+                                    success: function (res) {
+                                      if (res.confirm) {
+                                        wx.reLaunch({
+                                          url: '../orderlist/orderlist'
+                                        })
+                                      }
+                                    }
                                   })
                                 }
                               }
-                            })
+                            });
+
+
                           }
                         }
                       });
