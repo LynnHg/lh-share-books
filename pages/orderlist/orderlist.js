@@ -243,9 +243,11 @@ Page({
           types = types.length ? types.forEach(function (item) {
             if (item.orderState === 0) {
               item.state = '已完成';
+              item.time = new Date(item.startTime);
               completed.push(item);
             }
           }) : null;
+          completed = completed.sort(util.recompare('time'));
           that.setData({
             orders: completed
           })
@@ -267,9 +269,11 @@ Page({
           types = types.length ? types.forEach(function (item) {
             if (item.orderState === 2) {
               item.state = '进行中';
+              item.time = new Date(item.startTime);
               paid.push(item);
             }
           }) : null;
+          paid = paid.sort(util.recompare('time'));
           that.setData({
             orders: paid
           })
@@ -342,9 +346,11 @@ Page({
           types = types.length ? types.forEach(function (item) {
             if (item.orderState === 0) {
               item.state = '已完成';
+              item.time = new Date(item.startTime);
               completed.push(item);
             }
           }) : null;
+          completed = completed.sort(util.recompare('time'));
           that.setData({
             orders: completed
           })

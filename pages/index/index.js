@@ -2,6 +2,7 @@
 //获取应用实例
 var app = getApp()
 const request = require("../../utils/requests");
+const util = require("../../utils/util");
 var star = require("../../utils/star");
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
 var WxNotificationCenter = require('../../utils/WxNotificationCenter.js');
@@ -57,14 +58,7 @@ Page({
           'content-type': 'application/json'
         },
         success: function (res) {
-          function compare(property) {
-            return function (a, b) {
-              var value1 = a[property];
-              var value2 = b[property];
-              return value1 - value2;
-            }
-          }
-          var storelist = res.data.sort(compare('distance'));
+          var storelist = res.data.sort(util.compare('distance'));
           that.setData({
             storelist: storelist,
             'app.globalData.storeLen': storelist.length
@@ -151,16 +145,9 @@ Page({
                 storelist.push(item);
               }
             })
-            function compare(property) {
-              return function (a, b) {
-                var value1 = a[property];
-                var value2 = b[property];
-                return value1 - value2;
-              }
-            }
             //按距离排序
-            storelist = storelist.sort(compare('distance'));
-            allstorelist = allstorelist.sort(compare('distance'));
+            storelist = storelist.sort(util.compare('distance'));
+            allstorelist = allstorelist.sort(util.compare('distance'));
             that.setData({
               storelist: storelist,
               allstorelist: allstorelist,

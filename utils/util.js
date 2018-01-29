@@ -13,6 +13,7 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
+//获取当前时间
 function getTime() {
   var now = new Date();
 
@@ -48,6 +49,27 @@ function getTime() {
   return (clock);
 }
 
+//从小到大
+function compare(property) {
+  return function (a, b) {
+    var value1 = a[property];
+    var value2 = b[property];
+    return value1 - value2;
+  }
+}
+
+//从大到小
+function recompare(property) {
+  return function (a, b) {
+    var value1 = a[property];
+    var value2 = b[property];
+    return value2 - value1;
+  }
+}
+
 module.exports = {
-  formatTime: formatTime, getTime: getTime
+  formatTime: formatTime,
+  getTime: getTime,
+  compare: compare,
+  recompare: recompare
 }
