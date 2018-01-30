@@ -11,9 +11,10 @@ Page({
   },
   bindpay: function (res) { // 支付
     var that = this;
-    var orderMoney = res.currentTarget.dataset.ordermoney;
-    var orderid = res.currentTarget.dataset.orderid;
-    var bookid = res.currentTarget.dataset.bookid;
+    var orderMoney = res.currentTarget.dataset.ordermoney; // 订单金额
+    var orderid = res.currentTarget.dataset.orderid; // 订单id
+    var bookid = res.currentTarget.dataset.bookid; // 书籍id
+    var payTime = util.getTime();
     wx.showModal({
       title: '提示',
       content: '优先从余额扣款，确定支付吗？',
@@ -33,10 +34,15 @@ Page({
               })
               if (money >= orderMoney) {
                 wx.request({
-                  url: 'http://l1669f6515.iok.la/book/user/changeMoney',
+                  url: 'http://l1669f6515.iok.la/book/pay',
                   data: {
                     openid: app.globalData.openid,
-                    money: -orderMoney
+                    money: -orderMoney,
+                    orderid: orderid,
+                    orderState: 2,// 待付款->已付款
+                    orderMoney: orderMoney,
+                    payTime: payTime,
+                    bookid: bookid,
                   },
                   method: 'GET',
                   header: {
@@ -44,52 +50,18 @@ Page({
                   },
                   success: function (res) {
                     if (res.statusCode === 200) {
-                      var payTime = util.getTime();
-                      wx.request({
-                        url: 'http://l1669f6515.iok.la/book/order/updateorder',
-                        data: {
-                          orderid: orderid,
-                          orderState: 2,// 待付款->已付款
-                          orderMoney: orderMoney,
-                          payTime: payTime
-                        },
-                        method: 'GET',
-                        header: {
-                          'content-type': 'application/json'
-                        },
+                      wx.showModal({
+                        title: '通知',
+                        content: '支付成功！',
+                        showCancel: false,
                         success: function (res) {
-                          if (res.statusCode === 200) {
-                            wx.request({
-                              url: 'http://l1669f6515.iok.la/book/book/changeBookCount',
-                              data: {
-                                bookid: bookid,
-                              },
-                              method: 'GET',
-                              header: {
-                                'content-type': 'application/json'
-                              },
-                              success: function (res) {
-                                if (res.statusCode === 200) {
-                                  wx.showModal({
-                                    title: '通知',
-                                    content: '支付成功！',
-                                    showCancel: false,
-                                    success: function (res) {
-                                      if (res.confirm) {
-                                        wx.reLaunch({
-                                          url: '../orderlist/orderlist'
-                                        })
-                                      }
-                                    }
-                                  })
-                                }
-                              }
-                            });
-
-
+                          if (res.confirm) {
+                            wx.reLaunch({
+                              url: '../orderlist/orderlist'
+                            })
                           }
                         }
-                      });
+                      })
                     }
                   }
                 })
@@ -201,46 +173,35 @@ Page({
                 },
                 success: function (res) {
                   wx.request({
-                    url: 'http://l1669f6515.iok.la/book/order/returnAndUpdate',
+                    url: 'http://l1669f6515.iok.la/book/returnBook',
                     data: {
+                      openid: app.globalData.openid,
                       orderid: orderid,
                       orderState: 0, // 进行中->已完成
                       endTime: endTime,
-                      bookEndPlace: bookEndPlace
+                      bookEndPlace: bookEndPlace,
+                      bookid: bookid,
+                      storeid: storeid
                     },
                     method: 'GET',
                     header: {
                       'content-type': 'application/json'
                     },
                     success: function (res) {
-                      wx.request({
-                        url: 'http://l1669f6515.iok.la/book/store/changeBookStore',
-                        data: {
-                          bookid: bookid,
-                          storeid: storeid
-                        },
-                        method: 'GET',
-                        header: {
-                          'content-type': 'application/json'
-                        },
-                        success: function (res) {
-                          if (res.statusCode === 200) {
-                            wx.showModal({
-                              title: '通知',
-                              content: '归还成功！',
-                              showCancel: false,
-                              success: function (res) {
-                                if (res.confirm) {
-                                  wx.reLaunch({
-                                    url: '../orderlist/orderlist'
-                                  })
-                                }
-                              }
-                            })
+                      if (res.statusCode === 200) {
+                        wx.showModal({
+                          title: '通知',
+                          content: '归还成功,积分+1！',
+                          showCancel: false,
+                          success: function (res) {
+                            if (res.confirm) {
+                              wx.reLaunch({
+                                url: '../orderlist/orderlist'
+                              })
+                            }
                           }
-                        }
-                      })
-
+                        })
+                      }
                     }
                   })
                 }
