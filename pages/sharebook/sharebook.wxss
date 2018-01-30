@@ -1,1 +1,26 @@
 /* sharebook.wxss */
+.userinfo {
+  text-align: center;
+  padding-top: 100rpx;
+}
+
+.userinfo-avatar {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  display: block;
+  padding-top: 30rpx;
+}
+
+.usermotto button{
+background-color: #f76b8a;
+display: inline-block;
+margin-bottom: 80rpx;
+}
+
+.usermotto button:first-child {
+  margin-right: 60rpx;
+}
