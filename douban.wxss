@@ -251,6 +251,14 @@
     line-height: 38rpx;
     margin-bottom: 6rpx;
 }
+.book-in {
+  font-size:28rpx;
+  color: #5CB85C;
+}
+.book-out {
+  font-size:28rpx;
+  color: #F0AD4E;
+}
 .ibox-list-title{
     font-size: 34rpx;
     color: #2d2d2d;

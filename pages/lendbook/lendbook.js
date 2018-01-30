@@ -112,7 +112,7 @@ Page({
                           bookName: that.data.bookInfo.bookname,
                           bookStartPlace: storeInfo.storePlace,
                           bookEndPlace: '',
-                          orderMoney: 2,
+                          orderMoney: that.data.bookInfo.bookMoney,
                           openid: app.globalData.openid,
                           bookid: that.data.bookInfo.bookid,
                           payTime: '',
@@ -126,26 +126,26 @@ Page({
                             'content-type': 'application/json'
                           },
                           success: function (res) {
-                            console.log(res)
+                            wx.showModal({
+                              title: '借书成功',
+                              content: '立即查看订单？',
+                              success: function (res) {
+                                if (res.confirm) {
+                                  wx.reLaunch({
+                                    url: '../orderlist/orderlist',
+                                  })
+                                } else if (res.cancel) {
+                                  wx.switchTab({
+                                    url: '../index/index',
+                                  })
+                                }
+                              }
+                            })
                           }
                         });
                       }
                     })
-                    wx.showModal({
-                      title: '借书成功',
-                      content: '立即查看订单？',
-                      success: function (res) {
-                        if (res.confirm) {
-                          wx.reLaunch({
-                            url: '../orderlist/orderlist',
-                          })
-                        } else if (res.cancel) {
-                          wx.switchTab({
-                            url: '../index/index',
-                          })
-                        }
-                      }
-                    })
+                    
                   } else if (pending.length !== 0) {
                     wx.showModal({
                       title: '有未付款订单',
