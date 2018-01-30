@@ -15,8 +15,8 @@ Page({
   onLoad: function (options) {
     var that = this
     wx.request({
-      url: 'https://www.eton100.com/book/SearchBookByopenid', //仅为示例，并非真实的接口地址
-      method: 'POST',
+      url: 'http://l1669f6515.iok.la/book/SearchBookByOpenid', //仅为示例，并非真实的接口地址
+      method: 'GET',
       data: {
         openid:app.globalData.openid
       },
@@ -24,7 +24,6 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        console.log(res.data)
         that.setData({
           history: res.data
         })
