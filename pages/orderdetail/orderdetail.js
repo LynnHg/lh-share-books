@@ -23,12 +23,20 @@ Page({
     var that = this;
     var orderMoney = that.data.details.orderMoney;
     var orderid = that.data.details.orderid;
+    var bookid = that.data.details.bookid; // 书籍id
+    var payTime = util.getTime();
     wx.showModal({
       title: '提示',
       content: '优先从余额扣款，确定支付吗？',
       success: function (res) {
         if (res.confirm) {
           //查询余额
+          wx.showToast({
+            title: '加载中',
+            icon: 'loading',
+            duration: 1000,
+            mask: true,
+          })
           wx.request({
             url: 'http://l1669f6515.iok.la/book/user/searchByOpenid',
             data: {

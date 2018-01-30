@@ -14,6 +14,12 @@ Page({
 
   lendBook: function () {
     var that = this;
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 1000,
+      mask: true,
+    })
     wx.request({
       url: "http://l1669f6515.iok.la/book/user/alluser",
       method: 'GET',

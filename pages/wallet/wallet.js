@@ -12,8 +12,8 @@ Page({
     var that = this;
     if (!that.data.wallet.deposit) { // 未交押金
       wx.showModal({
-        title: '通知',
-        content: '确定充值押金吗？',
+        title: '充值666元押金',
+        content: '确定充值押金吗?后续可退回',
         success: function (res) {
           if (res.confirm) {
             wx.request({
@@ -21,7 +21,7 @@ Page({
               method: 'GET',
               data: {
                 openid: app.globalData.openid,
-                deposit: 99
+                deposit: 666
               },
               header: {
                 'content-type': 'application/json'
