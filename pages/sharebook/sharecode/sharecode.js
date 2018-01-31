@@ -14,55 +14,79 @@ Page({
 
   formSubmit: function (e) {
     var that = this;
+    var bookProvider = e.detail.value.bookProvider;
+    var bookManPhone = e.detail.value.bookManPhone;
     var storeLen = app.globalData.storeLen;
     var storeid = Math.ceil(Math.random() * storeLen); // 随机网点id
+    var openid = app.globalData.openid;
     var sharedTime = util.getTime();
-    console.log('form发生了submit事件，携带数据为：', e.detail.value)
-    wx.request({
-      url: 'http://l1669f6515.iok.la/book/book/shareAdd', //仅为示例，并非真实的接口地址
-      method: 'GET',
-      data: {
-        bookname: that.data.bookinfo.title,
-        author: that.data.bookinfo.author,
-        bookManPhone: e.detail.value.bookManPhone,
-        bookState: 1,
-        bookMoney: 2,
-        bookcount: 0,
-        bookIntroduce: that.data.bookinfo.summary,
-        amount: 1,
-        storeid: storeid,
-        bookimgurl: that.data.bookinfo.image,
-        average: that.data.bookinfo.rating.average,
-        publisher: that.data.bookinfo.publisher,
-        pubdate: that.data.bookinfo.pubdate,
-        tags0: that.data.bookinfo.tags[0].title,
-        tags1: that.data.bookinfo.tags[1].title,
-        tags2: that.data.bookinfo.tags[2].title,
-        bookProvider: e.detail.value.bookProvider,
-        openid: app.globalData.openid
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        if ( res.statusCode === 200) {
-          wx.showToast({
-            title: '发布成功',
-            icon: 'success',
-            duration: 1000,
-            mask: true,
-            success: function (res) { },
-            fail: function (res) { },
-            complete: function (res) { },
-          })
-          wx.navigateTo({
-            url: '../history/history',
-          })
-        }
-        
+    // var sharedTime = '';
+    // var openid = '';
+    // var bookProvider = '';
+    // var bookManPhone = '';
+    if (!bookProvider) {
+      wx.showToast({
+        title: '名字为空',
+        image: '../../../assets/images/warn.png',
+        duration: 2000
+      })
+      return;
+    } else if (!bookManPhone) {
+      wx.showToast({
+        title: '电话为空',
+        image: '../../../assets/images/warn.png',
+        duration: 2000
+      })
+      return;
+    } else {
+      wx.request({
+        url: 'http://l1669f6515.iok.la/book/book/shareAdd', //仅为示例，并非真实的接口地址
+        method: 'POST',
+        data: {
+          bookname: that.data.bookinfo.title,
+          author: that.data.bookinfo.author,
+          bookManPhone: bookManPhone,
+          bookState: 1,
+          bookMoney: 2,
+          bookcount: 0,
+          bookIntroduce: that.data.bookinfo.summary,
+          amount: 1,
+          storeid: storeid,
+          bookimgurl: that.data.bookinfo.image,
+          average: that.data.bookinfo.rating.average,
+          publisher: that.data.bookinfo.publisher,
+          pubdate: that.data.bookinfo.pubdate,
+          tags0: that.data.bookinfo.tags[0].title,
+          tags1: that.data.bookinfo.tags[1].title,
+          tags2: that.data.bookinfo.tags[2].title,
+          bookProvider: bookProvider,
+          openid: openid,
+          sharedTime: sharedTime
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          if (res.statusCode === 200) {
+            wx.showToast({
+              title: '发布成功',
+              icon: 'success',
+              duration: 1000,
+              mask: true,
+              success: function (res) { },
+              fail: function (res) { },
+              complete: function (res) { },
+            })
+            wx.navigateTo({
+              url: '../history/history',
+            })
+          }
 
-      }
-    })
+
+        }
+      })
+    }
+
   },
   /**
    * 生命周期函数--监听页面加载
