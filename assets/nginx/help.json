@@ -1,0 +1,6 @@
+{
+  "start": "start nginx.exe",
+  "stop": "nginx.exe -s stop",
+  "reload": "nginx.exe -s reload",
+  "quit": "nginx.exe -s quit "
+}

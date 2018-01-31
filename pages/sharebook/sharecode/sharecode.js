@@ -1,5 +1,6 @@
 
 var star = require("../../../utils/star");
+const util = require("../../../utils/util.js");
 var app = getApp()
 Page({
 
@@ -11,48 +12,54 @@ Page({
     bookinfo: []
   },
 
-
   formSubmit: function (e) {
-    var that = this
+    var that = this;
+    var storeLen = app.globalData.storeLen;
+    var storeid = Math.ceil(Math.random() * storeLen); // 随机网点id
+    var sharedTime = util.getTime();
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     wx.request({
-      url: 'https://www.eton100.com/book/preaddbook', //仅为示例，并非真实的接口地址
+      url: 'http://l1669f6515.iok.la/book/book/shareAdd', //仅为示例，并非真实的接口地址
       method: 'GET',
       data: {
-        bookimgurl: that.data.bookinfo.image,
         bookname: that.data.bookinfo.title,
         author: that.data.bookinfo.author,
-        scene: e.detail.value.scene,
+        bookManPhone: e.detail.value.bookManPhone,
+        bookState: 1,
+        bookMoney: 2,
+        bookcount: 0,
+        bookIntroduce: that.data.bookinfo.summary,
+        amount: 1,
+        storeid: storeid,
+        bookimgurl: that.data.bookinfo.image,
+        average: that.data.bookinfo.rating.average,
         publisher: that.data.bookinfo.publisher,
         pubdate: that.data.bookinfo.pubdate,
-        average: that.data.bookinfo.rating.average,
-        summary: that.data.bookinfo.summary,
         tags0: that.data.bookinfo.tags[0].title,
         tags1: that.data.bookinfo.tags[1].title,
         tags2: that.data.bookinfo.tags[2].title,
-        isbn10: that.data.bookinfo.isbn10,
-        isbn13: that.data.bookinfo.isbn13,
         bookProvider: e.detail.value.bookProvider,
-        bookManPhone: e.detail.value.bookManPhone,
         openid: app.globalData.openid
       },
       header: {
         'content-type': 'application/json'
       },
       success: function (res) {
-        wx.showToast({
-          title: '添加成功',
-          icon: 'success',
-          duration: 1000,
-          mask: true,
-          success: function (res) { },
-          fail: function (res) { },
-          complete: function (res) { },
-        })
-        console.log(res.data)
-        wx.navigateTo({
-          url: '../mycode/mycode?shareCode=' + res.data,
-        })
+        if ( res.statusCode === 200) {
+          wx.showToast({
+            title: '发布成功',
+            icon: 'success',
+            duration: 1000,
+            mask: true,
+            success: function (res) { },
+            fail: function (res) { },
+            complete: function (res) { },
+          })
+          wx.navigateTo({
+            url: '../history/history',
+          })
+        }
+        
 
       }
     })
@@ -62,13 +69,22 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 10000,
+      mask: true,
+    })
     wx.request({
-      url: 'https://api.douban.com/v2/book/isbn/' + options.isbn,
+      url: 'http://l1669f6515.iok.la/book/searchByIsbn/',
       header: {
         "Content-Type": "json"
       },
+      data: {
+        isbn: options.isbn
+      },
       success: function (res) {
-        console.log(res.statusCode)
+        wx.hideToast();
         if (res.statusCode == 404) {
           wx.redirectTo({
             url: '../addbook/addbook'
@@ -78,9 +94,7 @@ Page({
           bookinfo: res.data,
           block: '../' + star.get_star(res.data.rating.average)
         })
-        console.log(that.data.bookinfo)
       }
-
     })
   },
 

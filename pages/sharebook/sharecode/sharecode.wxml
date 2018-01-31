@@ -29,7 +29,7 @@
 
 
       <view class="btn-area">
-        <button type="primary" formType="submit">提交</button>\n
+        <button type="primary" formType="submit">发布</button>\n
       </view>
     </form>
   </scroll-view>

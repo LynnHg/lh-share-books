@@ -47,6 +47,12 @@ Page({
   onShow: function () {
     var that = this
     if (that.data.hideaddress && that.data.hideaddress != that.data.address) {
+      wx.showToast({
+        title: '加载中',
+        icon: 'loading',
+        duration: 10000,
+        mask: true,
+      })
       wx.request({
         url: 'http://l1669f6515.iok.la/book/store/allstorelist',
         method: 'GET',
@@ -58,6 +64,7 @@ Page({
           'content-type': 'application/json'
         },
         success: function (res) {
+          wx.hideToast();
           var storelist = res.data.sort(util.compare('distance'));
           that.setData({
             storelist: storelist,
@@ -127,6 +134,12 @@ Page({
           city: res.result.address_component.city,
           location: res.result.location
         });
+        wx.showToast({
+          title: '加载中',
+          icon: 'loading',
+          duration: 10000,
+          mask: true,
+        })
         wx.request({
           url: 'http://l1669f6515.iok.la/book/store/allstorelist',
           method: 'GET',
@@ -138,6 +151,7 @@ Page({
             'content-type': 'application/json'
           },
           success: function (res) {
+            wx.hideToast();
             var storelist = [];
             var allstorelist = res.data;
             allstorelist.forEach(function(item){
@@ -171,7 +185,7 @@ Page({
       icon: 'loading',
       duration: 1000
     })
-    request.getBookList({ str: "" }, function (res) {
+    request.getBookList({ }, function (res) {
       var types = res.data;
       for (var i = 0; i < types.length; ++i) {
         var book = types[i];

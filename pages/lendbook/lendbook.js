@@ -17,7 +17,7 @@ Page({
     wx.showToast({
       title: '加载中',
       icon: 'loading',
-      duration: 1000,
+      duration: 10000,
       mask: true,
     })
     wx.request({
@@ -132,6 +132,7 @@ Page({
                             'content-type': 'application/json'
                           },
                           success: function (res) {
+                            wx.hideToast();
                             wx.showModal({
                               title: '借书成功',
                               content: '立即查看订单？',

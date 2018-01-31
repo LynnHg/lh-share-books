@@ -12,19 +12,16 @@ Page({
     var that = this
     wx.scanCode({
       success: (res) => {
-        console.log(res);
-        that.data.isbn = res.result;
+        console.log('书籍isbn:');
+        console.log(res.result);
+        that.setData({
+          isbn: res.result
+        })
         wx.navigateTo({
-          url: './sharecode/sharecode?isbn=' + that.data.isbn
+          url: './sharecode/sharecode?isbn=' + res.result
         })
       },
       fail: function (res) { wx.hideToast() }
-    })
-    wx.showToast({
-      title: '加载中',
-      icon: 'loading',
-      duration: 1000,
-      mask: true,
     })
   }, 
   shareHistory: function() {
