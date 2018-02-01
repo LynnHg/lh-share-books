@@ -10,7 +10,7 @@ Page({
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     wx.request({
-      url: 'https://www.eton100.com/book/addbook', //仅为示例，并非真实的接口地址
+      url: 'book/addbook', //仅为示例，并非真实的接口地址
       method:'POST',
       data: {
      imgurl: e.detail.value.imgurl ,

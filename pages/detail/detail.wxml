@@ -23,7 +23,7 @@
       <view class="detail-fr">
         <view class="detail-star-box">
           <view class="detail-star">{{bookInfo.average}}</view>
-          <image class="detail-star-img" src="{{bookInfo.block}}"></image>
+          <image class="detail-star-img" src="{{block}}"></image>
         </view>
 
         <navigator url="../comment/comment?bookid={{bookid}}">

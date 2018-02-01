@@ -1,8 +1,9 @@
 //index.js
 //获取应用实例
 var app = getApp()
-const request = require("../../utils/requests");
-const util = require("../../utils/util");
+import API from '../../shared/api/index';
+import tools from '../../shared/utils/tools';
+import getStar from '../../shared/utils/getStar';
 var star = require("../../utils/star");
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
 var WxNotificationCenter = require('../../utils/WxNotificationCenter.js');
@@ -53,25 +54,18 @@ Page({
         duration: 10000,
         mask: true,
       })
-      wx.request({
-        url: 'http://l1669f6515.iok.la/book/store/allstorelist',
-        method: 'GET',
-        data: {//经纬度city
-          latitude: that.data.location.lat,
-          longitude: that.data.location.lng
-        },
-        header: {
-          'content-type': 'application/json'
-        },
-        success: function (res) {
-          wx.hideToast();
-          var storelist = res.data.sort(util.compare('distance'));
-          that.setData({
-            storelist: storelist,
-            'app.globalData.storeLen': storelist.length
-          })
-        }
-      })
+      const params = {
+        latitude: that.data.location.lat,
+        longitude: that.data.location.lng
+      }
+      API.getAllStore(params, function (res) {
+        wx.hideToast();
+        var storelist = res.data.sort(tools.compare('distance'));
+        that.setData({
+          storelist: storelist,
+          'app.globalData.storeLen': storelist.length
+        })
+      });
     }
   },
   changeValue: function (e) {
@@ -113,7 +107,7 @@ Page({
       })
     }
     that.setData({
-      toRe: star.toRefresh()
+      toRe: getStar.toRefresh()
     });
     //定位
     qqmapsdk = new QQMapWX({
@@ -140,34 +134,27 @@ Page({
           duration: 10000,
           mask: true,
         })
-        wx.request({
-          url: 'http://l1669f6515.iok.la/book/store/allstorelist',
-          method: 'GET',
-          data: {//经纬度city
-            latitude: that.data.location.lat,
-            longitude: that.data.location.lng
-          },
-          header: {
-            'content-type': 'application/json'
-          },
-          success: function (res) {
-            wx.hideToast();
-            var storelist = [];
-            var allstorelist = res.data;
-            allstorelist.forEach(function(item){
-              if (item.distance <= that.data.maxRange) {
-                storelist.push(item);
-              }
-            })
-            //按距离排序
-            storelist = storelist.sort(util.compare('distance'));
-            allstorelist = allstorelist.sort(util.compare('distance'));
-            that.setData({
-              storelist: storelist,
-              allstorelist: allstorelist,
-            })
-            app.globalData.storeLen=storelist.length; // 保存附近网点个数
-          }
+        const parmas = {
+          latitude: that.data.location.lat,
+          longitude: that.data.location.lng
+        };
+        API.getAllStore(parmas, function (res) {
+          wx.hideToast();
+          var storelist = [];
+          var allstorelist = res.data;
+          allstorelist.forEach(function (item) {
+            if (item.distance <= that.data.maxRange) {
+              storelist.push(item);
+            }
+          })
+          //按距离排序
+          storelist = storelist.sort(tools.compare('distance'));
+          allstorelist = allstorelist.sort(tools.compare('distance'));
+          that.setData({
+            storelist: storelist,
+            allstorelist: allstorelist,
+          })
+          app.globalData.storeLen = storelist.length; // 保存附近网点个数
         })
       },
       fail: function (res) {
@@ -185,11 +172,11 @@ Page({
       icon: 'loading',
       duration: 1000
     })
-    request.getBookList({ }, function (res) {
+    API.getAllBook({}, function (res) {
       var types = res.data;
       for (var i = 0; i < types.length; ++i) {
         var book = types[i];
-        book.block = star.get_star(book.average);
+        book.block = getStar.get_star(book.average);
       }
       if (types.length == 0) {
         return;
@@ -216,11 +203,11 @@ Page({
   },
   toHandel: function () {
     var that = this;
-    request.getBookList({}, function (res) {
+    API.getAllBook({}, function (res) {
       var types = res.data;
       for (var i = 0; i < types.length; ++i) {
         var book = types[i];
-        book.block = star.get_star(book.average);
+        book.block = getStar.get_star(book.average);
       }
       if (types.length == 0) {
         return;
@@ -231,7 +218,7 @@ Page({
   toRefresh: function (e) {
     var that = this;
     this.setData({
-      toRe: star.toRefresh()
+      toRe: getStar.toRefresh()
     });
     that.toHandel();
   },
@@ -240,11 +227,11 @@ Page({
   },
   lower: function (e) {
     var that = this;
-    request.getBookList({}, function (res) {
+    API.getAllBook({}, function (res) {
       var types = res.data;
       for (var i = 0; i < types.length; ++i) {
         var book = types[i];
-        book.block = star.get_star(book.average);
+        book.block = getStar.get_star(book.average);
       }
       if (types.length == 0) {
         return;

@@ -1,17 +1,16 @@
-var api = require('./config.js');
 //网络请求模块
 function request(url, data, successCb, errorCb, completeCb) {
-    wx.request({
-        url: url,
-        method: 'get',
-        data: data,
-        header: {
-          "Content-Type": "json"
-        },
-        success: successCb,
-        error: errorCb,
-        complete: completeCb
-    });
+  wx.request({
+    url: url,
+    method: 'get',
+    data: data,
+    header: {
+      "Content-Type": "json"
+    },
+    success: successCb,
+    error: errorCb,
+    complete: completeCb
+  });
 }
 
 //搜索图书 
@@ -28,4 +27,8 @@ function getBookList(data, successCb, errorCb, completeCb) {
 }
 
 //
-module.exports = { searchBook: searchBook, getBookById: getBookById, getBookList:getBookList}
+module.exports = {
+  searchBook: searchBook,
+  getBookById: getBookById,
+  getBookList: getBookList
+}

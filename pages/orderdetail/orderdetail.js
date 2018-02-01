@@ -1,6 +1,8 @@
 // orderdetail.js
 var app = getApp();
-const util = require("../../utils/util");
+import API from '../../shared/api/index';
+import tools from '../../shared/utils/tools';
+
 Page({
 
   /**
@@ -24,7 +26,7 @@ Page({
     var orderMoney = that.data.details.orderMoney;
     var orderid = that.data.details.orderid;
     var bookid = that.data.details.bookid; // 书籍id
-    var payTime = util.getTime();
+    var payTime = tools.getTime();
     wx.showModal({
       title: '提示',
       content: '优先从余额扣款，确定支付吗？',
@@ -37,68 +39,63 @@ Page({
             duration: 1000,
             mask: true,
           })
-          wx.request({
-            url: 'http://l1669f6515.iok.la/book/user/searchByOpenid',
-            data: {
-              openid: app.globalData.openid,
-            },
-            method: 'GET',
-            success: function (res) {
-              var money = res.data[0].money;
-              that.setData({
-                money: money,
-              })
-              if (money >= orderMoney) {
-                wx.request({
-                  url: 'http://l1669f6515.iok.la/book/pay',
-                  data: {
-                    openid: app.globalData.openid,
-                    money: -orderMoney,
-                    orderid: orderid,
-                    orderState: 2,// 待付款->已付款
-                    orderMoney: orderMoney,
-                    payTime: payTime,
-                    bookid: bookid,
-                  },
-                  method: 'GET',
-                  header: {
-                    'content-type': 'application/json'
-                  },
-                  success: function (res) {
-                    if (res.statusCode === 200) {
-                      wx.showModal({
-                        title: '通知',
-                        content: '支付成功！',
-                        showCancel: false,
-                        success: function (res) {
-                          if (res.confirm) {
-                            wx.reLaunch({
-                              url: '../orderlist/orderlist'
-                            })
-                          }
+          API.getUserByOpenid({
+            openid: app.globalData.openid,
+          }, function (res) {
+            var money = res.data[0].money;
+            that.setData({
+              money: money,
+            })
+            if (money >= orderMoney) {
+              wx.request({
+                url: 'http://l1669f6515.iok.la/book/pay',
+                data: {
+                  openid: app.globalData.openid,
+                  money: -orderMoney,
+                  orderid: orderid,
+                  orderState: 2,// 待付款->已付款
+                  orderMoney: orderMoney,
+                  payTime: payTime,
+                  bookid: bookid,
+                },
+                method: 'GET',
+                header: {
+                  'content-type': 'application/json'
+                },
+                success: function (res) {
+                  if (res.statusCode === 200) {
+                    wx.showModal({
+                      title: '通知',
+                      content: '支付成功！',
+                      showCancel: false,
+                      success: function (res) {
+                        if (res.confirm) {
+                          wx.reLaunch({
+                            url: '../orderlist/orderlist'
+                          })
                         }
-                      })
-                    }
+                      }
+                    })
                   }
-                })
-              } else {
-                wx.showModal({
-                  title: '余额不足',
-                  content: '立即充值?',
-                  showCancel: true,
-                  success: function (res) {
-                    if (res.confirm) {
-                      wx.navigateTo({
-                        url: '../wallet/balance/balance'
-                      })
-                    } else if (res.cancel) {
-                      wx.navigateBack({
-                        delta: 1
-                      })
-                    }
+                }
+              })
+            } else {
+              wx.showModal({
+                title: '余额不足',
+                content: '立即充值?',
+                showCancel: true,
+                success: function (res) {
+                  if (res.confirm) {
+                    wx.navigateTo({
+                      url: '../wallet/balance/balance'
+                    })
+                  } else if (res.cancel) {
+                    wx.navigateBack({
+                      delta: 1
+                    })
                   }
-                })
-              }
+                }
+              })
             }
           })
         } else if (res.cancel) {
@@ -116,37 +113,29 @@ Page({
       content: '确定要取消本次订单吗?',
       success: function (res) {
         if (res.confirm) {
-          wx.request({
-            url: 'http://l1669f6515.iok.la/book//order/deleteorder',
-            method: 'GET',
-            data: {
-              orderid: orderid
-            },
-            header: {
-              'content-type': 'application/json'
-            },
-            success: function (res) {
-              if (res.statusCode === 200) {
-                wx.showToast({
-                  title: '取消成功',
-                  icon: 'success',
-                  duration: 1000,
-                  mask: true,
-                  success: function () {
-                    setTimeout(function () {
-                      wx.reLaunch({
-                        url: '../orderlist/orderlist'
-                      })
-                    }, 1000)
-                  }
-                })
-              } else {
-                wx.showToast({
-                  title: '取消失败',
-                  image: '../../assets/images/failed.png',
-                  duration: 2000
-                })
-              }
+          API.deleteOrder({
+            orderid: orderid
+          }, function (res) {
+            if (res.statusCode === 200) {
+              wx.showToast({
+                title: '取消成功',
+                icon: 'success',
+                duration: 1000,
+                mask: true,
+                success: function () {
+                  setTimeout(function () {
+                    wx.reLaunch({
+                      url: '../orderlist/orderlist'
+                    })
+                  }, 1000)
+                }
+              })
+            } else {
+              wx.showToast({
+                title: '取消失败',
+                image: '../../assets/images/failed.png',
+                duration: 2000
+              })
             }
           })
         } else {
@@ -176,7 +165,7 @@ Page({
               'content-type': 'application/json'
             },
             success: function (res) {
-              var endTime = util.getTime();
+              var endTime = tools.getTime();
               var bookEndPlace = res.data[0].storePlace;
               wx.request({
                 url: 'http://l1669f6515.iok.la/book/order/getorderbyopenid',

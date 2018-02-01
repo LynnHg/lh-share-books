@@ -1,5 +1,5 @@
 // pages/detail/detail.js
-const request=require("../../utils/requests");
+import API from '../../shared/api/index';
 var star = require("../../utils/star");
 Page({
   data:{
@@ -10,8 +10,8 @@ Page({
       // 页面初始化 options为页面跳转所带来的参数
       var that=this;
       that.setData({ bookid:options.bookid});
-      request.getBookById({bookid:that.data.bookid},function(res){
-          that.setData({bookInfo:res.data[0]});
+      API.getBookById({bookid:that.data.bookid},function(res){
+        that.setData({ bookInfo: res.data[0], block: star.get_star(res.data[0].average)});
       });
   },
   onReady:function(){
