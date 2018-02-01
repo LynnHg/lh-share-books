@@ -142,49 +142,33 @@ Page({
           }, function (res) {
             var endTime = tools.getTime();
             var bookEndPlace = res.data[0].storePlace;
-            wx.request({
-              url: 'http://l1669f6515.iok.la/book/order/getorderbyopenid',
-              method: 'GET',
-              data: {
-                openid: app.globalData.openid
-              },
-              header: {
-                'content-type': 'application/json'
-              },
-              success: function (res) {
-                wx.request({
-                  url: 'http://l1669f6515.iok.la/book/returnBook',
-                  data: {
-                    openid: app.globalData.openid,
-                    orderid: orderid,
-                    orderState: 0, // 进行中->已完成
-                    endTime: endTime,
-                    bookEndPlace: bookEndPlace,
-                    bookid: bookid,
-                    storeid: storeid
-                  },
-                  method: 'GET',
-                  header: {
-                    'content-type': 'application/json'
-                  },
-                  success: function (res) {
-                    if (res.statusCode === 200) {
-                      wx.showModal({
-                        title: '通知',
-                        content: '归还成功,积分+1！',
-                        showCancel: false,
-                        success: function (res) {
-                          if (res.confirm) {
-                            wx.reLaunch({
-                              url: '../orderlist/orderlist'
-                            })
-                          }
-                        }
-                      })
+            API.getOrderByOpenid({
+              openid: app.globalData.openid
+            }, function (res) {
+              API.returnBook({
+                openid: app.globalData.openid,
+                orderid: orderid,
+                orderState: 0, // 进行中->已完成
+                endTime: endTime,
+                bookEndPlace: bookEndPlace,
+                bookid: bookid,
+                storeid: storeid
+              }, function (res) {
+                if (res.statusCode === 200) {
+                  wx.showModal({
+                    title: '通知',
+                    content: '归还成功,积分+1！',
+                    showCancel: false,
+                    success: function (res) {
+                      if (res.confirm) {
+                        wx.reLaunch({
+                          url: '../orderlist/orderlist'
+                        })
+                      }
                     }
-                  }
-                })
-              }
+                  })
+                }
+              })
             })
           })
         } else {

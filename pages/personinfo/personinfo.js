@@ -1,5 +1,6 @@
 // personinfo.js
 var app = getApp();
+import API from '../../shared/api/index';
 
 Page({
 
@@ -42,44 +43,36 @@ Page({
       })
       return;
     }else {
-      wx.request({
-        url: 'http://l1669f6515.iok.la/book/user/add',
-        method: 'GET',
-        header: {
-          'content-type': 'application/json'
-        },
-        data: {
-          openid: app.globalData.openid,
-          name: that.data.personInfo.name,
-          phone: that.data.personInfo.phone,
-          userState: 1,
-          point: 0,
-          deposit: 0,
-          money: 0
-        },
-        success: function (res) {
-          if (res.statusCode === 200) {
-            wx.showModal({
-              title: '通知',
-              content: '注册成功！',
-              showCancel: false,
-              success: function (res) {
-                if (res.confirm) {
-                  wx.navigateBack({
-                    delta: 1
-                  })
-                }
+      API.addUser({
+        openid: app.globalData.openid,
+        name: that.data.personInfo.name,
+        phone: that.data.personInfo.phone,
+        userState: 1,
+        point: 0,
+        deposit: 0,
+        money: 0
+      }, function (res) {
+        if (res.statusCode === 200) {
+          wx.showModal({
+            title: '通知',
+            content: '注册成功！',
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                wx.navigateBack({
+                  delta: 1
+                })
               }
-            })
-          } else {
-            wx.showToast({
-              title: '注册失败',
-              image: '../../assets/images/failed.png',
-              duration: 2000
-            })
-          }
+            }
+          })
+        } else {
+          wx.showToast({
+            title: '注册失败',
+            image: '../../assets/images/failed.png',
+            duration: 2000
+          })
         }
-      })
+      });
     }
     
   },
@@ -100,43 +93,33 @@ Page({
       })
       return;
     }else {
-      wx.request({
-        url: 'http://l1669f6515.iok.la/book/user/saveinfo',
-        method: 'GET',
-        header: {
-          'content-type': 'application/json'
-        },
-        data: {
-          openid: app.globalData.openid,
-          name: that.data.personInfo.name,
-          phone: that.data.personInfo.phone,
-        },
-        success: function (res) {
-          if (res.statusCode === 200) {
-            wx.showModal({
-              title: '通知',
-              content: '保存成功！',
-              showCancel: false,
-              success: function (res) {
-                if (res.confirm) {
-                  wx.navigateBack({
-                    delta: 1
-                  })
-                }
+      API.saveUserInfo({
+        openid: app.globalData.openid,
+        name: that.data.personInfo.name,
+        phone: that.data.personInfo.phone,
+      }, function (res) {
+        if (res.statusCode === 200) {
+          wx.showModal({
+            title: '通知',
+            content: '保存成功！',
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                wx.navigateBack({
+                  delta: 1
+                })
               }
-            })
-          } else {
-            wx.showToast({
-              title: '保存失败',
-              image: '../../assets/images/failed.png',
-              duration: 2000
-            })
-          }
+            }
+          })
+        } else {
+          wx.showToast({
+            title: '保存失败',
+            image: '../../assets/images/failed.png',
+            duration: 2000
+          })
         }
-      })
+      });
     }
-
-    
   },
   /**
    * 生命周期函数--监听页面加载
@@ -150,45 +133,30 @@ Page({
         userInfo: userInfo
       })
     });
-    wx.request({
-      url: 'http://l1669f6515.iok.la/book/user/alluser',
-      method: 'GET',
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        var allUser = res.data;
-        allUser.forEach(function (item) {
-          if (item.openid === app.globalData.openid) {//已经注册
-            that.setData({
-              isReged: true
-            })
-            wx.request({
-              url: 'http://l1669f6515.iok.la/book/user/searchByOpenid',
-              method: 'GET',
-              header: {
-                'content-type': 'application/json'
-              },
-              data: {
-                openid: app.globalData.openid
-              },
-              success: function (res) {
-                var info = res.data[0];
-                that.setData({
-                  'personInfo.name': info.name,
-                  'personInfo.phone': info.phone
-                })
-              }
-            })
-          } else {
-            that.setData({
-              isReged: false
-            })
-          }
+    API.getAllUser({}, function (res) {
+      var allUser = res.data;
+      var isReged = allUser.some(function(item){
+        return item.openid === app.globalData.openid
+      });
+      if (isReged) {
+        that.setData({
+          isReged: true
+        })
+        API.getUserByOpenid({
+          openid: app.globalData.openid
+        }, function (res) {
+          var info = res.data[0];
+          that.setData({
+            'personInfo.name': info.name,
+            'personInfo.phone': info.phone
+          })
+        });
+      } else {
+        that.setData({
+          isReged: false
         })
       }
     });
-
   },
 
   /**

@@ -4,19 +4,10 @@ import API from '../../shared/api/index';
 import tools from '../../shared/utils/tools';
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     orderid: "",
     details: [],
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-
   backTo: function () {
     wx.navigateBack({
     })
@@ -47,38 +38,30 @@ Page({
               money: money,
             })
             if (money >= orderMoney) {
-              wx.request({
-                url: 'http://l1669f6515.iok.la/book/pay',
-                data: {
-                  openid: app.globalData.openid,
-                  money: -orderMoney,
-                  orderid: orderid,
-                  orderState: 2,// 待付款->已付款
-                  orderMoney: orderMoney,
-                  payTime: payTime,
-                  bookid: bookid,
-                },
-                method: 'GET',
-                header: {
-                  'content-type': 'application/json'
-                },
-                success: function (res) {
-                  if (res.statusCode === 200) {
-                    wx.showModal({
-                      title: '通知',
-                      content: '支付成功！',
-                      showCancel: false,
-                      success: function (res) {
-                        if (res.confirm) {
-                          wx.reLaunch({
-                            url: '../orderlist/orderlist'
-                          })
-                        }
+              API.pay({
+                openid: app.globalData.openid,
+                money: -orderMoney,
+                orderid: orderid,
+                orderState: 2,// 待付款->已付款
+                orderMoney: orderMoney,
+                payTime: payTime,
+                bookid: bookid,
+              }, function (res) {
+                if (res.statusCode === 200) {
+                  wx.showModal({
+                    title: '通知',
+                    content: '支付成功！',
+                    showCancel: false,
+                    success: function (res) {
+                      if (res.confirm) {
+                        wx.reLaunch({
+                          url: '../orderlist/orderlist'
+                        })
                       }
-                    })
-                  }
+                    }
+                  })
                 }
-              })
+              });
             } else {
               wx.showModal({
                 title: '余额不足',
@@ -155,63 +138,39 @@ Page({
       content: '确定要归还吗?',
       success: function (res) {
         if (res.confirm) {
-          wx.request({
-            url: 'http://l1669f6515.iok.la/book/store/searchById',
-            method: 'GET',
-            data: {
-              storeid: storeid
-            },
-            header: {
-              'content-type': 'application/json'
-            },
-            success: function (res) {
-              var endTime = tools.getTime();
-              var bookEndPlace = res.data[0].storePlace;
-              wx.request({
-                url: 'http://l1669f6515.iok.la/book/order/getorderbyopenid',
-                method: 'GET',
-                data: {
-                  openid: app.globalData.openid
-                },
-                header: {
-                  'content-type': 'application/json'
-                },
-                success: function (res) {
-                  wx.request({
-                    url: 'http://l1669f6515.iok.la/book/returnBook',
-                    data: {
-                      openid: app.globalData.openid,
-                      orderid: orderid,
-                      orderState: 0, // 进行中->已完成
-                      endTime: endTime,
-                      bookEndPlace: bookEndPlace,
-                      bookid: bookid,
-                      storeid: storeid
-                    },
-                    method: 'GET',
-                    header: {
-                      'content-type': 'application/json'
-                    },
+          API.getStoreById({
+            storeid: storeid
+          }, function (res) {
+            var endTime = tools.getTime();
+            var bookEndPlace = res.data[0].storePlace;
+            API.getOrderByOpenid({
+              openid: app.globalData.openid
+            }, function (res) {
+              API.returnBook({
+                openid: app.globalData.openid,
+                orderid: orderid,
+                orderState: 0, // 进行中->已完成
+                endTime: endTime,
+                bookEndPlace: bookEndPlace,
+                bookid: bookid,
+                storeid: storeid
+              }, function (res) {
+                if (res.statusCode === 200) {
+                  wx.showModal({
+                    title: '通知',
+                    content: '归还成功,积分+1！',
+                    showCancel: false,
                     success: function (res) {
-                      if (res.statusCode === 200) {
-                        wx.showModal({
-                          title: '通知',
-                          content: '归还成功,积分+1！',
-                          showCancel: false,
-                          success: function (res) {
-                            if (res.confirm) {
-                              wx.reLaunch({
-                                url: '../orderlist/orderlist'
-                              })
-                            }
-                          }
+                      if (res.confirm) {
+                        wx.reLaunch({
+                          url: '../orderlist/orderlist'
                         })
                       }
                     }
                   })
                 }
-              })
-            }
+              });
+            });
           })
         } else {
           return
@@ -222,33 +181,25 @@ Page({
   onLoad: function (options) {
     var that = this;
     that.setData({ orderid: options.orderid });
-    wx.request({
-      url: 'http://l1669f6515.iok.la/book/order/getorderbyorderid',
-      method: 'GET',
-      data: {
-        orderid: that.data.orderid
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        var types = res.data[0];
-        switch (types.orderState) {
-          case 0:
-            types.state = '已完成';
-            break;
-          case 1:
-            types.state = '待付款';
-            break;
-          case 2:
-            types.state = '进行中';
-            break;
-        }
-        that.setData({
-          details: types
-        })
+    API.getOrderByOrderid({
+      orderid: that.data.orderid
+    }, function (res) {
+      var types = res.data[0];
+      switch (types.orderState) {
+        case 0:
+          types.state = '已完成';
+          break;
+        case 1:
+          types.state = '待付款';
+          break;
+        case 2:
+          types.state = '进行中';
+          break;
       }
-    })
+      that.setData({
+        details: types
+      })
+    });
   },
 
   /**
