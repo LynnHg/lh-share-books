@@ -11,17 +11,17 @@
         <view class="search-icon">
           <image src="../../assets/images/search.png"></image>
         </view>
-        <text class="search-input">搜书名/作者/ISBN</text>
+        <text class="search-input">搜书名</text>
       </navigator>
     </view>
     <view class="navbar">
-      <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
+      <text wx:for="{{navbar}}" wx:key="unique" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
     </view>
     <!--   附近网点   -->
     <view hidden="{{currentTab!==1}}">
     <view class="stores"><text class="stores-len">共{{storelist.length}}个网点</text></view>
       <view class="o-list">
-        <view wx:for="{{storelist}}">
+        <view wx:for="{{storelist}}" wx:key="unique">
           <navigator url="../storebook/storebook?storeid={{item.storeid}}&latitude={{item.latitude}}&longitude={{item.longitude}}&name={{item.storePlace}}&store={{item.storeName}}">
             <view class="list-item" hidden="{{item.distance >= maxRange}}">
               <image class="img" src="../../assets/images/banner.jpg" url=""></image>
@@ -37,7 +37,7 @@
     <view hidden="{{currentTab!==2}}">
     <view class="stores"><text class="stores-len">共{{allstorelist.length}}个网点</text></view>
       <view class="o-list">
-        <view wx:for="{{allstorelist}}">        
+        <view wx:for="{{allstorelist}}" wx:key="unique">        
           <navigator url="../storebook/storebook?storeid={{item.storeid}}&latitude={{item.latitude}}&longitude={{item.longitude}}&name={{item.storePlace}}&store={{item.storeName}}">
             <view class="list-item">
               <image class="img" src="../../assets/images/banner.jpg" url=""></image>

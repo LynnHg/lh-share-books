@@ -1,5 +1,7 @@
 // balance.js
-var app = getApp()
+var app = getApp();
+import API from '../../../shared/api/index';
+
 Page({
   /**
    * 页面的初始数据
@@ -13,17 +15,10 @@ Page({
   recharge:function(){
    var that =this
    if(that.data.money!=0){
-   wx.request({
-     url: 'http://l1669f6515.iok.la/book/user/changeMoney',
-     data: { 
+     API.changeMoney({
        openid: app.globalData.openid,
-       money:that.data.money
-        },
-     method:'GET',
-     header: {
-       'content-type': 'application/json'
-     },
-     success: function (res) {
+       money: that.data.money
+     }, function (res) {
        if (res.statusCode === 200) {
          wx.showModal({
            title: '通知',
@@ -44,12 +39,7 @@ Page({
            duration: 2000
          })
        }
-     },
-     fail: function (res) {
-       console.log(res);
-     }
-     //请求失败
-   })
+     });
    }else{
      wx.showModal({
        title: '提示',

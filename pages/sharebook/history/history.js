@@ -1,5 +1,6 @@
 // history.js
-var app = getApp()
+var app = getApp();
+import API from '../../../shared/api/index';
 Page({
 
   /**
@@ -13,21 +14,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
-    wx.request({
-      url: 'http://l1669f6515.iok.la/book/SearchBookByOpenid', //仅为示例，并非真实的接口地址
-      method: 'GET',
-      data: {
-        openid:app.globalData.openid
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        that.setData({
-          history: res.data
-        })
-      }
+    var that = this;
+    API.getBookByOpenid({
+      openid: app.globalData.openid
+    }, function (res) {
+      that.setData({
+        history: res.data
+      })
     })
   },
 

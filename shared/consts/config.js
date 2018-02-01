@@ -7,7 +7,8 @@ const URL = {
     getBookByStoreid: 'book/searchBookByStoreid',
     getBookByOpenid: 'book/searchBookByOpenid',
     returnBook: 'returnBook',
-
+    shareAddBook: 'book/shareAdd',
+    getBookByIsbn: 'searchByIsbn',
     // store
     getAllStore: 'store/allstorelist',
     getStoreById: 'store/searchById',
@@ -23,9 +24,14 @@ const URL = {
     getUserByOpenid: 'user/searchByOpenid',
     addUser: 'user/add',
     saveUserInfo: 'user/saveinfo',
+    changeDeposit: 'user/changeDeposit',
+    changeMoney:'user/changeMoney',
 
-    //pay 
-    pay: 'pay'
+    // pay 
+    pay: 'pay',
+
+    // feedBack
+    userAddFeedback: 'feedback/userAdd',
   }
 }
 

@@ -1,5 +1,7 @@
 // wallet.js
-var app = getApp()
+var app = getApp();
+import API from '../../shared/api/index';
+
 Page({
 
   /**
@@ -16,39 +18,31 @@ Page({
         content: '确定充值押金吗?后续可退回',
         success: function (res) {
           if (res.confirm) {
-            wx.request({
-              url: 'http://l1669f6515.iok.la/book/user/changeDeposit',
-              method: 'GET',
-              data: {
-                openid: app.globalData.openid,
-                deposit: 666
-              },
-              header: {
-                'content-type': 'application/json'
-              },
-              success: function (res) {
-                if (res.statusCode === 200) {
-                  wx.showModal({
-                    title: '通知',
-                    content: '押金充值成功！',
-                    showCancel: false,
-                    success: function (res) {
-                      if (res.confirm) {
-                        wx.navigateBack({
-                          delta: 1
-                        })
-                      }
+            API.changeDeposit({
+              openid: app.globalData.openid,
+              deposit: 666
+            }, function (res) {
+              if (res.statusCode === 200) {
+                wx.showModal({
+                  title: '通知',
+                  content: '押金充值成功！',
+                  showCancel: false,
+                  success: function (res) {
+                    if (res.confirm) {
+                      wx.navigateBack({
+                        delta: 1
+                      })
                     }
-                  })
-                } else {
-                  wx.showToast({
-                    title: '押金充值失败',
-                    image: '../../assets/images/failed.png',
-                    duration: 2000
-                  })
-                }
+                  }
+                })
+              } else {
+                wx.showToast({
+                  title: '押金充值失败',
+                  image: '../../assets/images/failed.png',
+                  duration: 2000
+                })
               }
-            })
+            });
           } else {
             return;
           }
@@ -72,26 +66,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
-    wx.request({
-      url: 'http://l1669f6515.iok.la/book/user/searchByOpenid',
-      data: {
-        openid: app.globalData.openid
-      },
-      method: 'GET',
-      header: { 'content-type': 'application/json' },
-      success: function (res) {
-        var info = res.data[0];
-        that.setData({
-          'wallet.deposit': info.deposit,
-          'wallet.money': info.money,
-          'wallet.point': info.point
-        })
-      },
-      fail: function (res) { },
-      complete: function (res) { },
-    })
-
+    var that = this;
+    API.getUserByOpenid({
+      openid: app.globalData.openid
+    }, function (res) {
+      var info = res.data[0];
+      that.setData({
+        'wallet.deposit': info.deposit,
+        'wallet.money': info.money,
+        'wallet.point': info.point
+      })
+    });
   },
 
   returndeposit: function () { // 退押金
@@ -112,75 +97,58 @@ Page({
         showCancel: true,
         success: function (res) {
           if (res.confirm) {
-            wx.request({
-              url: 'http://l1669f6515.iok.la/book/order/getorderbyopenid',
-              method: 'GET',
-              data: {
-                openid: app.globalData.openid
-              },
-              header: {
-                'content-type': 'application/json'
-              },
-              success: function (res) {
-                var types = res.data;
-                var pending = [];
-                types = types.length ? types.forEach(function (item) {
-                  if (item.orderState === 1) {
-                    item.state = '待付款';
-                    pending.push(item);
-                  }
-                }) : null;
-                if (pending.length !== 0) {
-                  wx.showModal({
-                    title: '有未付款订单',
-                    content: '押金不可退！',
-                    showCancel: false,
-                    success: function (res) {
-                      if (res.confirm) {
-                        wx.navigateBack({
-                          delta: 1
-                        })
-                      }
-                    }
-                  })
-                } else {
-                  wx.request({
-                    url: 'http://l1669f6515.iok.la/book/user/changeDeposit',
-                    method: 'GET',
-                    data: {
-                      openid: app.globalData.openid,
-                      deposit: 0
-                    },
-                    header: {
-                      'content-type': 'application/json'
-                    },
-                    success: function (res) {
-                      if (res.statusCode === 200) {
-                        wx.showModal({
-                          title: '通知',
-                          content: '押金退款成功！',
-                          showCancel: false,
-                          success: function (res) {
-                            if (res.confirm) {
-                              wx.navigateBack({
-                                delta: 1
-                              })
-                            }
-                          }
-                        })
-                      } else {
-                        wx.showToast({
-                          title: '押金退款失败',
-                          image: '../../assets/images/failed.png',
-                          duration: 2000
-                        })
-                      }
-                    }
-                  })
+            API.getOrderByOpenid({
+              openid: app.globalData.openid
+            }, function (res) {
+              var types = res.data;
+              var pending = [];
+              types = types.length ? types.forEach(function (item) {
+                if (item.orderState === 1) {
+                  item.state = '待付款';
+                  pending.push(item);
                 }
+              }) : null;
+              if (pending.length !== 0) {
+                wx.showModal({
+                  title: '有未付款订单',
+                  content: '押金不可退！',
+                  showCancel: false,
+                  success: function (res) {
+                    if (res.confirm) {
+                      wx.navigateBack({
+                        delta: 1
+                      })
+                    }
+                  }
+                })
+              } else {
+                API.changeDeposit({
+                  openid: app.globalData.openid,
+                  deposit: 0
+                }, function (res) {
+                  if (res.statusCode === 200) {
+                    wx.showModal({
+                      title: '通知',
+                      content: '押金退款成功！',
+                      showCancel: false,
+                      success: function (res) {
+                        if (res.confirm) {
+                          wx.navigateBack({
+                            delta: 1
+                          })
+                        }
+                      }
+                    })
+                  } else {
+                    wx.showToast({
+                      title: '押金退款失败',
+                      image: '../../assets/images/failed.png',
+                      duration: 2000
+                    })
+                  }
+                });
               }
             });
-
           } else if (res.cancel) {
             console.log('用户点击取消')
           }

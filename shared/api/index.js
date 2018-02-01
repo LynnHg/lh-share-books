@@ -26,6 +26,14 @@ function returnBook(params, successCb, errorCb, completeCb) {
   createAPI.get(URL.request.returnBook, params, successCb, errorCb, completeCb);
 }
 
+function shareAddBook(params, successCb, errorCb, completeCb) {
+  createAPI.post(URL.request.shareAddBook, params, successCb, errorCb, completeCb);
+}
+
+function getBookByIsbn(params, successCb, errorCb, completeCb) {
+  createAPI.get(URL.request.getBookByIsbn, params, successCb, errorCb, completeCb);
+}
+
 // store
 function getAllStore(params, successCb, errorCb, completeCb) {
   createAPI.get(URL.request.getAllStore, params, successCb, errorCb, completeCb);
@@ -69,9 +77,22 @@ function saveUserInfo(params, successCb, errorCb, completeCb) {
   createAPI.get(URL.request.saveUserInfo, params, successCb, errorCb, completeCb);
 }
 
+function changeDeposit(params, successCb, errorCb, completeCb) {
+  createAPI.get(URL.request.changeDeposit, params, successCb, errorCb, completeCb);
+}
+
+function changeMoney(params, successCb, errorCb, completeCb) {
+  createAPI.get(URL.request.changeMoney, params, successCb, errorCb, completeCb);
+}
+
 // pay 
 function pay(params, successCb, errorCb, completeCb) {
   createAPI.get(URL.request.pay, params, successCb, errorCb, completeCb);
+}
+
+// feedback 
+function userAddFeedback(params, successCb, errorCb, completeCb) {
+  createAPI.get(URL.request.userAddFeedback, params, successCb, errorCb, completeCb);
 }
 
 export default {
@@ -80,6 +101,8 @@ export default {
   getBookByName,
   getBookByStoreid,
   getBookByOpenid,
+  shareAddBook,
+  getBookByIsbn,
   returnBook,
   getAllStore,
   getStoreById,
@@ -91,5 +114,8 @@ export default {
   getUserByOpenid,
   addUser,
   saveUserInfo,
+  changeDeposit,
+  changeMoney,
   pay,
+  userAddFeedback
 }

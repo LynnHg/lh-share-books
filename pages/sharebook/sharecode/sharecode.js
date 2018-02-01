@@ -1,6 +1,7 @@
 var app = getApp();
 import getStar from '../../../shared/utils/getStar';
 import tools from '../../../shared/utils/tools';
+import API from '../../../shared/api/index';
 
 Page({
 
@@ -39,50 +40,40 @@ Page({
       })
       return;
     } else {
-      wx.request({
-        url: 'http://l1669f6515.iok.la/book/book/shareAdd', //仅为示例，并非真实的接口地址
-        method: 'POST',
-        data: {
-          bookname: that.data.bookinfo.title,
-          author: that.data.bookinfo.author,
-          bookManPhone: bookManPhone,
-          bookState: 1,
-          bookMoney: 2,
-          bookcount: 0,
-          bookIntroduce: that.data.bookinfo.summary,
-          amount: 1,
-          storeid: storeid,
-          bookimgurl: that.data.bookinfo.image,
-          average: that.data.bookinfo.rating.average,
-          publisher: that.data.bookinfo.publisher,
-          pubdate: that.data.bookinfo.pubdate,
-          tags0: that.data.bookinfo.tags[0].title,
-          tags1: that.data.bookinfo.tags[1].title,
-          tags2: that.data.bookinfo.tags[2].title,
-          bookProvider: bookProvider,
-          openid: openid,
-          sharedTime: sharedTime
-        },
-        header: {
-          'content-type': 'application/x-www-form-urlencoded'
-        },
-        success: function (res) {
-          if (res.statusCode === 200) {
-            wx.showToast({
-              title: '发布成功',
-              icon: 'success',
-              duration: 1000,
-              mask: true,
-              success: function (res) { },
-              fail: function (res) { },
-              complete: function (res) { },
-            })
-            wx.navigateTo({
-              url: '../history/history',
-            })
-          }
-
-
+      API.shareAddBook({
+        bookname: that.data.bookinfo.title,
+        author: that.data.bookinfo.author,
+        bookManPhone: bookManPhone,
+        bookState: 1,
+        bookMoney: 2,
+        bookcount: 0,
+        bookIntroduce: that.data.bookinfo.summary,
+        amount: 1,
+        storeid: storeid,
+        bookimgurl: that.data.bookinfo.image,
+        average: that.data.bookinfo.rating.average,
+        publisher: that.data.bookinfo.publisher,
+        pubdate: that.data.bookinfo.pubdate,
+        tags0: that.data.bookinfo.tags[0].title,
+        tags1: that.data.bookinfo.tags[1].title,
+        tags2: that.data.bookinfo.tags[2].title,
+        bookProvider: bookProvider,
+        openid: openid,
+        sharedTime: sharedTime
+      }, function (res) {
+        if (res.statusCode === 200) {
+          wx.showToast({
+            title: '发布成功',
+            icon: 'success',
+            duration: 1000,
+            mask: true,
+            success: function (res) { },
+            fail: function (res) { },
+            complete: function (res) { },
+          })
+          wx.navigateTo({
+            url: '../history/history',
+          })
         }
       })
     }
@@ -99,27 +90,21 @@ Page({
       duration: 10000,
       mask: true,
     })
-    wx.request({
-      url: 'http://l1669f6515.iok.la/book/searchByIsbn/',
-      header: {
-        "Content-Type": "json"
-      },
-      data: {
-        isbn: options.isbn
-      },
-      success: function (res) {
-        wx.hideToast();
-        if (res.statusCode == 404) {
-          wx.redirectTo({
-            url: '../addbook/addbook'
-          })
-        }
-        that.setData({
-          bookinfo: res.data,
-          block: '../' + getStar.get_star(res.data.rating.average)
+    API.getBookByIsbn({
+      isbn: options.isbn
+    }, function (res) {
+      wx.hideToast();
+      if (res.statusCode == 404) {
+        wx.redirectTo({
+          url: '../addbook/addbook'
         })
       }
-    })
+      that.setData({
+        bookinfo: res.data,
+        block: '../' + getStar.get_star(res.data.rating.average)
+      })
+    });
+
   },
 
   /**

@@ -1,7 +1,7 @@
 <view>
   <view class="space"></view>
    <navigator url="../personinfo/personinfo">
-  <view class="wa-item wa-item-ava" bindtap='myinfo'>
+  <view class="wa-item wa-item-ava">
     <text class="icon-left ">{{userInfo.nickName}}</text>
     <image class="item-img" src="{{userInfo.avatarUrl}}"></image>
     <image class="right-arrow item-right ava-item-right" src="../../assets/images/right-arrow.png"></image>

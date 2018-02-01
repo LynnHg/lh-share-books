@@ -7,7 +7,7 @@
       <view class="search-icon">
         <image src="../../assets/images/search.png"></image>
       </view>
-      <input class="search-input" bindinput="changeValue" placeholder="搜书名/作者/ISBN" value="" />
+      <input class="search-input" bindinput="changeValue" placeholder="搜书名" value="" />
     </view>
   </view>
   <!--banner end-->
