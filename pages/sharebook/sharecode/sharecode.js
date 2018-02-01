@@ -1,7 +1,7 @@
+var app = getApp();
+import getStar from '../../../shared/utils/getStar';
+import tools from '../../../shared/utils/tools';
 
-var star = require("../../../utils/star");
-const util = require("../../../utils/util.js");
-var app = getApp()
 Page({
 
   /**
@@ -19,7 +19,7 @@ Page({
     var storeLen = app.globalData.storeLen;
     var storeid = Math.ceil(Math.random() * storeLen); // 随机网点id
     var openid = app.globalData.openid;
-    var sharedTime = util.getTime();
+    var sharedTime = tools.getTime();
     // var sharedTime = '';
     // var openid = '';
     // var bookProvider = '';
@@ -116,7 +116,7 @@ Page({
         }
         that.setData({
           bookinfo: res.data,
-          block: '../' + star.get_star(res.data.rating.average)
+          block: '../' + getStar.get_star(res.data.rating.average)
         })
       }
     })

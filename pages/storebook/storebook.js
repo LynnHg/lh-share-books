@@ -1,6 +1,7 @@
 // storebook.js
-const request = require("../../utils/requests");
-var star = require("../../utils/star");
+import API from '../../shared/api/index';
+import getStar from '../../shared/utils/getStar';
+
 Page({
 
   /**
@@ -42,33 +43,25 @@ Page({
       'storePosition.name': options.name,
       'storePosition.store': options.store
       });
-    wx.request({
-      url: 'http://l1669f6515.iok.la/book/SearchBookByStoreid',
-      method: 'GET',
-      data: {
-        storeid: that.data.storeid
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        var types = res.data;
-        for (var i = 0; i < types.length; ++i) {
-          var book = types[i];
-          if (book.bookState === 0) {
-            book.state = '未入库';
-          } else if (book.bookState === 1) {
-            book.state = '在馆';
-          } else if (book.bookState === 2) {
-            book.state = '借出';
-          }
-          book.block = star.get_star(book.average);
+    API.getBookByStoreid({
+      storeid: that.data.storeid
+    }, function (res) {
+      var types = res.data;
+      for (var i = 0; i < types.length; ++i) {
+        var book = types[i];
+        if (book.bookState === 0) {
+          book.state = '未入库';
+        } else if (book.bookState === 1) {
+          book.state = '在馆';
+        } else if (book.bookState === 2) {
+          book.state = '借出';
         }
-        if (types.length == 0) {
-          return;
-        }
-        that.setData({ bookList: types, count: that.data.count + types.length });
+        book.block = getStar.get_star(book.average);
       }
+      if (types.length == 0) {
+        return;
+      }
+      that.setData({ bookList: types, count: that.data.count + types.length });
     })
   },
 

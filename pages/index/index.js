@@ -4,7 +4,6 @@ var app = getApp()
 import API from '../../shared/api/index';
 import tools from '../../shared/utils/tools';
 import getStar from '../../shared/utils/getStar';
-var star = require("../../utils/star");
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
 var WxNotificationCenter = require('../../utils/WxNotificationCenter.js');
 var qqmapsdk;

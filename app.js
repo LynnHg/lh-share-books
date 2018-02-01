@@ -17,7 +17,6 @@ App({
               grant_type: 'authorization_code'
             },
             success: function(res) {
-              console.log(res.data.openid)
               that.globalData.openid = res.data.openid
             }
           })

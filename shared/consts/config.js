@@ -3,6 +3,9 @@ const URL = {
     // book
     getAllBook: 'book/allbook',
     getBookById: 'book/getBookById',
+    getBookByName: 'book/searchByName',
+    getBookByStoreid: 'book/searchBookByStoreid',
+    getBookByOpenid: 'book/searchBookByOpenid',
 
     // store
     getAllStore: 'store/allstorelist',

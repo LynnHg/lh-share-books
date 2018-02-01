@@ -19,3 +19,7 @@
 .usermotto {
   margin-top: 100px;
 }
+
+.right-arrow.item-right.ava-item-right {
+  padding-top: 32rpx;
+}

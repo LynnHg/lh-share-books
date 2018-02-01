@@ -28,7 +28,7 @@
 
         <navigator url="../comment/comment?bookid={{bookid}}">
           <view class="detail-star-box">
-            <image class="detail-comment-img" src="../../images/suggest.png"></image>
+            <image class="detail-comment-img" src="../../assets/images/suggest.png"></image>
             <view class="detail-comment">查看评价</view>
           </view>
         </navigator>

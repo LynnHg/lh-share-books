@@ -1,6 +1,6 @@
 // pages/detail/detail.js
 import API from '../../shared/api/index';
-var star = require("../../utils/star");
+import getStar from '../../shared/utils/getStar';
 Page({
   data:{
       bookid:"",
@@ -11,7 +11,7 @@ Page({
       var that=this;
       that.setData({ bookid:options.bookid});
       API.getBookById({bookid:that.data.bookid},function(res){
-        that.setData({ bookInfo: res.data[0], block: star.get_star(res.data[0].average)});
+        that.setData({ bookInfo: res.data[0], block: getStar.get_star(res.data[0].average)});
       });
   },
   onReady:function(){

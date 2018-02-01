@@ -4,13 +4,14 @@
   <view class="wa-item wa-item-ava" bindtap='myinfo'>
     <text class="icon-left ">{{userInfo.nickName}}</text>
     <image class="item-img" src="{{userInfo.avatarUrl}}"></image>
+    <image class="right-arrow item-right ava-item-right" src="../../assets/images/right-arrow.png"></image>
   </view>
   </navigator>
   <view class="space"></view>
 
   <navigator url="../wallet/wallet">
     <view class="wa-item">
-      <image class="item-img" src="../../images/money.png"></image>
+      <image class="item-img" src="../../assets/images/wallet.png"></image>
       <text class="item-text">钱包</text>
       <image class="right-arrow item-right" src="../../assets/images/right-arrow.png"></image>
     </view>
@@ -50,7 +51,7 @@
   </navigator>
   <navigator url="../suggestion/suggestion">
     <view class="wa-item">
-      <image class="item-img" src="../../images/suggest.png"></image>
+      <image class="item-img" src="../../assets/images/ico_suggestions.png"></image>
       <text class="item-text">意见反馈</text>
       <image class="right-arrow item-right" src="../../assets/images/right-arrow.png"></image>
     </view>

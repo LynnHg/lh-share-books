@@ -17,9 +17,6 @@
     "pages/wallet/wallet",
     "pages/storebook/storebook",
     "pages/wallet/balance/balance",
-    "pages/merchant/merchant",
-    "pages/merchant/addbook/addbook",
-    "pages/merchant/addbookauto/addbookauto",
     "pages/suggestion/suggestion",
     "pages/guide/guide",
     "pages/club/club",
@@ -28,7 +25,6 @@
     "pages/sharebook/sharebook",
     "pages/sharebook/sharecode/sharecode",
     "pages/sharebook/mycode/mycode",
-    "pages/merchant/checkcode/checkcode",
     "pages/sharebook/history/history",
     "pages/personinfo/personinfo"
   ],
@@ -59,7 +55,7 @@
       },
       {
         "pagePath": "pages/person/person",
-        "text": "个人",
+        "text": "我",
         "iconPath": "assets/images/icon_tab_bar_mine.png",
         "selectedIconPath": "assets/images/icon_tab_bar_mine_active.png"
       }

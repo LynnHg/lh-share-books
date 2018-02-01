@@ -10,6 +10,18 @@ function getBookById(params, successCb, errorCb, completeCb) {
   createAPI.get(URL.request.getBookById, params, successCb, errorCb, completeCb);
 }
 
+function getBookByName(params, successCb, errorCb, completeCb) {
+  createAPI.get(URL.request.getBookByName, params, successCb, errorCb, completeCb);
+}
+
+function getBookByStoreid(params, successCb, errorCb, completeCb) {
+  createAPI.get(URL.request.getBookByStoreid, params, successCb, errorCb, completeCb);
+}
+
+function getBookByOpenid(params, successCb, errorCb, completeCb) {
+  createAPI.get(URL.request.getBookByOpenid, params, successCb, errorCb, completeCb);
+}
+
 // store
 function getAllStore(params, successCb, errorCb, completeCb) {
   createAPI.get(URL.request.getAllStore, params, successCb, errorCb, completeCb);
@@ -49,6 +61,9 @@ function pay(params, successCb, errorCb, completeCb) {
 export default {
   getAllBook,
   getBookById,
+  getBookByName,
+  getBookByStoreid,
+  getBookByOpenid,
   getAllStore,
   getStoreById,
   getOrderByOpenid,

@@ -1,6 +1,7 @@
 // pages/search/search.js
-const request = require("../../utils/requests");
-var star = require("../../utils/star");
+import API from '../../shared/api/index';
+import getStar from '../../shared/utils/getStar';
+
 Page({
   data: {
     value: "",
@@ -15,11 +16,11 @@ Page({
   searchHandel: function () {
     var that = this;
     if (that.data.value.replace(/\s/g, "")) {
-      request.searchBook({ bookname: that.data.value }, function (res) {
+      API.getBookByName({ bookname: that.data.value }, function (res) {
         var types = res.data;
         for (var i = 0; i < types.length; ++i) {
           var book = types[i];
-          book.block = star.get_star(book.average);
+          book.block = getStar.get_star(book.average);
         }
         if (types.length == 0) {
           that.setData({

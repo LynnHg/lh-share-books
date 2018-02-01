@@ -18,33 +18,33 @@ Page({
         content: '您还没有好友',
       })
   },
-  check: function () {
-    var that = this
-    wx.request({
-      url: 'https://www.eton100.com/book/getIdentity',
-      method: 'GET',
-      data: {
-        openid: app.globalData.openid
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        console.log(res.data)
-        if (res.data == 0) {
-          wx.showToast({
-            title: '您不是商户',
-            duration: 1000
-          })
-        } else {
-          wx.navigateTo({
-            url: '../merchant/merchant',
-          })
-        }
-      }
-    })
+  // check: function () {
+  //   var that = this
+  //   wx.request({
+  //     url: 'https://www.eton100.com/book/getIdentity',
+  //     method: 'GET',
+  //     data: {
+  //       openid: app.globalData.openid
+  //     },
+  //     header: {
+  //       'content-type': 'application/json'
+  //     },
+  //     success: function (res) {
+  //       console.log(res.data)
+  //       if (res.data == 0) {
+  //         wx.showToast({
+  //           title: '您不是商户',
+  //           duration: 1000
+  //         })
+  //       } else {
+  //         wx.navigateTo({
+  //           url: '../merchant/merchant',
+  //         })
+  //       }
+  //     }
+  //   })
 
-  },
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
