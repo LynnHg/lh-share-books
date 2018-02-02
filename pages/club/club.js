@@ -36,12 +36,8 @@ Page({
       info = info.sort(tools.recompare('time'));
       info.forEach((item)=>{
         const now = new Date();
-        console.log('now:'+ now);
-        console.log('item.time'+item.time);
         const time = new Date(item.time);
-        console.log('time:' + time);
         const result = now.getTime() - time.getTime();
-        console.log('result: ' + result)
         //计算出相差天数
         let days = Math.floor(result / (24 * 3600 * 1000));
         //计算出小时数
@@ -62,12 +58,8 @@ Page({
         } else if (seconds) {
           item.timeStamp = seconds + '秒';
         }
-        const ddd = new Date();
-        item.ddd = ddd;
         clubs.push(item);
       });
-      
-      console.log(clubs)
       that.setData({
         history: clubs
       })
