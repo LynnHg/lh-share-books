@@ -19,22 +19,16 @@ Page({
       that.setData({
         userInfo: userInfo
       })
+    });
+    API.getAllUser({},function(res){
+      that.setData({
+        allUser: res.data
+      })
     })
     API.getAllCircle({},function(res){
-      let info = res.data;
-      let temp = info.map((item)=>{
-        API.getUserByOpenid({openid: item.openid},
-        function(res){
-          item.nickName = res.data[0].nickName; 
-          item.avatarUrl = res.data[0].avatarUrl;
-        })
-        return item;
-      })
-      console.log(temp)
       that.setData({
-        history: temp
+        history: res.data
       })
-      console.log(that.data.history)
     })
   },
 

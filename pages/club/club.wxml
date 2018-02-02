@@ -11,11 +11,11 @@
 <view wx:for="{{history}}" class='clubs'>
   <view  class="club-item">
     <view class="ava">
-      <image src="{{item.avatarUrl}}"></image>
+      <image src="{{item.user.avatarUrl}}"></image>
     </view>
     <view class="r-bd">
       <view class="bd-name">
-        <text>{{item.nickName}}</text>
+        <text>{{item.user.nickName}}</text>
       </view>
       <view class="bd-content">
        {{item.circleText}}
