@@ -83,7 +83,26 @@
   padding: 0;
 }
 
-.time-stamp {
+.time {
+  width: 100%;
+  overflow: hidden;
+  padding-top: 20rpx;
+}
+
+.time .time-stamp {
   font-size: 30rpx;
   color: #AAA1A1;
+  float: left;
 }
+
+.time .add-comment {
+  width: 65rpx;
+  height: 65rpx;
+  float: right;
+}
+
+.add-comment image {
+  width: 100%;
+  height: 100%;
+}
+

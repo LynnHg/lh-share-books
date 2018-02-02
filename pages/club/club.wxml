@@ -9,7 +9,7 @@
 </view>
 
 <view wx:for="{{history}}" wx:key="unique" class='clubs'>
-  <view  class="club-item">
+  <view class="club-item">
     <view class="ava">
       <image src="{{item.user.avatarUrl}}"></image>
     </view>
@@ -18,9 +18,12 @@
         <text>{{item.user.nickName}}</text>
       </view>
       <view class="bd-content">
-       {{item.circleText}}
+        {{item.circleText}}
       </view>
-      <view class="time-stamp">{{item.timeStamp}}前</view>
+      <view class="time">
+        <view class="time-stamp">{{item.timeStamp}}前</view>
+        <view class="add-comment"><image src="../../assets/images/add_comment.png"></image></view>
+      </view>
     </view>
   </view>
   <view class="line"></view>
