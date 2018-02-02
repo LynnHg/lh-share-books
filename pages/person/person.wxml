@@ -30,6 +30,8 @@
       <image class="right-arrow item-right" src="../../assets/images/right-arrow.png"></image>
     </view>
   </navigator>
+   <view class="space"></view>
+
   <navigator url="../sharebook/sharebook">
     <view class="wa-item">
       <image class="item-img" src="../../assets/images/share.png"></image>
@@ -37,11 +39,6 @@
       <image class="right-arrow item-right" src="../../assets/images/right-arrow.png"></image>
     </view>
   </navigator>
-  <!-- <view class="wa-item" bindtap="check">
-    <image class="item-img" src="../../images/bussiness.png"></image>
-    <text class="item-text">我是商家</text>
-    <image class="right-arrow item-right" src="../../assets/images/right-arrow.png"></image>
-  </view> -->
   <navigator url="../guide/guide">
     <view class="wa-item">
       <image class="item-img" src="../../assets/images/help.png"></image>
@@ -49,6 +46,8 @@
       <image class="right-arrow item-right" src="../../assets/images/right-arrow.png"></image>
     </view>
   </navigator>
+   <view class="space"></view>
+   
   <navigator url="../suggestion/suggestion">
     <view class="wa-item">
       <image class="item-img" src="../../assets/images/ico_suggestions.png"></image>

@@ -19,7 +19,8 @@
         </view>
       </view>
       <view class="widget-line"></view>
+      <view class="small-space"></view>
     </navigator>
   </block>
-
+  
 </template>

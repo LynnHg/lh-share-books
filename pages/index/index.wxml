@@ -20,6 +20,7 @@
     <!--   附近网点   -->
     <view hidden="{{currentTab!==1}}">
     <view class="stores"><text class="stores-len">共{{storelist.length}}个网点</text></view>
+    <view class="small-space"></view>
       <view class="o-list">
         <view wx:for="{{storelist}}" wx:key="unique">
           <navigator url="../storebook/storebook?storeid={{item.storeid}}&latitude={{item.latitude}}&longitude={{item.longitude}}&name={{item.storePlace}}&store={{item.storeName}}">
@@ -29,6 +30,7 @@
               <text class="list-money ">地址：{{item.storePlace}}</text>
               <text class="list-state ">距离：{{item.distance}} km</text>
             </view>
+            <view class="small-space"></view>
           </navigator>
         </view>
       </view>
@@ -36,6 +38,7 @@
     <!--   所有网点   -->
     <view hidden="{{currentTab!==2}}">
     <view class="stores"><text class="stores-len">共{{allstorelist.length}}个网点</text></view>
+    <view class="small-space"></view>
       <view class="o-list">
         <view wx:for="{{allstorelist}}" wx:key="unique">        
           <navigator url="../storebook/storebook?storeid={{item.storeid}}&latitude={{item.latitude}}&longitude={{item.longitude}}&name={{item.storePlace}}&store={{item.storeName}}">
@@ -45,6 +48,7 @@
               <text class="list-money ">地址：{{item.storePlace}}</text>
               <text class="list-state ">距离：{{item.distance}} km</text>
             </view>
+            <view class="small-space"></view>
           </navigator>
         </view>
       </view>

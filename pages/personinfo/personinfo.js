@@ -50,7 +50,9 @@ Page({
         userState: 1,
         point: 0,
         deposit: 0,
-        money: 0
+        money: 0,
+        nickName: that.data.userInfo.nickName,
+        avatarUrl: that.data.userInfo.avatarUrl
       }, function (res) {
         if (res.statusCode === 200) {
           wx.showModal({

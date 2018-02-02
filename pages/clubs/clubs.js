@@ -1,34 +1,21 @@
 // clubs.js
-Page({
+import API from '../../shared/api/index';
 
-  /**
-   * 页面的初始数据
-   */
+Page({
   data: {
     history:""
   
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
-
-    wx.request({
-      url: 'https://www.eton100.com/book/bookclub/allbookclub',
-      method: 'GET',
-
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        that.setData({
-          history: res.data
-        })
-        console.log(that.data.history)
-      }
-    })
+    var that = this;
+    API.getAllCircle({}, function (res) {
+      that.setData({
+        history: res.data
+      })
+    });
   },
 
   /**

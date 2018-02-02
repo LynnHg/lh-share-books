@@ -47,11 +47,14 @@ page text {
 }
 
 .space {
-  background: #f5f5f5;
+  background: #EFEFF4;
   display: block;
-  font-weight: 600;
-  border: 1px solid #ddd;
-  margin: -1px 0;
+  padding: 20rpx;
+}
+
+.small-space {
+  background: #EFEFF4;
+  display: block;
   padding: 10rpx;
 }
 
@@ -141,7 +144,7 @@ page .wa-dark {
 .wa-item .icon-left {
   float: left;
   padding-left: 10px;
-  padding-top: 18px;
+  padding-top: 14px;
   font-size: 15px;
   line-height: 15px;
 }

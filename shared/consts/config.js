@@ -34,6 +34,9 @@ const URL = {
 
     // feedBack
     userAddFeedback: 'feedback/userAdd',
+
+    // circle 
+    getAllCircle: 'circle/allcircle',
   }
 }
 

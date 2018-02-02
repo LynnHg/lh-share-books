@@ -1,54 +1,26 @@
-<view class="space">
+<view class="background">
+  <image src='../../assets/images/bg_pic1.jpg'></image>
+  <view class="avatar">
+    <view class="avatar-name">
+      <text>{{userInfo.nickName}}</text>
+    </view>
+    <image class="avatar-img" src="{{userInfo.avatarUrl}}"></image>
+  </view>
 </view>
-<view class="wa-item wa-item-ava">
-  <text class="icon-left ">{{userInfo.nickName}}</text>
-  <image class="item-img" src="{{userInfo.avatarUrl}}"></image>
-</view>
-<view class="title"><text>发起活动</text></view>
-<view class="page-body">
-  <form catchsubmit="formSubmit" catchreset="formReset">
-    <view class="page-section">
-      <view class="page-section-title"></view>
-      <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input">
 
-          <input class="weui-input" name="activeName" placeholder="活动名称" />\n
-
-        </view>
+<view wx:for="{{history}}" class='clubs'>
+  <view  class="club-item">
+    <view class="ava">
+      <image src="{{item.avatarUrl}}"></image>
+    </view>
+    <view class="r-bd">
+      <view class="bd-name">
+        <text>{{item.nickName}}</text>
+      </view>
+      <view class="bd-content">
+       {{item.circleText}}
       </view>
     </view>
-    <view class="page-section">
-      <view class="page-section-title"></view>
-      <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input">
-
-          <input class="weui-input" name="avtiveTime" placeholder="活动时间" />\n
-
-        </view>
-      </view>
-    </view>
-    <view class="page-section">
-      <view class="page-section-title"></view>
-      <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input">
-
-
-          <input class="weui-input" name="activePlace" placeholder="活动地点" />\n
-
-        </view>
-      </view>
-    </view>
-    <view class="page-section">
-      <view class="page-section-title"></view>
-      <view class="textarea-wrp">
-        <textarea name="activeText" auto-focus="true" style="height: 4em" placeholder="活动内容" />
-      </view>
-    </view>
-    <view class="space"></view>
-   
-      <view class="btn-area">
-        <button type="primary" formType="submit">提交</button>\n
-        <button bindtap="history">历史活动</button>
-    </view>
-  </form>
+  </view>
+  <view class="line"></view>
 </view>

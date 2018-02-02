@@ -6,7 +6,7 @@
     </button>
   </view>
   <scroll-view class="wrapper-scroll" scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-top="0" style="margin-top: 0rpx;">
-
+    <view class="small-space"></view>
     <!--list-->
     <import src="../component/item/item.wxml" />
     <template is="item" data="{{bookList: bookList}}" />

@@ -1,28 +1,79 @@
 /* club.wxss */
 @import "../../common/lib/weui.wxss";
 
-
-.page-section{
-  margin-bottom: 20rpx;
+.background {
+  width: 100%;
+  height: 560rpx;
+  position: relative;
+  background-color: #fff;
+  padding-bottom: 40rpx;
 }
 
-
-
-button{
-  width: 400rpx;
-  margin-top: 30rpx;
-  margin-bottom: 10rpx;
+.background image {
+  width: 100%;
+  height: 480rpx;
 }
 
-.title{
-   text-align: center;
+.avatar {
+  position: absolute;
+  right: 20rpx;
+  bottom: 64rpx;
+  height: 160rpx;
 }
 
-textarea {
-    width: 700rpx;
-    padding: 25rpx 0;
+.avatar .avatar-name {
+  float: left;
+  padding-right: 30rpx;
+  padding-top: 40rpx;
 }
-.textarea-wrp {
-    padding: 0 25rpx;
-    background-color: #fff;
+
+.avatar-name text {
+  color: #fff;
+  font-size: 40rpx;
+  text-shadow: 1px 1px #000;
+}
+
+.avatar .avatar-img {
+  width: 160rpx;
+  height: 160rpx;
+  float: right;
+  background-color: #fff;
+  padding: 6rpx;
+  border: 1px solid #ddd;
+}
+
+.clubs {
+  padding-top: 30rpx;
+}
+
+.line {
+  height: 1px;
+  background-color: #ddd;
+}
+
+.club-item {
+  display: flex;
+  padding: 0 20rpx 0 20rpx;
+}
+
+.club-item .ava {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+}
+
+.club-item .r-bd {
+  flex: 1;
+  padding-bottom: 30rpx;
+}
+
+.ava image {
+  width: 100%;
+  height: 100%;
+}
+
+.bd-name text {
+  color: #7f7b95;
+  font-size: 35rpx;
+  font-weight: 600;
 }

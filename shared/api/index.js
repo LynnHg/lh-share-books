@@ -99,6 +99,11 @@ function userAddFeedback(params, successCb, errorCb, completeCb) {
   createAPI.get(URL.request.userAddFeedback, params, successCb, errorCb, completeCb);
 }
 
+// circle 
+function getAllCircle(params, successCb, errorCb, completeCb) {
+  createAPI.get(URL.request.getAllCircle, params, successCb, errorCb, completeCb);
+}
+
 export default {
   getAllBook,
   getBookById,
@@ -122,5 +127,6 @@ export default {
   changeDeposit,
   changeMoney,
   pay,
-  userAddFeedback
+  userAddFeedback,
+  getAllCircle
 }
