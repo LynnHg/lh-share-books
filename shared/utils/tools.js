@@ -25,12 +25,12 @@ function getTime() {
   var mm = now.getMinutes();          //分  
   var ss = now.getSeconds();           //秒  
 
-  var clock = year + "-";
+  var clock = year + "/";
 
   if (month < 10)
     clock += "0";
 
-  clock += month + "-";
+  clock += month + "/";
 
   if (day < 10)
     clock += "0";

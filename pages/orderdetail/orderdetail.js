@@ -138,6 +138,12 @@ Page({
       content: '确定要归还吗?',
       success: function (res) {
         if (res.confirm) {
+          wx.showToast({
+            title: '加载中',
+            icon: 'loading',
+            duration: 1000,
+            mask: true,
+          })
           API.getStoreById({
             storeid: storeid
           }, function (res) {

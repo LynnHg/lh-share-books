@@ -23,8 +23,8 @@
 
 .avatar .avatar-name {
   float: left;
-  padding-right: 30rpx;
-  padding-top: 40rpx;
+  padding-right: 40rpx;
+  padding-top: 20rpx;
 }
 
 .avatar-name text {
@@ -76,4 +76,14 @@
   color: #7f7b95;
   font-size: 35rpx;
   font-weight: 600;
+}
+
+.bd-content {
+  font-size: 35rpx;
+  padding: 0;
+}
+
+.time-stamp {
+  font-size: 30rpx;
+  color: #AAA1A1;
 }
