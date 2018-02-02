@@ -8,7 +8,9 @@ const URL = {
     getBookByOpenid: 'book/searchBookByOpenid',
     returnBook: 'returnBook',
     shareAddBook: 'book/shareAdd',
+    manualAddBook: 'book/manualAddBook',
     getBookByIsbn: 'searchByIsbn',
+
     // store
     getAllStore: 'store/allstorelist',
     getStoreById: 'store/searchById',

@@ -10,6 +10,12 @@ Page({
   },
   sharebook: function () {
     var that = this
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 2000,
+      mask: true,
+    });
     wx.scanCode({
       success: (res) => {
         console.log('书籍isbn:');

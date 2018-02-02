@@ -16,7 +16,13 @@ function fetchRequest(HttpMethod, url, params, options, successCb, errorCb, comp
     data: params,
     header: options,
     success: successCb,
-    error: errorCb,
+    fail: function() {
+      wx.showToast({
+        title: '发生了错误...',
+        image: '../../assets/images/failed.png',
+        duration: 2000
+      })
+    },
     complete: completeCb
   });
 }

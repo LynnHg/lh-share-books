@@ -1,15 +1,16 @@
 /**app.wxss**/
-@import "wa-ui.wxss";
-@import "douban.wxss";
+@import "comm-ui.wxss";
+@import "basic.wxss";
+
 .container {
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  /* padding: 200rpx 0; */
   box-sizing: border-box;
 } 
+
 page {
   background-color: #fff;
   height: 100%;
@@ -19,6 +20,6 @@ page {
 
 .right-arrow {
   height:36rpx;
-width:36rpx;
+  width:36rpx;
 
 }

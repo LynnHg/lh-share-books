@@ -34,6 +34,10 @@ function getBookByIsbn(params, successCb, errorCb, completeCb) {
   createAPI.get(URL.request.getBookByIsbn, params, successCb, errorCb, completeCb);
 }
 
+function manualAddBook(params, successCb, errorCb, completeCb) {
+  createAPI.get(URL.request.manualAddBook, params, successCb, errorCb, completeCb);
+}
+
 // store
 function getAllStore(params, successCb, errorCb, completeCb) {
   createAPI.get(URL.request.getAllStore, params, successCb, errorCb, completeCb);
@@ -104,6 +108,7 @@ export default {
   shareAddBook,
   getBookByIsbn,
   returnBook,
+  manualAddBook,
   getAllStore,
   getStoreById,
   getOrderByOrderid,

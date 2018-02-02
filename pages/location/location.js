@@ -1,6 +1,6 @@
 // location.js
-var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
-var WxNotificationCenter = require('../../utils/WxNotificationCenter.js');
+var QQMapWX = require('../../shared/utils/qqmap-wx-jssdk.min.js');
+var WxNotificationCenter = require('../../shared/utils/WxNotificationCenter.js');
 var that;
 var qqmapsdk;
 Page({

@@ -1,11 +1,11 @@
 //index.js
 //获取应用实例
-var app = getApp()
+var app = getApp();
 import API from '../../shared/api/index';
 import tools from '../../shared/utils/tools';
 import getStar from '../../shared/utils/getStar';
-var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
-var WxNotificationCenter = require('../../utils/WxNotificationCenter.js');
+var QQMapWX = require('../../shared/utils/qqmap-wx-jssdk.min.js');
+var WxNotificationCenter = require('../../shared/utils/WxNotificationCenter.js');
 var qqmapsdk;
 Page({
   data: {
