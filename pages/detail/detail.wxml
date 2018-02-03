@@ -41,5 +41,11 @@
         <view>{{bookInfo.bookIntroduce}}</view>
       </view>
     </view>
+
+    <view class="wrapper-content">
+     <text class="ibox-title-small">喜欢本书的人还可能喜欢</text>
+     <import src="../component/interested/interested.wxml" />
+      <template is="Interested" data="{{bookList: recommendBooks}}" />
+    </view>
   </scroll-view>
 </view>

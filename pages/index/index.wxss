@@ -211,7 +211,7 @@ page{
 }
 
 .stores {
-  padding-top: 20rpx;
+  padding: 20rpx 0 20rpx 45rpx;
 }
 
 .stores-len {

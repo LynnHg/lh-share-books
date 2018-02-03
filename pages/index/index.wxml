@@ -19,6 +19,7 @@
     </view>
     <!--   附近网点   -->
     <view hidden="{{currentTab!==1}}">
+    <view class="small-space"></view>
     <view class="stores"><text class="stores-len">共{{storelist.length}}个网点</text></view>
     <view class="small-space"></view>
       <view class="o-list">
@@ -37,6 +38,7 @@
     </view>
     <!--   所有网点   -->
     <view hidden="{{currentTab!==2}}">
+    <view class="small-space"></view>
     <view class="stores"><text class="stores-len">共{{allstorelist.length}}个网点</text></view>
     <view class="small-space"></view>
       <view class="o-list">
