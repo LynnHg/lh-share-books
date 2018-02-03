@@ -11,7 +11,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    API.getAllCircle({}, function (res) {
+    API.getAllAct({}, function (res) {
       that.setData({
         history: res.data
       })

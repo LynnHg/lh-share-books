@@ -37,6 +37,9 @@ const URL = {
 
     // circle 
     getAllCircle: 'circle/allcircle',
+
+    // activity
+    getAllAct: 'activity/allAct',
   }
 }
 

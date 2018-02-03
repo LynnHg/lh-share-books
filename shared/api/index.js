@@ -104,6 +104,11 @@ function getAllCircle(params, successCb, errorCb, completeCb) {
   createAPI.get(URL.request.getAllCircle, params, successCb, errorCb, completeCb);
 }
 
+// activity 
+function getAllAct(params, successCb, errorCb, completeCb) {
+  createAPI.get(URL.request.getAllAct, params, successCb, errorCb, completeCb);
+}
+
 export default {
   getAllBook,
   getBookById,
@@ -128,5 +133,6 @@ export default {
   changeMoney,
   pay,
   userAddFeedback,
-  getAllCircle
+  getAllCircle,
+  getAllAct
 }
