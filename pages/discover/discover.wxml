@@ -1,0 +1,25 @@
+<view>
+  <view class="space"></view>
+  <navigator url="../activities/activities">
+    <view class="wa-item">
+      <image class="item-img" src="../../assets/images/activities.png"></image>
+      <text class="item-text">活动</text>
+      <image class="right-arrow item-right" src="../../assets/images/right-arrow.png"></image>
+    </view>
+  </navigator>
+  <view class="space"></view>
+
+  <view class="wa-item" bindtap="friend">
+    <image class="item-img" src="../../assets/images/user-friends.png"></image>
+    <text class="item-text">书友</text>
+    <image class="right-arrow item-right" src="../../assets/images/right-arrow.png"></image>
+  </view>
+  <navigator url="../circles/circles">
+    <view class="wa-item">
+      <image class="item-img" src="../../assets/images/groups.png"></image>
+      <text class="item-text">动态</text>
+      <image class="right-arrow item-right" src="../../assets/images/right-arrow.png"></image>
+    </view>
+  </navigator>
+  <view class="space"></view>
+</view>

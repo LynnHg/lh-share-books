@@ -8,6 +8,7 @@
     "pages/scancode/scancode",
     "pages/person/person",
     "pages/detail/detail",
+    "pages/discover/discover",
     "pages/search/search",
     "pages/bussiness/bussiness",
     "pages/lendbook/lendbook",
@@ -19,8 +20,8 @@
     "pages/wallet/balance/balance",
     "pages/suggestion/suggestion",
     "pages/guide/guide",
-    "pages/club/club",
-    "pages/clubs/clubs",
+    "pages/circles/circles",
+    "pages/activities/activities",
     "pages/comment/comment",
     "pages/sharebook/sharebook",
     "pages/sharebook/sharecode/sharecode",
@@ -52,6 +53,12 @@
         "text": "订单",
         "iconPath":"assets/images/icon_tab_bar_order.png",
         "selectedIconPath": "assets/images/icon_tab_bar_order_active.png"
+      },
+      {
+        "pagePath": "pages/discover/discover",
+        "text": "发现",
+        "iconPath": "assets/images/icon_tab_bar_search.png",
+        "selectedIconPath": "assets/images/icon_tab_bar_search_active.png"
       },
       {
         "pagePath": "pages/person/person",

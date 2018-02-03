@@ -7,7 +7,7 @@ Page({
   data: {
     orders: [],
     money: null,
-    navbar: ['已完成', '进行中', '待付款'],
+    navbar: ['已归还', '待归还', '待付款'],
     currentTab: 0,
     flag: 0
   },
@@ -154,7 +154,7 @@ Page({
               API.returnBook({
                 openid: app.globalData.openid,
                 orderid: orderid,
-                orderState: 0, // 进行中->已完成
+                orderState: 0, // 待归还->已归还
                 endTime: endTime,
                 bookEndPlace: bookEndPlace,
                 bookid: bookid,
@@ -196,7 +196,7 @@ Page({
         var completed = [];
         types = types.length ? types.forEach(function (item) {
           if (item.orderState === 0) {
-            item.state = '已完成';
+            item.state = '已归还';
             item.time = new Date(item.startTime);
             completed.push(item);
           }
@@ -214,7 +214,7 @@ Page({
         var paid = [];
         types = types.length ? types.forEach(function (item) {
           if (item.orderState === 2) {
-            item.state = '进行中';
+            item.state = '待归还';
             item.time = new Date(item.startTime);
             paid.push(item);
           }
@@ -261,7 +261,7 @@ Page({
         var completed = [];
         types = types.length ? types.forEach(function (item) {
           if (item.orderState === 0) {
-            item.state = '已完成';
+            item.state = '已归还';
             item.time = new Date(item.startTime);
             completed.push(item);
           }

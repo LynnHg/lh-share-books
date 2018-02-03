@@ -155,7 +155,7 @@ Page({
               API.returnBook({
                 openid: app.globalData.openid,
                 orderid: orderid,
-                orderState: 0, // 进行中->已完成
+                orderState: 0, // 待归还->已归还
                 endTime: endTime,
                 bookEndPlace: bookEndPlace,
                 bookid: bookid,
@@ -193,13 +193,13 @@ Page({
       var types = res.data[0];
       switch (types.orderState) {
         case 0:
-          types.state = '已完成';
+          types.state = '已归还';
           break;
         case 1:
           types.state = '待付款';
           break;
         case 2:
-          types.state = '进行中';
+          types.state = '待归还';
           break;
       }
       that.setData({

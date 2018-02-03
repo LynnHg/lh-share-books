@@ -18,40 +18,26 @@
   </navigator>
   <view class="space"></view>
 
-  <view class="wa-item" bindtap="friend">
-    <image class="item-img" src="../../assets/images/user-friends.png"></image>
-    <text class="item-text">我的书友</text>
-    <image class="right-arrow item-right" src="../../assets/images/right-arrow.png"></image>
-  </view>
-  <navigator url="../club/club">
-    <view class="wa-item">
-      <image class="item-img" src="../../assets/images/groups.png"></image>
-      <text class="item-text">书友动态</text>
-      <image class="right-arrow item-right" src="../../assets/images/right-arrow.png"></image>
-    </view>
-  </navigator>
-   <view class="space"></view>
-
   <navigator url="../sharebook/sharebook">
     <view class="wa-item">
       <image class="item-img" src="../../assets/images/share.png"></image>
-      <text class="item-text">发布图书</text>
+      <text class="item-text">发布</text>
       <image class="right-arrow item-right" src="../../assets/images/right-arrow.png"></image>
     </view>
   </navigator>
+  <view class="space"></view>
+
   <navigator url="../guide/guide">
     <view class="wa-item">
       <image class="item-img" src="../../assets/images/help.png"></image>
-      <text class="item-text">新手教程</text>
+      <text class="item-text">帮助</text>
       <image class="right-arrow item-right" src="../../assets/images/right-arrow.png"></image>
     </view>
   </navigator>
-   <view class="space"></view>
-   
   <navigator url="../suggestion/suggestion">
     <view class="wa-item">
       <image class="item-img" src="../../assets/images/ico_suggestions.png"></image>
-      <text class="item-text">意见反馈</text>
+      <text class="item-text">反馈</text>
       <image class="right-arrow item-right" src="../../assets/images/right-arrow.png"></image>
     </view>
   </navigator>

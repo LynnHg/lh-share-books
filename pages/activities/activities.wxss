@@ -1,0 +1,61 @@
+.line {
+  height: 1px;
+  background-color: #ddd;
+}
+
+.activities-item {
+  display: flex;
+  padding: 10rpx 20rpx;
+}
+
+.activities-item .r-bd {
+  flex: 1;
+}
+
+.activities-item .logo {
+  width: 180rpx;
+  height: 180rpx;
+  margin-right: 20rpx;
+}
+
+.logo image {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.act-title {
+  color: #7f7b95;
+  font-size: 35rpx;
+  font-weight: 600;
+  padding-bottom: 10rpx;
+}
+
+.act-content, .act-adress {
+  color: #7f7b95;
+  font-size: 30rpx;
+}
+
+.act-time {
+  width: 100%;
+  overflow: hidden;
+}
+
+.act-time .time {
+  float: right;
+  color: #7f7b95;
+  font-size: 24rpx;
+}
+
+.act-time .state {
+  float: left;
+  font-size: 24rpx;
+}
+
+.act-time .active {
+  color: #22b14c;
+}
+
+.act-time .end {
+  color: #7f7f7f;
+}

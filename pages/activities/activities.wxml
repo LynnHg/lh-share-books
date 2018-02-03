@@ -1,0 +1,18 @@
+<view class="small-space"></view>
+<view class='activities'>
+  <view class="activities-item">
+    <view class="logo">
+      <image src="../../assets/images/banner.jpg"></image>
+    </view>
+    <view class="r-bd">
+      <view class="act-title">交流会</view>
+      <view class="act-content">书友交流</view>
+      <view class="act-adress">荷塘书吧</view>
+      <view class="act-time">
+        <view class="state active">进行中</view>
+        <view class="time">开始时间：2017/2/2</view>
+      </view>
+    </view>
+  </view>
+  <view class="line"></view>
+</view>

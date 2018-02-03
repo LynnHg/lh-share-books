@@ -28,7 +28,7 @@
               <image class="img" src="../../assets/images/banner.jpg" url=""></image>
               <text class="list-title ">{{item.storeName}}</text>
               <text class="list-money ">地址：{{item.storePlace}}</text>
-              <text class="list-state ">距离：{{item.distance}} km</text>
+              <text class="list-state ">离我：{{item.distance}} km</text>
             </view>
             <view class="small-space"></view>
           </navigator>
@@ -46,7 +46,7 @@
               <image class="img" src="../../assets/images/banner.jpg" url=""></image>
               <text class="list-title ">{{item.storeName}}</text>
               <text class="list-money ">地址：{{item.storePlace}}</text>
-              <text class="list-state ">距离：{{item.distance}} km</text>
+              <text class="list-state ">离我：{{item.distance}} km</text>
             </view>
             <view class="small-space"></view>
           </navigator>
