@@ -19,3 +19,6 @@
 ######
 ###### p: http get request header is too large
 ###### r: 按照网上的方法，修改tomcat中server.xml文件中Connector标签的maxHttpHeaderSize字段来解决，未能解决，最终通过将GET方法改为       POST方法解决了问题，但同时请求时头部改为：{'content-type':'application/x-www-form-urlencoded'}
+######
+###### p: 缓存带来的问题,代码没问题，却一直报错
+###### r: remove当前项目，clean，重新add，再启动tomcat服务器

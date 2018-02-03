@@ -118,6 +118,14 @@ function addLovingbook(params, successCb, errorCb, completeCb) {
   createAPI.get(URL.request.addLovingbook, params, successCb, errorCb, completeCb);
 }
 
+function removeLovingbook(params, successCb, errorCb, completeCb) {
+  createAPI.get(URL.request.removeLovingbook, params, successCb, errorCb, completeCb);
+}
+
+function getLovingbook(params, successCb, errorCb, completeCb) {
+  createAPI.get(URL.request.getLovingbook, params, successCb, errorCb, completeCb);
+}
+
 export default {
   getAllBook,
   getBookById,
@@ -145,5 +153,7 @@ export default {
   getAllCircle,
   getAllAct,
   addAct,
-  addLovingbook
+  addLovingbook,
+  removeLovingbook,
+  getLovingbook
 }

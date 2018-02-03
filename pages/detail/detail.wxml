@@ -28,7 +28,7 @@
 
         <view class="detail-star-box" bindtap='addLove'>
           <image class="detail-star-img love" src="{{love?'../../assets/images/loving.png':'../../assets/images/love.png'}}"></image>
-          <view class="detail-comment">收藏</view>
+          <view class="detail-comment">{{love?'已收藏':'收藏'}}</view>
         </view>
 
         <navigator url="../comment/comment?bookid={{bookid}}">

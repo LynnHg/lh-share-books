@@ -44,6 +44,8 @@ const URL = {
 
     // lovingbook
     addLovingbook: 'lovingbook/addLovingbook',
+    removeLovingbook: 'lovingbook/removeLovingbook',
+    getLovingbook: 'lovingbook/getLovingbook',
   }
 }
 

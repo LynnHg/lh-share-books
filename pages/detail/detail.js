@@ -28,10 +28,17 @@ Page({
         }
       })
     } else {
-      wx.showToast({
-        title: '已取消收藏',
-        icon: 'success',
-        duration: 1000
+      API.removeLovingbook({
+        openid: app.globalData.openid,
+        bookid: that.data.bookInfo.bookid
+      }, function (res) {
+        if (res.statusCode === 200) {
+          wx.showToast({
+            title: '已取消收藏',
+            icon: 'success',
+            duration: 1000
+          });
+        }
       })
     }
   },
@@ -42,6 +49,21 @@ Page({
     API.getBookById({ bookid: that.data.bookid }, function (res) {
       that.setData({ bookInfo: res.data[0], block: getStar.get_star(res.data[0].average) });
     });
+
+    API.getLovingbook({
+      openid: app.globalData.openid,
+      bookid: options.bookid
+    }, function (res) {
+      if (res.data.length) {
+        that.setData({
+          love: true
+        });
+      } else {
+        that.setData({
+          love: false
+        });
+      }
+    })
 
     //随机推荐
     API.getAllBook({}, function (res) {
