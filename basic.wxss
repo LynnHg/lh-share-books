@@ -1,4 +1,4 @@
-.navigator-hover {
+detail-star-box.navigator-hover {
   background-color: rgba(241, 241, 241, 1) !important;
   opacity: 1;
 }
@@ -482,7 +482,7 @@
   flex-direction: column;
   text-align: center;
   overflow: hidden;
-  margin-bottom: 150rpx;
+  margin-bottom: 60rpx;
 }
 
 .detail-star {

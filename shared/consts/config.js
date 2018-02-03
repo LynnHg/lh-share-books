@@ -40,7 +40,10 @@ const URL = {
 
     // activity
     getAllAct: 'activity/allAct',
-    addAct: 'activity/addAct'
+    addAct: 'activity/addAct',
+
+    // lovingbook
+    addLovingbook: 'lovingbook/addLovingbook',
   }
 }
 

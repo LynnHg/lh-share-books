@@ -7,3 +7,8 @@
 .list-ui .list-nav:first-child {
   margin-left: 0;
 }
+
+.detail-star-box .love {
+  width: 60rpx;
+  height: 60rpx;
+}

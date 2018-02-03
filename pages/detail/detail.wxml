@@ -26,6 +26,11 @@
           <image class="detail-star-img" src="{{block}}"></image>
         </view>
 
+        <view class="detail-star-box" bindtap='addLove'>
+          <image class="detail-star-img love" src="{{love?'../../assets/images/loving.png':'../../assets/images/love.png'}}"></image>
+          <view class="detail-comment">收藏</view>
+        </view>
+
         <navigator url="../comment/comment?bookid={{bookid}}">
           <view class="detail-star-box">
             <image class="detail-comment-img" src="../../assets/images/suggest.png"></image>
@@ -43,8 +48,8 @@
     </view>
 
     <view class="wrapper-content">
-     <text class="ibox-title-small">喜欢本书的人还可能喜欢</text>
-     <import src="../component/interested/interested.wxml" />
+      <text class="ibox-title-small">喜欢本书的人还可能喜欢</text>
+      <import src="../component/interested/interested.wxml" />
       <template is="Interested" data="{{bookList: recommendBooks}}" />
     </view>
   </scroll-view>

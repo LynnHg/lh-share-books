@@ -113,6 +113,11 @@ function addAct(params, successCb, errorCb, completeCb) {
   createAPI.get(URL.request.addAct, params, successCb, errorCb, completeCb);
 }
 
+// lovingbook
+function addLovingbook(params, successCb, errorCb, completeCb) {
+  createAPI.get(URL.request.addLovingbook, params, successCb, errorCb, completeCb);
+}
+
 export default {
   getAllBook,
   getBookById,
@@ -139,5 +144,6 @@ export default {
   userAddFeedback,
   getAllCircle,
   getAllAct,
-  addAct
+  addAct,
+  addLovingbook
 }
