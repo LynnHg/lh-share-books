@@ -20,6 +20,7 @@
     "pages/guide/guide",
     "pages/circles/circles",
     "pages/activities/activities",
+    "pages/activities/addact/addact",
     "pages/comment/comment",
     "pages/sharebook/sharebook",
     "pages/sharebook/sharecode/sharecode",

@@ -1,4 +1,9 @@
 <view class="small-space"></view>
+<view class='top'>
+  <view bindtap='addAct' class="add-act">
+    <image src='../../assets/images/add_act.png'></image>
+  </view>
+</view>
 <view class='activities' wx:for="{{history}}">
   <view class="activities-item">
     <view class="logo">

@@ -6,6 +6,6 @@
   </view>
   <view class="usermotto">
     <button bindtap="sharebook" type="primary">发布图书</button>
-    <button bindtap="shareHistory" type="primary">共享历史</button>
+    <button bindtap="shareHistory" type="primary">发布历史</button>
   </view>
 </view>

@@ -1,0 +1,23 @@
+<view class='space'></view>
+<view class="wraper">
+  <form>
+    <view class="section">
+      <input bindinput="setName" class="input" placeholder='活动标题'></input>
+    </view>
+    <view class="section">
+      <input bindinput="setText" class="input" placeholder='活动内容'></input>
+    </view>
+    <view class="section">
+      <input bindinput="setTime" class="input" placeholder='开始时间'></input>
+    </view>
+    <view class="section">
+      <view class="top-lc" bindtap="navigateToSearch">
+        <image src="../../../assets/images/bb_location.png" />
+        <text class="top-text">{{address? address: '添加地点'}}</text>
+      </view>
+    </view>
+    <view class="section">
+      <button style="background-color:#f76b8a;color:#fff" class="submit" bindtap="handleadd">发布</button>
+    </view>
+  </form>
+</view>

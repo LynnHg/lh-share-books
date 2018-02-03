@@ -3,6 +3,26 @@
   background-color: #ddd;
 }
 
+.top {
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
+  padding: 10rpx 20rpx;
+  box-sizing: border-box;
+}
+
+.top .add-act {
+  width: 50rpx;
+  height: 50rpx;
+  float: right;
+}
+
+.add-act image {
+  width: 100%;
+  height: 100%;
+}
+
 .activities-item {
   display: flex;
   padding: 10rpx 20rpx;
@@ -57,5 +77,5 @@
 }
 
 .act-time .end {
-  color: #E7E5E5;
+  color: #DCD7D7;
 }

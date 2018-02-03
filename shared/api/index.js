@@ -109,6 +109,10 @@ function getAllAct(params, successCb, errorCb, completeCb) {
   createAPI.get(URL.request.getAllAct, params, successCb, errorCb, completeCb);
 }
 
+function addAct(params, successCb, errorCb, completeCb) {
+  createAPI.get(URL.request.addAct, params, successCb, errorCb, completeCb);
+}
+
 export default {
   getAllBook,
   getBookById,
@@ -134,5 +138,6 @@ export default {
   pay,
   userAddFeedback,
   getAllCircle,
-  getAllAct
+  getAllAct,
+  addAct
 }
