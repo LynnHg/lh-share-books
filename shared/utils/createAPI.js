@@ -10,6 +10,11 @@ export function createUrl(url) {
 
 function fetchRequest(HttpMethod, url, params, options, successCb, errorCb, completeCb) {
   url = createUrl(url);
+  wx.showToast({
+    title: '加载中',
+    icon: 'loading',
+    duration: 1000
+  })
   wx.request({
     url: url,
     method: HttpMethod,
