@@ -22,4 +22,16 @@
     </view>
   </navigator>
   <view class="space"></view>
+
+  <view class="wa-item">
+    <image class="item-img" src="../../assets/images/sys.png"></image>
+    <text class="item-text">扫扫</text>
+    <image class="right-arrow item-right" src="../../assets/images/right-arrow.png"></image>
+  </view>
+    <view class="wa-item">
+      <image class="item-img" src="../../assets/images/yyy.png"></image>
+      <text class="item-text">摇摇</text>
+      <image class="right-arrow item-right" src="../../assets/images/right-arrow.png"></image>
+    </view>
+  <view class="space"></view>
 </view>

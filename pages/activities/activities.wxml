@@ -4,6 +4,7 @@
     <image src='../../assets/images/add_act.png'></image>
   </view>
 </view>
+<view class="small-space"></view>
 <view class='activities' wx:for="{{history}}">
   <view class="activities-item">
     <view class="logo">
@@ -14,10 +15,11 @@
       <view class="act-content">{{item.activeText}}</view>
       <view class="act-adress">{{item.activePlace}}</view>
       <view class="act-time">
-        <view class="{{item.activeState == 1? 'state active' : 'state end'}}">{{item.activeState == 1? '进行中' : '已结束'}}</view>
+        <view class="{{item.activeState == 1? 'state active' : 'state end'}}">{{item.activeState == 1? '已发起' : '已结束'}}</view>
         <view class="time">开始时间：{{item.activeTime}}</view>
       </view>
     </view>
   </view>
   <view class="line"></view>
+  <view class="small-space"></view>
 </view>

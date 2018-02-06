@@ -25,6 +25,13 @@
       <image class="right-arrow item-right" src="../../assets/images/right-arrow.png"></image>
     </view>
   </navigator>
+  <navigator url="../lovingbook/lovingbook">
+    <view class="wa-item">
+      <image class="item-img" src="../../assets/images/ico_loving.png"></image>
+      <text class="item-text">收藏</text>
+      <image class="right-arrow item-right" src="../../assets/images/right-arrow.png"></image>
+    </view>
+  </navigator>
   <view class="space"></view>
 
   <navigator url="../guide/guide">

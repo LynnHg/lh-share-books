@@ -306,6 +306,18 @@ detail-star-box.navigator-hover {
   margin-top: 4rpx;
 }
 
+.love-box {
+  height: 50rpx;
+  widows: 100%;
+  padding-right: 50rpx;
+}
+
+.love-box image{
+  width: 50rpx;
+  height: 100%;
+  float: right;
+}
+
 .ibox-list-star {
   margin: 12rpx 0 14rpx;
 }

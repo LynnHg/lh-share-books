@@ -1,9 +1,12 @@
-<template name="item">
+<template name="lovingitem">
   <block wx:for="{{bookList}}">
-    <navigator class="ibox-list-nav" url="../detail/detail?bookid={{item.bookid}}">
+    <view class="ibox-list-nav">
       <view class="ibox-list">
         <image class="ibox-list-img" src="{{item.bookimgurl}}"></image>
         <view class="ibox-list-infos">
+          <view class="love-box" >
+            <image data-bookId="{{item.bookid}}" bindtap='removeLove' src="../../assets/images/loving.png"></image>
+          </view>
           <view class="ibox-list-title">{{item.bookname}}</view>
           <view class="ibox-list-author">作者：{{item.author}}</view>
           <view class="ibox-list-star">
@@ -15,14 +18,11 @@
             <text>{{item.tags1}}</text>
             <text>{{item.tags2}}</text>
           </view>
-          <view class="ibox-list-state">书籍状态：
-            <text class="{{item.bookState === 1? 'book-in':'book-out'}}">{{item.state}}</text>
-          </view>
         </view>
       </view>
       <view class="widget-line"></view>
       <view class="small-space"></view>
-    </navigator>
+    </view>
   </block>
 
 </template>

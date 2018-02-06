@@ -1,5 +1,10 @@
 <!--guide.wxml-->
 <view class="guide">
+<view class='space'></view>
+<view class="item">
+    <text>提示：由于该小程序暂未发布，请按下图提示操作</text>
+    <image src='../../assets/scancode/help.png'></image>
+  </view>
   <view class="item">
     <text>Step1：点击主界面'点我用书'</text>
     <image src='../../assets/scancode/step1.png'></image>

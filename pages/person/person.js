@@ -12,12 +12,6 @@ Page({
       url: '../logs/logs'
     })
   },
-  friend: function () {
-      wx.showModal({
-        title: '',
-        content: '您还没有好友',
-      })
-  },
   onLoad: function (options) {
     var that = this
     //调用应用实例的方法获取全局数据

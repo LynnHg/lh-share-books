@@ -46,6 +46,7 @@ const URL = {
     addLovingbook: 'lovingbook/addLovingbook',
     removeLovingbook: 'lovingbook/removeLovingbook',
     getLovingbook: 'lovingbook/getLovingbook',
+    getAllLovingbook: 'lovingbook/getAllLovingbook',
   }
 }
 

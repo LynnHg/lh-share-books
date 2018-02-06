@@ -126,6 +126,10 @@ function getLovingbook(params, successCb, errorCb, completeCb) {
   createAPI.get(URL.request.getLovingbook, params, successCb, errorCb, completeCb);
 }
 
+function getAllLovingbook(params, successCb, errorCb, completeCb) {
+  createAPI.get(URL.request.getAllLovingbook, params, successCb, errorCb, completeCb);
+}
+
 export default {
   getAllBook,
   getBookById,
@@ -155,5 +159,6 @@ export default {
   addAct,
   addLovingbook,
   removeLovingbook,
-  getLovingbook
+  getLovingbook,
+  getAllLovingbook
 }

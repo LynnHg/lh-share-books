@@ -11,6 +11,7 @@
     "pages/search/search",
     "pages/lendbook/lendbook",
     "pages/location/location",
+    "pages/lovingbook/lovingbook",
     "pages/orderdetail/orderdetail",
     "pages/about/about",
     "pages/wallet/wallet",

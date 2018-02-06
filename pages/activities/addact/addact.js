@@ -10,6 +10,11 @@ Page({
   data: {
     
   },
+  bindDateChange: function (e) {
+    this.setData({
+      activeTime: e.detail.value
+    })
+  }, 
   setName: function(e) {
     const that = this;
     that.setData({

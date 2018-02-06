@@ -2,17 +2,24 @@
 <view class="wraper">
   <form>
     <view class="section">
+      <text class="label">标题：</text>
       <input bindinput="setName" class="input" placeholder='活动标题'></input>
     </view>
     <view class="section">
+      <text class="label">内容：</text>
       <input bindinput="setText" class="input" placeholder='活动内容'></input>
     </view>
     <view class="section">
-      <input bindinput="setTime" class="input" placeholder='开始时间'></input>
+      <!-- <input bindinput="setTime" class="input" placeholder='开始时间'></input> -->
+      <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+        <view class="picker">
+          <text class="label">时间：<text class="placeholder" hidden='{{activeTime}}'>开始时间</text> </text>{{activeTime}}
+        </view>
+      </picker>
     </view>
     <view class="section">
       <view class="top-lc" bindtap="navigateToSearch">
-        <image src="../../../assets/images/bb_location.png" />
+        <text class="label">地点：</text>
         <text class="top-text">{{address? address: '添加地点'}}</text>
       </view>
     </view>

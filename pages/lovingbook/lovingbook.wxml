@@ -1,0 +1,8 @@
+<view class="container">
+  <scroll-view class="wrapper-scroll" bindscroll="scroll" scroll-top="0" style="margin-top: 0rpx;">
+    <view class="small-space"></view>
+    <!--list-->
+    <import src="../component/lovingitem/lovingitem.wxml" />
+    <template is="lovingitem" data="{{bookList: bookList}}" />
+  </scroll-view>
+</view>

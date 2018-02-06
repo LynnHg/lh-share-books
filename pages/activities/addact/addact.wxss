@@ -3,48 +3,60 @@
 }
 
 .top-lc {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   align-items: center;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 170rpx;
+  width: 100%;
   background-color: #efefef;
-  border-radius: 40rpx;
-  height: 40rpx;
+  height: 50rpx;
   display: flex;
 }
 
 .top-lc image {
-  height: 38rpx;
-  width: 38rpx;
+  height: 42rpx;
+  width: 42rpx;
 }
 
 .top-text {
   height: 100%;
-  font-size: 24rpx;
+  font-size: 35rpx;
   color: #8a8a8a;
   flex: 1;
 }
 
 .section {
+  position: relative;
   padding: 10rpx;
   margin: 20rpx 0;
+  border: 1px solid #c8cccf;
+  display: flex;
+  height: 100rpx;
+  border-radius: 5rpx;
+  background-color: #efefef;
+}
+
+.section .label {
+  padding-left: 20rpx;
+  line-height: 100rpx;
+}
+
+.placeholder {
+  color: #808080;
+}
+
+.section picker {
+  line-height: 100rpx;
+  width: 100%;
 }
 
 .section input {
-  box-sizing: border-box;
-  text-align: center;
-  font-size: 1.4em;
-  height: 2.7em;
-  border-radius: 4px;
-  border: 1px solid #c8cccf;
-  color: #6a6f77;
-  -web-kit-appearance: none;
-  -moz-appearance: none;
-  display: block;
-  outline: 0;
-  padding: 0 1em;
-  text-decoration: none;
-  width: 100%;
+  flex: 1;
+  height: 100rpx;
+  max-height: 100rpx;
+  min-height: 0;
 }
 
 .section  input:focus {
