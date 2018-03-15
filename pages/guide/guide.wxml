@@ -7,7 +7,7 @@
   </view>
   <view class="item">
     <text>Step1：点击主界面'点我用书'</text>
-    <image src='../../assets/scancode/step1.png'></image>
+    <image src='../../assets/scancode/step1.jpg'></image>
   </view>
   <view class="item">
     <text>Step2：扫描书籍上的二维码</text>
@@ -15,14 +15,14 @@
   </view>
   <view class="item">
     <text>Step3：确定借书</text>
-    <image src='../../assets/scancode/step3.png'></image>
+    <image src='../../assets/scancode/step3.jpg'></image>
   </view>
   <view class="item">
     <text>Step4：支付</text>
-    <image src='../../assets/scancode/step4.png'></image>
+    <image src='../../assets/scancode/step4.jpg'></image>
   </view>
   <view class="item">
     <text>Step5：还书</text>
-    <image src='../../assets/scancode/step5.png'></image>
+    <image src='../../assets/scancode/step5.jpg'></image>
   </view>
 </view>
