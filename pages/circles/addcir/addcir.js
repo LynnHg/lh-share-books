@@ -1,63 +1,39 @@
 import API from '../../../shared/api/index';
-const WxNotificationCenter = require('../../../shared/utils/WxNotificationCenter.js');
+import tools from '../../../shared/utils/tools';
 const app = getApp();
-
 Page({
-
   /**
    * 页面的初始数据
    */
-  data: {
-    
-  },
-  bindDateChange: function (e) {
-    console.log(e.detail.value)
-    this.setData({
-      activeTime: e.detail.value
-    })
+  data: { 
   }, 
-  setName: function(e) {
-    const that = this;
-    that.setData({
-      activeName: e.detail.value
-    })
-  },
   setText: function (e) {
     const that = this;
     that.setData({
-      activeText: e.detail.value
+      circleText: e.detail.value
     })
-  },
-  navigateToSearch: function () {
-    wx.navigateTo({
-      url: '../../location/location'
-    });
-  },
-  getAddress: function (address) {
-    const that = this;
-    that.setData({
-      address: address
-    });
   },
   handleadd: function() {
     const that = this;
-    API.addAct({
+    var circleTime = tools.getTime();
+    API.addCircle({
       openid: app.globalData.openid,
-      activeName: that.data.activeName,
-      activeText: that.data.activeText,
-      activeTime: that.data.activeTime,
-      activePlace: that.data.address
+      circleText: that.data.circleText,
+      circleState: 0,
+      circleTime,
+      nickName: that.data.userInfo.nickName,
+      avatarUrl: that.data.userInfo.avatarUrl
     },function(res) {
       wx.showToast({
         title: '发布成功',
         icon: 'success',
-        duration: 2000
+        duration: 1000
       })
       setTimeout(function(){
         wx.navigateBack({
           delta: 1
         })
-      },2000)
+      },1000)
     });
   },
   /**
@@ -65,7 +41,12 @@ Page({
    */
   onLoad: function (options) {
     const that = this;
-    WxNotificationCenter.addNotification("addressSelectedNotification", that.getAddress, that);
+    app.getUserInfo(function (userInfo) {
+      //更新数据
+      that.setData({
+        userInfo: userInfo
+      })
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -1,5 +1,7 @@
 // comment.js
-var app = getApp()
+var app = getApp();
+import API from '../../shared/api/index';
+import tools from '../../shared/utils/tools';
 Page({
 
   /**
@@ -14,56 +16,47 @@ Page({
    * 生命周期函数--监听页面加载
    */
   formSubmit: function (e) {
-    var that = this
-    console.log('form发生了submit事件，携带数据为：', e.detail.value)
-    wx.request({
-      url: 'https://www.eton100.com/book/comment/addComment', //仅为示例，并非真实的接口地址
-      method: 'GET',
-      data: {
-        commentText: e.detail.value.commentText,
-        commentState: 1,
-        bookid: that.data.bookid,
-        openid: app.globalData.openid,
-        nickName: app.globalData.userInfo.nickName,
-        avatarUrl: app.globalData.userInfo.avatarUrl
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
+    var that = this;
+    var commentTime = tools.getTime();
+    API.addComment({
+      commentTime,
+      commentText: e.detail.value.commentText,
+      commentState: 0,
+      bookid: that.data.bookid,
+      openid: app.globalData.openid,
+      nickName: that.data.userInfo.nickName,
+      avatarUrl: that.data.userInfo.avatarUrl
+    },function(res){
+      wx.showToast({
+        title: '已提交评论',
+        icon: 'success',
+        duration: 1000
+      });
+      setTimeout(function(){
         wx.navigateBack({
-          
+          delta: 1
         })
-      }
-    })
+      },1000)
+    });
   },
   formReset: function (e) {
-    console.log('form发生了reset事件，携带数据为：', e.detail.value)
-    this.setData({
-      chosen: ''
-    })
   },
   onLoad: function (options) {
     var that = this;
     that.setData({
-       bookid: options.bookid 
-       })
-    console.log(that.data.bookid)
-    wx.request({
-      url: 'https://www.eton100.com/book/searchCommentByBookid',
-      method: 'GET',
-      data: {
-        bookid:that.data.bookid
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        that.setData({
-          comment: res.data
-        })
-        console.log(that.data.comment)
-      }
+      bookid: options.bookid
+    })
+    //调用应用实例的方法获取全局数据
+    app.getUserInfo(function (userInfo) {
+      //更新数据
+      that.setData({
+        userInfo: userInfo
+      })
+    })
+    API.getCommentByBookid({ bookid: options.bookid},function (res){
+      that.setData({
+        comment: res.data,
+      })
     })
   },
 
@@ -78,7 +71,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.onLoad();
   },
 
   /**

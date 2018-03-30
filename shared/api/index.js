@@ -104,6 +104,10 @@ function getAllCircle(params, successCb, errorCb, completeCb) {
   createAPI.get(URL.request.getAllCircle, params, successCb, errorCb, completeCb);
 }
 
+function addCircle(params, successCb, errorCb, completeCb) {
+  createAPI.get(URL.request.addCircle, params, successCb, errorCb, completeCb);
+}
+
 // activity 
 function getAllAct(params, successCb, errorCb, completeCb) {
   createAPI.get(URL.request.getAllAct, params, successCb, errorCb, completeCb);
@@ -128,6 +132,15 @@ function getLovingbook(params, successCb, errorCb, completeCb) {
 
 function getAllLovingbook(params, successCb, errorCb, completeCb) {
   createAPI.get(URL.request.getAllLovingbook, params, successCb, errorCb, completeCb);
+}
+
+// comment
+function addComment(params, successCb, errorCb, completeCb) {
+  createAPI.get(URL.request.addComment, params, successCb, errorCb, completeCb);
+}
+
+function getCommentByBookid(params, successCb, errorCb, completeCb) {
+  createAPI.get(URL.request.getCommentByBookid, params, successCb, errorCb, completeCb);
 }
 
 export default {
@@ -155,10 +168,13 @@ export default {
   pay,
   userAddFeedback,
   getAllCircle,
+  addCircle,
   getAllAct,
   addAct,
   addLovingbook,
   removeLovingbook,
   getLovingbook,
-  getAllLovingbook
+  getAllLovingbook,
+  addComment,
+  getCommentByBookid
 }

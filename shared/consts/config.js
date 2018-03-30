@@ -37,6 +37,7 @@ const URL = {
 
     // circle 
     getAllCircle: 'circle/allcircle',
+    addCircle: 'circle/add',
 
     // activity
     getAllAct: 'activity/allAct',
@@ -47,6 +48,10 @@ const URL = {
     removeLovingbook: 'lovingbook/removeLovingbook',
     getLovingbook: 'lovingbook/getLovingbook',
     getAllLovingbook: 'lovingbook/getAllLovingbook',
+
+    // comment
+    addComment: 'comment/addComment',
+    getCommentByBookid: 'comment/getCommentByBookid',
   }
 }
 

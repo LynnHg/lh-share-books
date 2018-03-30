@@ -11,7 +11,7 @@
     </view>
     <view class="section">
       <!-- <input bindinput="setTime" class="input" placeholder='开始时间'></input> -->
-      <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+      <picker mode="date" value="{{date}}" bindchange="bindDateChange">
         <view class="picker">
           <text class="label">时间：<text class="placeholder" hidden='{{activeTime}}'>开始时间</text> </text>{{activeTime}}
         </view>

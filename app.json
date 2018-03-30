@@ -20,6 +20,7 @@
     "pages/suggestion/suggestion",
     "pages/guide/guide",
     "pages/circles/circles",
+    "pages/circles/addcir/addcir",
     "pages/activities/activities",
     "pages/activities/addact/addact",
     "pages/comment/comment",

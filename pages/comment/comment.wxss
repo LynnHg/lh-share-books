@@ -16,9 +16,6 @@ text{
 }
 
 .list-item image{
-  position: absolute;
-  top: 20rpx;
-  left:20rpx;
   height: 160rpx;
   width: 160rpx;
 }
@@ -45,7 +42,7 @@ text{
 
 .list-time{
   position: absolute;
-  bottom: 20rpx;
+  top: 20rpx;
   right: 10rpx;
   font-size: 25rpx;
   font-weight: bold;

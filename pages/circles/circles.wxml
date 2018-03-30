@@ -6,6 +6,9 @@
     </view>
     <image class="avatar-img" src="{{userInfo.avatarUrl}}"></image>
   </view>
+  <view bindtap='addCir' class="add-act">
+    <image src='../../assets/images/add_act.png'></image>
+  </view>
 </view>
 
 <view wx:for="{{history}}" wx:key="unique" class='clubs'>

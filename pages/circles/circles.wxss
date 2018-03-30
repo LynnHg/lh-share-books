@@ -14,6 +14,18 @@
   height: 480rpx;
 }
 
+.add-act {
+   width: 50rpx;
+  height: 50rpx;
+  margin-top: 20rpx;
+  margin-left: 40rpx;
+}
+
+.add-act image{
+  width: 100%;
+  height: 100%;
+}
+
 .avatar {
   position: absolute;
   right: 20rpx;

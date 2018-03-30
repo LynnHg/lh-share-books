@@ -1,0 +1,12 @@
+<view class='space'></view>
+<view class="wraper">
+  <form>
+    <view class="section">
+      <text class="label">内容：</text>
+      <input bindinput="setText" class="input" placeholder='动态内容'></input>
+    </view>
+    <view class="section">
+      <button style="background-color:#f76b8a;color:#fff" class="submit" bindtap="handleadd">确定</button>
+    </view>
+  </form>
+</view>
