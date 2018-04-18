@@ -46,7 +46,7 @@ Page({
   },
   onShow: function () {
     var that = this
-   that.onLoad();
+    that.onLoad();
   },
   changeValue: function (e) {
     this.setData({ value: e.detail.value });
