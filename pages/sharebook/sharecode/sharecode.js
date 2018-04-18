@@ -87,13 +87,12 @@ Page({
     wx.showToast({
       title: '加载中',
       icon: 'loading',
-      duration: 2000,
+      duration: 4000,
       mask: true,
     })
     API.getBookByIsbn({
       isbn: options.isbn
     }, function (res) {
-      wx.hideToast();
       if (!res.data) {
         wx.redirectTo({
           url: '../../addbook/addbook'
