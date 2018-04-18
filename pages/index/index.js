@@ -46,26 +46,7 @@ Page({
   },
   onShow: function () {
     var that = this
-    if (that.data.hideaddress && that.data.hideaddress != that.data.address) {
-      wx.showToast({
-        title: '加载中',
-        icon: 'loading',
-        duration: 10000,
-        mask: true,
-      })
-      const params = {
-        latitude: that.data.location.lat,
-        longitude: that.data.location.lng
-      }
-      API.getAllStore(params, function (res) {
-        wx.hideToast();
-        var storelist = res.data.sort(tools.compare('distance'));
-        that.setData({
-          storelist: storelist,
-          'app.globalData.storeLen': storelist.length
-        })
-      });
-    }
+   that.onLoad();
   },
   changeValue: function (e) {
     this.setData({ value: e.detail.value });
@@ -153,6 +134,7 @@ Page({
             storelist: storelist,
             allstorelist: allstorelist,
           })
+          console.log(storelist)
           app.globalData.storeLen = storelist.length; // 保存附近网点个数
         })
       },
