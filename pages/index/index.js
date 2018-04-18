@@ -45,7 +45,10 @@ Page({
     that.data.hideaddress = that.data.address
   },
   onShow: function () {
-    var that = this
+    var that = this;
+    that.setData({
+      scene: ''
+    })
     that.onLoad();
   },
   changeValue: function (e) {
